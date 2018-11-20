@@ -1,6 +1,6 @@
 # docs-addon-compliance-tools
 
-This repo contains the source materials for the Pivotal Cloud Foundry Caliper Add-on documentation.
+This repo contains the source materials for the Caliper Add-on for Pivotal Cloud Foundry documentation.
 
 ## Branches 
 
