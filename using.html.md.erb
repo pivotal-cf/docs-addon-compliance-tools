@@ -15,3 +15,25 @@ Give procedures for how to perform the different functions offered by your produ
 **You can also use this section to include information about Architecture and Troubleshooting for known errors. 
 If you include a Troubleshooting section, follow the Symptom/Explanation format used in the 
 [Okta Troubleshooting](http://docs.pivotal.io/p-identity/okta/troubleshooting.html) topic**.
+
+###<a id='start-scan'></a> Initiating a scan
+Assuming the desired benchmarks and log formats were selected
+1.Click on “REVIEW PENDING CHANGES”
+**IMAGE**
+
+2. Make sure that the errand for the Compliance Scanner Add-on is selected.
+**IMAGE**
+
+3. If you are certain that there are no other changes being applied and you only want to scan, the you can uncheck the PAS tile and click “Apply Changes”. If PAS tile is checked, it will go through the motion of determining changes despite the tile not having any and wouldn’t get re-deployed.
+
+If there are changes from other sources, leave the PAS errands checked to allow those changes to occur. A scan will be triggered at the end.
+
+4. When complete, click into the Compliance Scanner tile, go to status. Click on the download button on the right (under LOGS) to download the all the scan result from the oscap_store (tile VM) to Ops Man.
+**IMAGE**
+
+5. Go to the Logs tap and click on the zip file that corresponds to the desired scan result. The timestamp listed on the right was when the download in step 4 was initiated. This will download the zip file to your local machine.
+
+
+6. The result are in the follow folder structure
+**IMAGE**
+
