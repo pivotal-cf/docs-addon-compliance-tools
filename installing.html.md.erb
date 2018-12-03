@@ -7,8 +7,8 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 
 This topic describes how to install and configure <%= vars.product_full %>.
 
-## <a id='install'></a> Install and Configure <%= vars.product_short %>
 
+## <a id='install'></a> Install and Configure <%= vars.product_short %>
 To install the <%= vars.product_short %> file on the Ops Manager Installation Dashboard, do the following:
 
 1. Download the product file from Pivotal Network.
@@ -23,7 +23,7 @@ This adds the tile to your staging area.
 
 (EDIT)
 ## <a id='scan'></a> Configure Scans
-This section is where you can specify which set of benchmarks to run and specify the expected value associated with various components for their corresponding tests.
+This section is where you can select which set of benchmarks to run, and the expected value associated with various components for their corresponding tests.
 
 1. Click **Scan Configuration**.
 
@@ -74,6 +74,29 @@ The output of a scan can be in either log, xml or html formats.
 A report will be generated for every VM, for every benchmark, for every log format.
 
 
+## <a id="errands"></a> Configure Errands
+The tile performs one errand that initiates the scanning, and is on by default.
+The (EDIT? Master?) errand, when triggered, kicks off the scanning errand on each VM.
+If you do not want to scan every time changes are applied, then disable the errand.
+You can also uncheck the errand on the review pending changes screen.
+When scanning is done, a second errand is triggered by the initial (EDIT Master?) errand to retrieve the logs from each VM.
+
+
+## <a id="resources"></a> Configure Resources
+The tile creates a new VM called oscap_store to store the logs retrieved from all the other VMs.
+The resourcing of this VM can be configured here.
+
+(EDIT? "Pivotal Recommends")
+The VM doesn’t do anything computationally extensive, thus smaller sizes are sufficient.
+
+1. Click **Save**.
+
+1. Return to the Ops Manager Installation Dashboard and click **Apply changes** to install <%= vars.product_short %> tile.
+
+**If needed, include additional configuration information below. For example, maybe there are
+configuration options not required for installation but which could be useful for certain users.**
+
+
 ## <a id="apply-changes"></a> Apply Changes from Your Configuration
 Your installation is not complete until you apply your configuration changes.
 Follow the steps below:
@@ -85,21 +108,3 @@ For more information about this Ops Manager page,
 see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
 
 1. Click **Apply Changes** to complete the installation of <%= vars.product_short %>.
-
-
-## <a id="errands"></a> Configure Errands
-The tile performs one errand that initiates the scanning, and is on by default.
-The (EDIT? Master?) errand, when triggered, kicks off the scanning errand on each VM.
-If you do not want to scan every time changes are applied, then disable the errand.
-You can also uncheck the errand on the review pending changes screen.
-When scanning is done, a second errand is triggered by the initial errand to retrieve the logs from each VM.
-
-## <a id="resources"></a> Resource Config
-The tile instantiates a new VM called oscap_store, to store the logs retrieved from all the other VM’s. The resourcing of this VM can be configured here. The VM doesn’t do anything computationally extensive, thus smaller sizes are sufficient.
-
-1. Click **Save**.
-
-1. Return to the Ops Manager Installation Dashboard and click **Apply changes** to install <%= vars.product_short %> tile.
-
-**If needed, include additional configuration information below. For example, maybe there are
-configuration options not required for installation but which could be useful for certain users.**
