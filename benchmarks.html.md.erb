@@ -2,60 +2,70 @@
 title: Benchmarks for Compliance Scanner for PCF (Beta)
 owner: Pivotal Compliance and Innovation (PCI) Team
 ---
-
 <strong><%= modified_date %></strong>
 
-This topic describes how to install and configure <%= vars.product_full %>.
 
-## <a id='overview'></a> Install and Configure <%= vars.product_short %>
+<p class="note warning">
+<strong>WARNING! </strong>
+The <%= vars.product_full %> tile is currently in beta and is intended for evaluation and test purposes only. 
+Do not use this product in a PCF production environment.
+</p>
 
-When using <%= vars.product_short %>, one of the items used to configure scans are Benchmark profiles. 
+
+This topic describes the different benchmarks used for scanning in <%= vars.product_full %>.
 
 
-(EDIT)
-## <a id='benchmarks'></a> Benchmarks
-This section is where you can specify which set of benchmarks to run and specify the expected value associated with various components for their corresponding tests.
+## <a id='overview'></a> Overview
+When using <%= vars.product_short %>, one of the items used to configure scans are Benchmark profiles.
+Benchmarks determine which tests are run by the scanner.
 
-1. Click **Scan Configuration**.
+(EDIT - CAN ALL 4 BE RUN IN SEQUENCE OR IN PARALLEL)
 
-1. Configure the fields in the **Benchmarks** section as follows:
 
-    <table class="nice">
-        <th>Benchmark</th>
-        <th>Description</th>
-        <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
-                <td>The full Ubuntu 16.04 (Xenial) STIG published by DISA with trivial Stemcell specific changes to tests. A trivial change is limited to updating the file path and/or regex. These changes do not compromise the integrity of the tests themselves. The failing tests from scanning this benchmark highlights the fundamental differences between a Stemcell and its standard Ubuntu counterpart. Auditors can further assess each one individually to gauge the security impact.</td>
-        </tr>
-        <tr><td><strong>Base-Xenial</strong></td>
-                <td>Is a subset of the full STIG where it only includes passing tests. This is meant to serve as a baseline for testing by highlighting the scan result of an unadulterated Stemcell against applicable tests.</td>
-        </tr>
-		<tr><td><strong>P1</strong></td>
-                <td>This benchmark was developed inhouse and includes tests representative of the minimum recommended configuration baseline. All systems should implement, regardless of user environment or sensitivity of application data being processed.</td>
-        </tr>
-        <tr><td><strong>P2</strong></td>
-                <td>Tests covered in this benchmark are reflective of the current best practices. The strict configuration being tested may not be required for low assurance applications.  However, they become requirements for systems processing sensitive data/workloads, even though they may potentially impact operator experience (i.e. requiring audit logging — takes time and space, but that’s a cost we accept for workloads that matter). </td>
-        </tr>
-    </table>
+## <a id='stig'></a>STIG for Ubuntu Xenial
+This benchmark contains the full Ubuntu 16.04 (Xenial) Security Technical Implementation Guide (STIG) set of tests.
+This guide is published by the Defense Information Systems Agency (DISA).
+This version of the benchmark contains the standard set of STIG tests,
+with small changes made to accomodate the testing of stemcells.
+Normally STIG runs against Ubuntu Server images.
 
-1. If you selected the **P1** or **P2** benchmarks above, some tests require additional system values.
-   Configure the fields in the **Desired Test Values** section as follows:
+(Are these small changes made just so the tests will run? And have nothing to do with them passing or failing? Will I always see failures with running STIG?)
+The small changes are limited to modifying the file path and regex.
+These changes do not compromise the integrity of the tests themselves.
+The failing tests from scanning this benchmark highlights the fundamental differences between a Stemcell and its standard Ubuntu counterpart.
 
-    <table class="nice">
-        <th>Field</th>
-        <th>Description</th>
-        <tr><td><strong>Max audit log file size</strong></td>
-                <td>The maximum log file size in MB.</td>
-        </tr>
-        <tr><td><strong>NTP Server</strong></td>
-                <td>The IP address of your NTP server.<br>
-                	The field takes in one server. (EDIT?)<br>
-                	You can find this in <strong>Bosh Director</strong> > <strong>Director Config</strong> > <strong>NTP Server</strong>.<br>
-                </td>
-        </tr>
-		<tr><td><strong>Syslog host</strong></td>
-                <td>The IP address of your syslog host.</td>
-        </tr>
-        <tr><td><strong>Syslog port</strong></td>
-                <td>The port number of the syslog port.</td>
-        </tr>
-    </table>
+A test can fail for the following reasons:
+
+  1. The failed test is specific to a standard Ubuntu Server image, but is not applicable to a stemcell
+  1. The failed test adheres to a lower security standard than what Pivotal(?) verifies with the stemcell.
+  1. (EDIT) It actually failed?
+
+Auditors can further assess each test individually to gauge the security impact.
+
+
+## <a id='base'></a>Base-Xenial
+This benchmark contains a subset of the full STIG set.
+The tests that are included are those that can pass when run against a stemcell.(?)
+This is meant to serve as a baseline for testing,
+by highlighting the scan results of an unadulterated(?) Stemcell against applicable tests.
+
+
+## <a id='p1'></a>P1
+This benchmark was developed by inhouse and includes tests representative(?) of the minimum recommended configuration baseline.(Which is what?)
+All systems should implement, regardless of user environment or sensitivity of application data being processed.(All Systems ... do we imply that we can use vSphere vs AWS vs Azure?)
+
+(Ask more about why we are doing this instead of using the standard, and if we wrote it completely. In-house implies that it was a sole effort, and we don't want to claim it's ours legally if it's not.)
+
+
+## <a id='p2'></a>P2
+Tests covered in this benchmark are reflective of the current best practices.
+The strict configuration being tested may not be required for low assurance applications.
+However, the tests become a requirement for systems processing sensitive data and workloads.
+For example, requiring audit logging takes time and space, but it is required for sensitive tests.
+This would not be needed when testing a "low assurance" application.
+
+
+
+
+P1 is industry standard. P2 is the Pivotal standard, which is higher than the industry standard (?)
+P2 is used for sensitive data, otherwise it is fine to use P1?

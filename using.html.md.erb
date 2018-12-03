@@ -2,8 +2,15 @@
 title: Using Compliance Scanner for PCF (Beta)
 owner: Pivotal Compliance and Innovation (PCI) Team
 ---
-
 <strong><%= modified_date %></strong>
+
+
+<p class="note warning">
+<strong>WARNING! </strong>
+The <%= vars.product_full %> tile is currently in beta and is intended for evaluation and test purposes only. 
+Do not use this product in a PCF production environment.
+</p>
+
 
 This topic describes how to use <%= vars.product_full %>.
 
@@ -23,6 +30,12 @@ Assuming the desired benchmarks and log formats were selected
 
 2. Make sure that the errand for the Compliance Scanner Add-on is selected.
 **IMAGE**
+
+WHY DOES IT CHECK OFF EVERYTHING? IS THAT WHAT WE WANT TO BE SEEING?
+WE ONLY WANT TO HAVE COMPLIANCE SCANNER WITH PENDING CHANGES BEFORE RUNNING A SCAN YES?
+(For screenshot, should only show compliance scanner? or with other items but with their boxes unchecked?)
+
+
 
 3. If you are certain that there are no other changes being applied and you only want to scan, the you can uncheck the PAS tile and click “Apply Changes”. If PAS tile is checked, it will go through the motion of determining changes despite the tile not having any and wouldn’t get re-deployed.
 

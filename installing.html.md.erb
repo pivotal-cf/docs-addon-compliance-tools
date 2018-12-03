@@ -2,8 +2,15 @@
 title: Installing and Configuring Compliance Scanner for PCF (Beta)
 owner: Pivotal Compliance and Innovation (PCI) Team
 ---
-
 <strong><%= modified_date %></strong>
+
+
+<p class="note warning">
+<strong>WARNING! </strong>
+The <%= vars.product_full %> tile is currently in beta and is intended for evaluation and test purposes only. 
+Do not use this product in a PCF production environment.
+</p>
+
 
 This topic describes how to install and configure <%= vars.product_full %>.
 
@@ -25,29 +32,41 @@ This adds the tile to your staging area.
 ## <a id='scan'></a> Configure Scans
 This section is where you can select which set of benchmarks to run, and the expected value associated with various components for their corresponding tests.
 
-1. Click **Scan Configuration**.
+1. Click the **Settings** tab.
 
-1. Configure the fields in the **Benchmarks** section as follows:
+1. Click **Scan configuration**.
 
-    <table class="nice">
-        <th>Benchmark</th>
-        <th>Description</th>
-        <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
-                <td>The full Ubuntu 16.04 (Xenial) STIG published by DISA with trivial Stemcell specific changes to tests. A trivial change is limited to updating the file path and/or regex. These changes do not compromise the integrity of the tests themselves. The failing tests from scanning this benchmark highlights the fundamental differences between a Stemcell and its standard Ubuntu counterpart. Auditors can further assess each one individually to gauge the security impact.</td>
-        </tr>
-        <tr><td><strong>Base-Xenial</strong></td>
-                <td>Is a subset of the full STIG where it only includes passing tests. This is meant to serve as a baseline for testing by highlighting the scan result of an unadulterated Stemcell against applicable tests.</td>
-        </tr>
-		<tr><td><strong>P1</strong></td>
-                <td>This benchmark was developed inhouse and includes tests representative of the minimum recommended configuration baseline. All systems should implement, regardless of user environment or sensitivity of application data being processed.</td>
-        </tr>
-        <tr><td><strong>P2</strong></td>
-                <td>Tests covered in this benchmark are reflective of the current best practices. The strict configuration being tested may not be required for low assurance applications.  However, they become requirements for systems processing sensitive data/workloads, even though they may potentially impact operator experience (i.e. requiring audit logging — takes time and space, but that’s a cost we accept for workloads that matter). </td>
-        </tr>
-    </table>
+	(SCREENSHOT)
+
+1. Select an Output Format:
+  * The output of a scan can be in either log, xml or html formats.
+  * A report will be generated for every VM, for every benchmark, for every log format.
+
+1. Select which benchmarks you would like the scanner to run:
+<table class="nice">
+    <th>Benchmark</th>
+    <th>Description</th>
+    <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
+            <td>The full Ubuntu 16.04 (Xenial) STIG published by DISA with trivial Stemcell specific changes to tests. A trivial change is limited to updating the file path and/or regex. These changes do not compromise the integrity of the tests themselves. The failing tests from scanning this benchmark highlights the fundamental differences between a Stemcell and its standard Ubuntu counterpart. Auditors can further assess each one individually to gauge the security impact.</td>
+    </tr>
+    <tr><td><strong>Base-Xenial</strong></td>
+            <td>Is a subset of the full STIG where it only includes passing tests. This is meant to serve as a baseline for testing by highlighting the scan result of an unadulterated Stemcell against applicable tests.</td>
+    </tr>
+	<tr><td><strong>P1</strong></td>
+            <td>This benchmark was developed inhouse and includes tests representative of the minimum recommended configuration baseline. All systems should implement, regardless of user environment or sensitivity of application data being processed.</td>
+    </tr>
+    <tr><td><strong>P2</strong></td>
+            <td>Tests covered in this benchmark are reflective of the current best practices. The strict configuration being tested may not be required for low assurance applications.  However, they become requirements for systems processing sensitive data/workloads, even though they may potentially impact operator experience (i.e. requiring audit logging — takes time and space, but that’s a cost we accept for workloads that matter). </td>
+    </tr>
+</table>
+
+INSERT CROSS-REFERENCE TO "BENCHMARKS" TOPIC
+
+Pivotal P1 --> Pivotal 1 (P1) ?
+Pivotal P2 --> Pivotal 2 (P2) ?
 
 1. If you selected the **P1** or **P2** benchmarks above, some tests require additional system values.
-   Configure the fields in the **Desired Test Values** section as follows:
+   Configure the fields in the **System Variables** pane as follows:
 
     <table class="nice">
         <th>Field</th>
@@ -57,28 +76,27 @@ This section is where you can select which set of benchmarks to run, and the exp
         </tr>
         <tr><td><strong>NTP Server</strong></td>
                 <td>The IP address of your NTP server.<br>
-                	The field takes in one server. (EDIT?)<br>
-                	You can find this in <strong>Bosh Director</strong> > <strong>Director Config</strong> > <strong>NTP Server</strong>.<br>
+                	The field takes in one server. (EDIT - Does it matter which one?)<br>
+                	You can find this IP address in <strong>Bosh Director</strong> > <strong>Director Config</strong> > <strong>NTP Server</strong>.<br>
                 </td>
         </tr>
 		<tr><td><strong>Syslog host</strong></td>
-                <td>The IP address of your syslog host.</td>
+                <td>The IP address of your syslog host. (EDIT - Where can I find this??)</td>
         </tr>
         <tr><td><strong>Syslog port</strong></td>
-                <td>The port number of the syslog port.</td>
+                <td>The port number of the syslog port. (EDIT - Where can I find this??)</td>
         </tr>
     </table>
 
-1. Output Format:
-The output of a scan can be in either log, xml or html formats.
-A report will be generated for every VM, for every benchmark, for every log format.
+
 
 
 ## <a id="errands"></a> Configure Errands
-The tile performs one errand that initiates the scanning, and is on by default.
-The (EDIT? Master?) errand, when triggered, kicks off the scanning errand on each VM.
+<%= vars.product_short %> performs one errand that initiates scanning.
+This errand is enabled by default.
+When this errand is triggered, it initiates the scanning errand on each VM.
 If you do not want to scan every time changes are applied, then disable the errand.
-You can also uncheck the errand on the review pending changes screen.
+(HOW? --> You can also uncheck the errand on the review pending changes screen.?)
 When scanning is done, a second errand is triggered by the initial (EDIT Master?) errand to retrieve the logs from each VM.
 
 
