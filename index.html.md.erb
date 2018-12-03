@@ -15,13 +15,6 @@ The <%= vars.product_full %> (PCF) provides platform operators and auditors an a
 
 
 ## <a id='overview'></a>Overview
-<p class="note">
-**The overview describes the service that your product offers to PCF developers. 
-Make sure to overview the features of the integration.
-Don't focus only on the overview of your product that is being integrated.
-See below for an example.**
-</p>
-
 Bundled tests for existing commercial configuration scanners are tuned for traditional Ubuntu servers, thus, running such scans against a Stemcell would yield numerous false-positives.
 
 The <%= vars.product_short %> address this issue by tuning industry recognized Ubuntu configuration benchmarks for Stemcells. It packages the OSCAP scanner, configuration tests written in YML called XFiles, and  XGen, a tool that translates XFiles tests to the SCAP format. Despite being an Add-on, it is installed through Ops Man and as a part of the installation, it will deploy each packaged component to each VM, as well as instantiating a new VM for log retrieval.
@@ -30,13 +23,6 @@ Scans are triggered through Ops Man, running as errands. Upon a successful scan,
 
 
 ## <a id='features'></a>Key Features
-<p class="note">
-**Note**: This feature list will appear under **FEATURES** in the tile's listing on 
-[Pivotal Network](http://network.pivotal.io). 
-Make sure you list the key features of the tile (the integration). 
-We cannot accept a list of the key features of your product that we are integrating.
-</p>
-
 <%= vars.product_short %> includes the following key features:
 
 * Modified version of industry recognized configuration benchmark tuned for Stemcells.
@@ -83,12 +69,6 @@ The following table provides version and version-support information about <%= v
 
 
 ## <a id="reqs"></a>Requirements
-<p class="note">
-**Provide any general or specific requirements, prerequisites, or dependencies here. 
-A general requirement might be something like, "An AppDynamics account." 
-A specific requirement might be something like, "Packaging Dependencies for Offline Buildpacks."**
-</p>
-
 <%= vars.product_short %> has the following requirements:
 
 + PREREQUISITE-1

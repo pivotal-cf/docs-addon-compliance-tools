@@ -16,19 +16,14 @@ This topic describes how to use <%= vars.product_full %>.
 
 ##<a id='using'></a> Using <%= vars.product_short %>
 
-**This topic should include any instructions for how to use the service or dashboard created by the tile. 
-Give procedures for how to perform the different functions offered by your product and provide screenshots where necessary.** 
-
-**You can also use this section to include information about Architecture and Troubleshooting for known errors. 
-If you include a Troubleshooting section, follow the Symptom/Explanation format used in the 
-[Okta Troubleshooting](http://docs.pivotal.io/p-identity/okta/troubleshooting.html) topic**.
-
 ###<a id='start-scan'></a> Initiating a scan
 Assuming the desired benchmarks and log formats were selected
 1.Click on “REVIEW PENDING CHANGES”
+
 **IMAGE**
 
 2. Make sure that the errand for the Compliance Scanner Add-on is selected.
+
 **IMAGE**
 
 WHY DOES IT CHECK OFF EVERYTHING? IS THAT WHAT WE WANT TO BE SEEING?
@@ -42,11 +37,13 @@ WE ONLY WANT TO HAVE COMPLIANCE SCANNER WITH PENDING CHANGES BEFORE RUNNING A SC
 If there are changes from other sources, leave the PAS errands checked to allow those changes to occur. A scan will be triggered at the end.
 
 4. When complete, click into the Compliance Scanner tile, go to status. Click on the download button on the right (under LOGS) to download the all the scan result from the oscap_store (tile VM) to Ops Man.
+
 **IMAGE**
 
 5. Go to the Logs tap and click on the zip file that corresponds to the desired scan result. The timestamp listed on the right was when the download in step 4 was initiated. This will download the zip file to your local machine.
 
 
 6. The result are in the follow folder structure
+
 **IMAGE**
 
