@@ -17,7 +17,7 @@ The <%= vars.product_full %> (PCF) provides platform operators and auditors an a
 ## <a id='overview'></a>Overview
 Bundled tests for existing commercial configuration scanners are tuned for traditional Ubuntu servers, thus, running such scans against a Stemcell would yield numerous false-positives.
 
-The <%= vars.product_short %> address this issue by tuning industry recognized Ubuntu configuration benchmarks for Stemcells. It packages the OSCAP scanner, configuration tests written in YML called XFiles, and  XGen, a tool that translates XFiles tests to the SCAP format. Despite being an Add-on, it is installed through Ops Man and as a part of the installation, it will deploy each packaged component to each VM, as well as instantiating a new VM for log retrieval.
+The <%= vars.product_short %> address this issue by tuning industry recognized Ubuntu configuration benchmarks for Stemcells. It packages the OSCAP scanner, configuration tests written in YML called XFiles, and  XGen, a tool that translates XFiles tests to the SCAP format.Despite being an Add-on, it is installed through Ops Man and as a part of the installation, it will deploy each packaged component to each VM, as well as instantiating a new VM for log retrieval.
 
 Scans are triggered through Ops Man, running as errands. Upon a successful scan, report retrieval is available through the tile and downloadable to an operator’s local machine.
 
@@ -39,41 +39,33 @@ The following table provides version and version-support information about <%= v
     <th>Details</th>
     <tr>
         <td>Tile version</td>
-        <td>vYOUR-VERSION-NUMBER</td>
+        <td>v0.1</td>
     </tr>
     <tr>
         <td>Release date</td>
-        <td>YOUR-RELEASE-DATE (Ex: July 1, 2019)</td>
+        <td>December 7, 2018</td>
     </tr>
     <tr>
         <td>Software component version</td>
-        <td>YOUR-SOFTWARE-COMPONENT-VERSION-NUMBER</td>
+        <td>OpenSCAP v1.3.0</td>
     </tr>
     <tr>
         <td>Compatible Ops Manager version(s)</td>
-        <td>vYOUR-COMPATIBLE-OPS-MAN-VERSION (Ex. 2.2.x, 2.3.x, and 2.4.x)</td>
+        <td>v2.3.x, v2.4.x</td>
     </tr>
     <tr>
         <td>Compatible Pivotal Application Service version(s)</td>
-        <td>vYOUR-COMPATIBLE-PIVOTAL-APPLICATION-SERVICE-VERSION (Ex. 2.2.x, 2.3.x, and 2.4.x)</td>
+        <td>v2.4.x</td>
     </tr>
     <tr>
         <td>IaaS support</td>
-        <td>AWS?, Azure?, GCP?, OpenStack?, and vSphere?</td>
+        <td>(EDIT) AWS?, Azure?, GCP?, and vSphere?</td>
     </tr>
     <tr>
         <td>IPsec support?</td>
-        <td>[Yes or No]</td>
+        <td>(EDIT) ???</td>
     </tr>
 </table>
-
-
-## <a id="reqs"></a>Requirements
-<%= vars.product_short %> has the following requirements:
-
-+ PREREQUISITE-1
-
-+ PREREQUISITE-2
 
 
 ## <a id="limitations"></a>Limitations
@@ -83,7 +75,7 @@ due to Stemcell related customization.
 
 
 ## <a id='disclaimer'></a>Disclaimer
-*
+* <%= vars.product_short %> is only able to scan Linux VMs.
 
 
 ## <a id="feedback"></a>Feedback
