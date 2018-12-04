@@ -8,18 +8,30 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 <p class="note warning">
 <strong>WARNING! </strong>
 The <%= vars.product_full %> tile is currently in beta and is intended for evaluation and test purposes only. 
-However, this product can be used in a PCF production environment, as it does not have any impact on other tiles or VMs.
+However, this product can be used in a PCF production environment, as it does not have any impact on other tiles or Linux VMs.
 </p>
 
-The <%= vars.product_full %> (PCF) provides platform operators and auditors an assessment of each PCF component VM’s compliance posture against standard configuration guidelines.
+The <%= vars.product_full %> (PCF) provides platform operators and auditors an assessment of each PCF Linux Virtual Machine (VM), and if it is compliant with configuration guidelines.
 
 
 ## <a id='overview'></a>Overview
-Bundled tests for existing commercial configuration scanners are tuned for traditional Ubuntu servers, thus, running such scans against a Stemcell would yield numerous false-positives.
+Benchmarks for existing commercial configuration scanners are tuned for use against traditional Ubuntu servers.
+This means that running these benchmark scans against a Stemcell would result in numerous false-positives.
 
-The <%= vars.product_short %> address this issue by tuning industry recognized Ubuntu configuration benchmarks for Stemcells. It packages the OSCAP scanner, configuration tests written in YML called XFiles, and  XGen, a tool that translates XFiles tests to the SCAP format.Despite being an Add-on, it is installed through Ops Man and as a part of the installation, it will deploy each packaged component to each VM, as well as instantiating a new VM for log retrieval.
+The <%= vars.product_short %> addresses this issue by tuning industry-recognized Ubuntu configuration benchmarks for Stemcells.
 
-Scans are triggered through Ops Man, running as errands. Upon a successful scan, report retrieval is available through the tile and downloadable to an operator’s local machine.
+It packages the following files for deployment on each BOSH-managed Linux VM:
+
+  * The OpenSCAP (OSCAP) scanner
+  * XFiles, a group of YML files, which contain configuration tests written in YML
+  * The XCCDF Generator (XGen), which translates XFiles tests to the SCAP format.
+
+<%= vars.product_short %> is installed through Pivotal Cloud Foundry Operations Manager (Ops Manager).
+As part of the installation, it deploys each packaged component to each PCF Linux VM, as well as instantiating a new Linux VM for log retrieval called `oscap_store`.
+
+Scans are triggered through Ops Manager, running as errands.
+Upon a successful scan, operators can retrieve reports through the tile.
+Operators can download these reports to their local machine.
 
 
 ## <a id='features'></a>Key Features
@@ -27,7 +39,7 @@ Scans are triggered through Ops Man, running as errands. Upon a successful scan,
 
 * Modified version of industry recognized configuration benchmark tuned for Stemcells.
 * Bundled tests written in YML, allowing for easier readability.
-* Scan result report for each VM in the foundation,
+* Scan result report for each Linux VM in the foundation,
 highlighting the compliance posture.
 
 
@@ -39,7 +51,7 @@ The following table provides version and version-support information about <%= v
     <th>Details</th>
     <tr>
         <td>Tile version</td>
-        <td>v0.1</td>
+        <td>v0.1 (Beta)</td>
     </tr>
     <tr>
         <td>Release date</td>
@@ -71,7 +83,7 @@ The following table provides version and version-support information about <%= v
 ## <a id="limitations"></a>Limitations
 * Benchmarks are not certified by a governing body,
 due to Stemcell related customization.
-* Windows VM are not supported at this time.
+* Windows VMs are not supported at this time.
 
 
 ## <a id='disclaimer'></a>Disclaimer
