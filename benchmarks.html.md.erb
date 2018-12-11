@@ -28,8 +28,6 @@ This guide is published by the Defense Information Systems Agency (DISA).
 This version of the benchmark contains the standard set of STIG tests,
 with small changes made to accomodate the testing of stemcells.
 Normally STIG runs against Ubuntu Server images.
-
-(Are these small changes made just so the tests will run? And have nothing to do with them passing or failing? Will I always see failures with running STIG?)
 The small changes are limited to modifying the file path and regex.
 These changes do not compromise the integrity of the tests themselves.
 The failing tests from scanning this benchmark highlights the fundamental differences between a Stemcell and its standard Ubuntu counterpart.
@@ -50,14 +48,16 @@ This is meant to serve as a baseline for testing,
 by highlighting the scan results of an unadulterated(?) Stemcell against applicable tests.
 
 
-## <a id='p1'></a>P1
-This benchmark was developed by inhouse and includes tests representative(?) of the minimum recommended configuration baseline.(Which is what?)
-All systems should implement, regardless of user environment or sensitivity of application data being processed.(All Systems ... do we imply that we can use vSphere vs AWS vs Azure?)
+## <a id='p1'></a>Recommended Security Baseline
+This benchmark was developed internally, and includes tests based on Pivotal's minimum recommended configuration baseline.
+Your system should implement this benchmark, regardless of the user's environment or sensitivity of application data being processed.
+
+(All Systems ... do we imply that we can use vSphere vs AWS vs Azure?)
 
 (Ask more about why we are doing this instead of using the standard, and if we wrote it completely. In-house implies that it was a sole effort, and we don't want to claim it's ours legally if it's not.)
 
 
-## <a id='p2'></a>P2
+## <a id='p2'></a>Strict 
 Tests covered in this benchmark are reflective of the current best practices.
 The strict configuration being tested may not be required for low assurance applications.
 However, the tests become a requirement for systems processing sensitive data and workloads.

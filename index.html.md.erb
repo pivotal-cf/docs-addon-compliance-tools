@@ -11,7 +11,13 @@ The <%= vars.product_full %> tile is currently in beta and is intended for evalu
 However, this product can be used in a PCF production environment, as it does not have any impact on other tiles or Linux VMs.
 </p>
 
-The <%= vars.product_full %> (PCF) provides platform operators and auditors an assessment of each PCF Linux Virtual Machine (VM), and if it is compliant with configuration guidelines.
+The <%= vars.product_full %> (PCF) provides platform operators and auditors an assessment of each PCF Linux Virtual Machine (VM) running on Xenial stemcells, and if it is compliant with configuration guidelines.
+
+The following VM types on an Operator's Ops Manager instance are skipped for scanning,
+and will not have Compliance Scanner deployed on them:
+
+  * Linux VMs running on Trusty stemcells
+  * Non-Linux VMs
 
 
 ## <a id='overview'></a>Overview
@@ -87,7 +93,7 @@ due to Stemcell related customization.
 
 
 ## <a id='disclaimer'></a>Disclaimer
-* <%= vars.product_short %> is only able to scan Linux VMs.
+* <%= vars.product_short %> is only able to scan Linux VMs running on Xenial stemcells (v16.04 and later).
 
 
 ## <a id="feedback"></a>Feedback

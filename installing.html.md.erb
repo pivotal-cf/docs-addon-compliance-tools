@@ -18,7 +18,7 @@ This topic describes how to install and configure <%= vars.product_full %>.
 ## <a id='install'></a> Install and Configure <%= vars.product_short %>
 To install the <%= vars.product_short %> file on the Ops Manager Installation Dashboard, do the following:
 
-1. Download the product file from Pivotal Network.
+1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/compliance/).
 
 1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
 
@@ -27,8 +27,9 @@ This adds the tile to your staging area.
 
 1. Click the newly added **<%= vars.product_short %>** tile.
 
+**INSERT SCREENSHOT HERE**
 
-(EDIT)
+
 ## <a id='scan'></a> Configure Scans
 This section is where you can select which set of benchmarks to run, and the expected value associated with various components for their corresponding tests.
 
@@ -36,27 +37,27 @@ This section is where you can select which set of benchmarks to run, and the exp
 
 1. Click **Scan configuration**.
 
-	(SCREENSHOT)
+	**INSERT SCREENSHOT HERE**
 
-1. Select an Output Format:
+1. Select from the Output Formats (minimum 1 selection required):
   * The output of a scan can be in either log, xml or html formats.
-  * A report will be generated for every VM, for every benchmark, for every log format.
+  * A report will be generated for every Linux VM, benchmark, and log format selected.
 
 1. Select which benchmarks you would like the scanner to run:
 <table class="nice">
     <th>Benchmark</th>
     <th>Description</th>
     <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
-            <td>The full Ubuntu 16.04 (Xenial) STIG published by DISA with trivial Stemcell specific changes to tests. A trivial change is limited to updating the file path and/or regex. These changes do not compromise the integrity of the tests themselves. The failing tests from scanning this benchmark highlights the fundamental differences between a Stemcell and its standard Ubuntu counterpart. Auditors can further assess each one individually to gauge the security impact.</td>
+            <td>This benchmark includes all the configuration tests of the published DISA STIG for Ubuntu 16.04, amended with Stemcell specific changes. Contains tests that would fail due to architectural differences.</td>
     </tr>
     <tr><td><strong>Base-Xenial</strong></td>
-            <td>Is a subset of the full STIG where it only includes passing tests. This is meant to serve as a baseline for testing by highlighting the scan result of an unadulterated Stemcell against applicable tests.</td>
+            <td>Includes a subset of the amended tests in the STIG benchmark, where failing tests due to architectural differences are removed. This is meant to be used as a measure to see if configurations have been altered. *The Diego cell VM includes failing tests due to it's architecture.</td>
     </tr>
 	<tr><td><strong>P1</strong></td>
-            <td>This benchmark was developed inhouse and includes tests representative of the minimum recommended configuration baseline. All systems should implement, regardless of user environment or sensitivity of application data being processed.</td>
+            <td>A benchmark with rules that all systems should implement, regardless of user environment or sensitivity of application data being processed.</td>
     </tr>
     <tr><td><strong>P2</strong></td>
-            <td>Tests covered in this benchmark are reflective of the current best practices. The strict configuration being tested may not be required for low assurance applications.  However, they become requirements for systems processing sensitive data/workloads, even though they may potentially impact operator experience (i.e. requiring audit logging — takes time and space, but that’s a cost we accept for workloads that matter). </td>
+            <td>A benchmark with strict rules that are required of systems processing sensitive data/workloads. This is meant to run on top of the minimum recommended baseline.</td>
     </tr>
 </table>
 
