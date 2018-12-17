@@ -19,7 +19,32 @@ This topic describes the different benchmarks used for scanning in <%= vars.prod
 When using <%= vars.product_short %>, one of the items used to configure scans are Benchmark profiles.
 Benchmarks determine which tests are run by the scanner.
 
-(EDIT - CAN ALL 4 BE RUN IN SEQUENCE OR IN PARALLEL)
+
+## <a id='base'></a>Base Xenial
+This benchmark is a subset of the full STIG benchmark.
+It removes globally failing tests due to stemcell differences (diego cells VM has 8 known failed tests still).
+Since the removed failed tests do not threaten the security of the system,
+the remaining tests are meant to serve as a baseline of unaltered stemcells.
+This can can be used to see if the configurations have been further modified.
+
+For more information about the STIG benchmark, see [STIG for Ubuntu Xenial](benchmarks.html#stig) below.
+
+
+## <a id='recommended'></a>Recommended Security Baseline
+This benchmark was developed internally, and includes tests based on Pivotal's minimum recommended configuration baseline.
+Your system should implement this benchmark, regardless of the user's environment or sensitivity of application data being processed.
+
+(All Systems ... do we imply that we can use vSphere vs AWS vs Azure?)
+
+(Ask more about why we are doing this instead of using the standard, and if we wrote it completely. In-house implies that it was a sole effort, and we don't want to claim it's ours legally if it's not.)
+
+
+## <a id='strict'></a>Strict Security Practices 
+Tests covered in this benchmark are reflective of the current best practices.
+The strict configuration being tested may not be required for low assurance applications.
+However, the tests become a requirement for systems processing sensitive data and workloads.
+For example, requiring audit logging takes time and space, but it is required for sensitive tests.
+This would not be needed when testing a "low assurance" application.
 
 
 ## <a id='stig'></a>STIG for Ubuntu Xenial
@@ -30,42 +55,13 @@ with small changes made to accomodate the testing of stemcells.
 Normally STIG runs against Ubuntu Server images.
 The small changes are limited to modifying the file path and regex.
 These changes do not compromise the integrity of the tests themselves.
-The failing tests from scanning this benchmark highlights the fundamental differences between a Stemcell and its standard Ubuntu counterpart.
+The failing tests from scanning using this benchmark highlights the fundamental differences between a Stemcell and its standard Ubuntu counterpart.
 
 A test can fail for the following reasons:
 
-  1. The failed test is specific to a standard Ubuntu Server image, but is not applicable to a stemcell
-  1. The failed test adheres to a lower security standard than what Pivotal(?) verifies with the stemcell.
+  1. The failed test is specific to a standard Ubuntu Server image,
+     but is not applicable to a stemcell
+  1. (EDIT) The failed test adheres to a lower security standard than what Pivotal(?) verifies with the stemcell.
   1. (EDIT) It actually failed?
 
 Auditors can further assess each test individually to gauge the security impact.
-
-
-## <a id='base'></a>Base-Xenial
-This benchmark contains a subset of the full STIG set.
-The tests that are included are those that can pass when run against a stemcell.(?)
-This is meant to serve as a baseline for testing,
-by highlighting the scan results of an unadulterated(?) Stemcell against applicable tests.
-
-
-## <a id='p1'></a>Recommended Security Baseline
-This benchmark was developed internally, and includes tests based on Pivotal's minimum recommended configuration baseline.
-Your system should implement this benchmark, regardless of the user's environment or sensitivity of application data being processed.
-
-(All Systems ... do we imply that we can use vSphere vs AWS vs Azure?)
-
-(Ask more about why we are doing this instead of using the standard, and if we wrote it completely. In-house implies that it was a sole effort, and we don't want to claim it's ours legally if it's not.)
-
-
-## <a id='p2'></a>Strict 
-Tests covered in this benchmark are reflective of the current best practices.
-The strict configuration being tested may not be required for low assurance applications.
-However, the tests become a requirement for systems processing sensitive data and workloads.
-For example, requiring audit logging takes time and space, but it is required for sensitive tests.
-This would not be needed when testing a "low assurance" application.
-
-
-
-
-P1 is industry standard. P2 is the Pivotal standard, which is higher than the industry standard (?)
-P2 is used for sensitive data, otherwise it is fine to use P1?

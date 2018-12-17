@@ -15,7 +15,7 @@ However, this product can be used in a PCF production environment, as it does no
 This topic describes how to install and configure <%= vars.product_full %>.
 
 
-## <a id='install'></a> Install and Configure <%= vars.product_short %>
+## <a id='install'></a> Install <%= vars.product_short %>
 To install the <%= vars.product_short %> file on the Ops Manager Installation Dashboard, do the following:
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/compliance/).
@@ -31,43 +31,15 @@ This adds the tile to your staging area.
 
 
 ## <a id='scan'></a> Configure Scans
-This section is where you can select which set of benchmarks to run, and the expected value associated with various components for their corresponding tests.
+This section is where you configure expected values for tests, and select which set of benchmarks to run.<br>
+To configure your scans, do the following:
 
 1. Click the **Settings** tab.
 
-1. Click **Scan configuration**.
+1. Click the **System Variables** pane.
 
-	**INSERT SCREENSHOT HERE**
-
-1. Select from the Output Formats (minimum 1 selection required):
-  * The output of a scan can be in either log, xml or html formats.
-  * A report will be generated for every Linux VM, benchmark, and log format selected.
-
-1. Select which benchmarks you would like the scanner to run:
-<table class="nice">
-    <th>Benchmark</th>
-    <th>Description</th>
-    <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
-            <td>This benchmark includes all the configuration tests of the published DISA STIG for Ubuntu 16.04, amended with Stemcell specific changes. Contains tests that would fail due to architectural differences.</td>
-    </tr>
-    <tr><td><strong>Base-Xenial</strong></td>
-            <td>Includes a subset of the amended tests in the STIG benchmark, where failing tests due to architectural differences are removed. This is meant to be used as a measure to see if configurations have been altered. *The Diego cell VM includes failing tests due to it's architecture.</td>
-    </tr>
-	<tr><td><strong>P1</strong></td>
-            <td>A benchmark with rules that all systems should implement, regardless of user environment or sensitivity of application data being processed.</td>
-    </tr>
-    <tr><td><strong>P2</strong></td>
-            <td>A benchmark with strict rules that are required of systems processing sensitive data/workloads. This is meant to run on top of the minimum recommended baseline.</td>
-    </tr>
-</table>
-
-INSERT CROSS-REFERENCE TO "BENCHMARKS" TOPIC
-
-Pivotal P1 --> Pivotal 1 (P1) ?
-Pivotal P2 --> Pivotal 2 (P2) ?
-
-1. If you selected the **P1** or **P2** benchmarks above, some tests require additional system values.
-   Configure the fields in the **System Variables** pane as follows:
+1. (EDIT) Some tests verify against expected values in a configuration file.<br>
+    Configure the fields in the **System Variables** pane to provide the expected values:
 
     <table class="nice">
         <th>Field</th>
@@ -77,19 +49,56 @@ Pivotal P2 --> Pivotal 2 (P2) ?
         </tr>
         <tr><td><strong>NTP Server</strong></td>
                 <td>The IP address of your NTP server.<br>
-                	The field takes in one server. (EDIT - Does it matter which one?)<br>
-                	You can find this IP address in <strong>Bosh Director</strong> > <strong>Director Config</strong> > <strong>NTP Server</strong>.<br>
+                    The field takes in one server. (EDIT - Does it matter which one?)<br>
+                    You can find this IP address in <strong>Bosh Director</strong> > <strong>Director Config</strong> > <strong>NTP Server</strong>.<br>
                 </td>
         </tr>
-		<tr><td><strong>Syslog host</strong></td>
-                <td>The IP address of your syslog host. (EDIT - Where can I find this??)</td>
+        <tr><td><strong>Stemcell list(regex)</strong></td>
+                <td> .* (EDIT - Needs Info)
+                    <strong>Settings > System Logging > Address</strong></td>
+        </tr>
+        <tr><td><strong>Syslog host</strong></td>
+                <td>The IP address of your syslog host.<br><br>
+                    You can find this in your Pivotal Application Service (PAS) tile under
+                    <strong>Settings > System Logging > Address</strong></td>
         </tr>
         <tr><td><strong>Syslog port</strong></td>
-                <td>The port number of the syslog port. (EDIT - Where can I find this??)</td>
+                <td>The port number of the syslog port.<br><br>
+                    You can find this in your Pivotal Application Service (PAS) tile under
+                    <strong>Settings > System Logging > Port</strong></td>
         </tr>
     </table>
 
+1. Click **Scan Configuration**.
 
+	**INSERT SCREENSHOT HERE**
+
+1. Enable **Output Formats** (minimum 1 selection required):
+  * The output of a scan can be in either log, xml or html formats.
+  * A report will be generated for every Linux VM, benchmark, and log format selected.
+
+(EDIT - Should we add a note with an example of a combination to be clear?)
+
+1. Select which benchmarks you would like the scanner to run:
+
+    <table class="nice">
+        <th>Benchmark</th>
+        <th>Description</th>
+        <tr><td><strong>Base Xenial</strong></td>
+                <td>Includes a subset of the amended tests in the STIG benchmark, where failing tests due to architectural differences are removed. This is meant to be used as a measure to see if configurations have been altered. *The Diego cell VM includes failing tests due to it's architecture.</td>
+        </tr>
+    	<tr><td><strong>Recommended Security Baseline</strong></td>
+                <td>A benchmark with rules that all systems should implement, regardless of user environment or sensitivity of application data being processed.</td>
+        </tr>
+        <tr><td><strong>Strict Security Practices</strong></td>
+                <td>A benchmark with strict rules that are required of systems processing sensitive data/workloads. This is meant to run on top of the minimum recommended baseline.</td>
+        </tr>
+        <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
+                <td>This benchmark includes all the configuration tests of the published DISA STIG for Ubuntu 16.04, amended with Stemcell specific changes. Contains tests that would fail due to architectural differences.</td>
+        </tr>
+    </table>
+
+For more information about Compliance Scanner benchmarks, see [Benchmarks](./benchmarks.html).
 
 
 ## <a id="errands"></a> Configure Errands
@@ -99,6 +108,15 @@ When this errand is triggered, it initiates the scanning errand on each VM.
 If you do not want to scan every time changes are applied, then disable the errand.
 (HOW? --> You can also uncheck the errand on the review pending changes screen.?)
 When scanning is done, a second errand is triggered by the initial (EDIT Master?) errand to retrieve the logs from each VM.
+
+<%= vars.product_short %> performs one errand that initiates scanning.
+When this errand is triggered, it initiates the scanning errand on each VM.
+This errand is set to `Off` by default due to a timing issue.
+Since the default is set to off, Operators must manually enable the checkbox for the Compliance Scanner errand on the **Review Pending Changes** screen.
+To set the errand to `On` by default, go to the Compliance Scanner tile,
+navigate to **Errand**, and enable the checkbox.
+
+For more information on why the default value is set to `Off`, see [Why is the Scan Errand Off by Default?](faq.html#faq-default-off) in the FAQ topic.
 
 
 ## <a id="resources"></a> Configure Resources
