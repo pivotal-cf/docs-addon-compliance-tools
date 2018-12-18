@@ -6,51 +6,58 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 
 
 <p class="note warning">
-<strong>WARNING! </strong>
-The <%= vars.product_full %> tile is currently in beta and is intended for evaluation and test purposes only. 
-However, this product can be used in a PCF production environment, as it does not have any impact on other tiles or Linux VMs.
+<strong>WARNING:</strong>
+<%= vars.product_full %> is currently in beta and is intended for evaluation
+and test purposes only. However, this product can be used in a PCF production environment
+because it does not have any impact on other tiles or Linux VMs.
 </p>
 
-The <%= vars.product_full %> (PCF) provides platform operators and auditors an assessment of each PCF Linux Virtual Machine (VM) running on Xenial stemcells, and if it is compliant with configuration guidelines.
+<%= vars.product_full %> (PCF) provides platform operators and auditors an
+assessment of each PCF Linux VM running on Xenial stemcells and
+if it is compliant with configuration guidelines.
 
-The following VM types on an Operator's Ops Manager instance are skipped for scanning,
-and will not have Compliance Scanner deployed on them:
+The following VM types on an Ops Manager instance are skipped for scanning,
+and do not have Compliance Scanner deployed on them:
 
   * Linux VMs running on Trusty stemcells
   * Non-Linux VMs
 
 
 ## <a id='overview'></a>Overview
-Benchmarks for existing commercial configuration scanners are tuned for use against traditional Ubuntu servers.
-This means that running these benchmark scans against a stemcell would result in numerous false-positives.
+Benchmarks for existing commercial configuration scanners are intended for use against
+traditional Ubuntu servers. This means that running these benchmark scans against
+a stemcell results in numerous false positives.
 
-The <%= vars.product_short %> addresses this issue by tuning industry-recognized Ubuntu configuration benchmarks for stemcells.
+<%= vars.product_short %> addresses this issue by tuning industry-recognized
+Ubuntu configuration benchmarks for stemcells.
 
-It packages the following files for deployment on each BOSH-managed Linux VM:
+<%= vars.product_short %> packages the following files for deployment on each BOSH-managed Linux VM:
 
   * The OpenSCAP (OSCAP) scanner
-  * XFiles, a group of YAML files, which contain configuration tests written in YAML
-  * The XCCDF Generator (XGen), which translates XFiles tests to the SCAP format
+  * XFiles: A group of YAML files that contains configuration tests written in YAML.
+  * The XCCDF Generator (XGen): This translates XFiles tests to the SCAP format.
 
-<%= vars.product_short %> is installed through Pivotal Cloud Foundry Operations Manager (Ops Manager).
-As part of the installation, it deploys each packaged component to each PCF Linux VM, as well as instantiating a new Linux VM for log retrieval called `oscap_store`.
+<%= vars.product_short %> is installed through Ops Manager.
+As part of the installation, it deploys each packaged component to each PCF Linux VM
+and instantiates a new Linux VM, `oscap_store`, for log retrieval.
 
-Scans are triggered through Ops Manager, running as errands.
-Upon a successful scan, operators can retrieve reports through the tile.
+Scans are errands that are triggered through Ops Manager.
+After a successful scan, operators can retrieve reports through the tile.
 Operators can download these reports to their local machine.
 
 
 ## <a id='features'></a>Key Features
 <%= vars.product_short %> includes the following key features:
 
-* Modified version of industry recognized configuration benchmark tuned for Stemcells.
+* Modified version of an industry-recognized configuration benchmark tuned for stemcells
 * Bundled tests written in YAML, allowing for easier readability.
-* Scan result report for each Linux VM in the foundation,
-highlighting the compliance posture. (EDIT - position? status?)
+* Reports of scan results for each Linux VM in the PCF deployment that
+highlight the compliance posture. (EDIT - position? status?)
 
 
 ## <a id="snapshot"></a>Product Snapshot
-The following table provides version and version-support information about <%= vars.product_short %>.
+The following table provides version and version-support information about
+<%= vars.product_short %>.
 
 <table class="nice">
     <th>Element</th>
@@ -87,13 +94,15 @@ The following table provides version and version-support information about <%= v
 
 
 ## <a id="limitations"></a>Limitations
-* Benchmarks are not certified by a governing body,
-due to stemcell-related customization.
+
+<%= vars.product_short %> has the following limitations:
+
+* Because of stemcell-related customization, benchmarks are not certified by a governing body.
+
 * Windows VMs are not supported at this time.
 
-
-## <a id='disclaimer'></a>Disclaimer
-* <%= vars.product_short %> is only able to scan Linux VMs running on Xenial stemcells (v16.04 and later).
+<p class="note"><strong>Note:</strong> <%= vars.product_short %> can only scan Linux VMs running on Xenial
+stemcells v16.04 and later.</p>
 
 
 ## <a id="feedback"></a>Feedback
