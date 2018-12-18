@@ -14,35 +14,40 @@ However, this product can be used in a PCF production environment, as it does no
 
 This topic provides answers to Frequently Asked Questions (FAQs) for <%= vars.product_full %>.
 
-## <a id='faq-look'></a>How to Look at Tests on VMs
-For every configuration rule that was checked,
-there is a corresponding test written in yml test files residing on each Virtual Machine (VM).
+## <a id='faq-look'></a>How Do I Look at Tests on VMs?
+For every configuration rule that is checked,
+there is a corresponding test written in YAML test files residing on each Virtual Machine (VM).
 It may be useful to use them as reference for internal test development,
 or validate that the test matches the description.
 To do this, do the following:
 
-	1. Bosh ssh into a component vm
-	1. Navigate to /var/vcap/packages/oscap/xfiles
+1. BOSH SSH into a component VM.
+1. Navigate to `/var/vcap/packages/oscap/xfiles`.
 
 
-## <a id='faq-write'></a>Is there a Way to Write Own Test
+## <a id='faq-write'></a>Is There a Way to Write My Own Tests?
 No. The beta release of <%= vars.product_short %> does not feature the ability to write your own tests.
-The focus is not on the onboarding of writing YML tests,
-or on using XGen to convert them to the SCAP format.
+The focus is not on writing YAML tests,
+or on using XGen to convert them to the Security Content Automation Protocol (SCAP) format.
 
 
-## <a id='faq-oscap-vm'></a>Is the oscap_store VM  Scanned
+## <a id='faq-oscap-vm'></a>Is the oscap_store VM Scanned?
 Yes. The `oscap_store` VM that this tile instantiates does get scanned.
 
+  (EDIT - It does? I thought it didn't...?)
 
-## <a id='faq-number-of-logs'></a>How Many Scan Result Log Files Exist at a Time
-On each VM, there resides only 1 log file per format at a time.
-Subsequent scan would overwrite them.
-The errand that retrieves each VMs’ log file as a zip file also keeps a single copy only.
-Subsequent retrieve errands will overwrite the zip file.
-Clicking download while on the status tab will download the zip file to Ops Manager,
-moving it to the Logs tab, with the file having a timestamp of when download was clicked.
-Clicking download multiple times will create many zip files in Ops Manager, with different timestamps.
+
+## <a id='faq-number-of-logs'></a>How Many Scan Result Log Files Exist at a Time?
+On each VM, there is only one log file per format at a time.
+Subsequent scans will overwrite these files.
+
+The errand that retrieves each VM's log file as a ZIP file also only keeps a single copy.
+Subsequent retrieve errands will overwrite the ZIP file.
+
+Selecting download while on the **Status** tab downloads the ZIP file to Ops Manager.
+This moves it to the **Logs** tab.
+This file will have a timestamp of when download was selected.
+Selecting download multiple times creates many ZIP files in Ops Manager, each with a different timestamp.
 
 
 ## <a id='faq-redeploy'></a>Does it Re-Deploy the Test Each Time Apply Changes is Clicked?
@@ -50,16 +55,16 @@ When apply changes is clicked and the PAS tile is checked,
 the tile does not re-deploy its packaged contents.
 Therefore, if there are no pending changes from other sources,
 unchecking the PAS tile is recommended.
-However, the scan errand on each VM will re-generate the SCAP tests each time,
+However, the scan errand on each VM generates the SCAP tests each time,
 by running XGen on XFiles.
 
 ## <a id='faq-default-off'></a>Why is the Scan Errand Off by Default? 
 This is due to a timing issue.
-For example, if an **Apply Changes** command has 4 items to install in addition to our tile,
-those 4 items will not have the scanner deployed on them.
+For example, if an **Apply Changes** command has four items to install in addition to our tile,
+those four items will not have the scanner deployed on them.
 This is the case even if the Compliance Scanner tile is installed at the very end.
-The Compliance Scanner tile is only aware of other tiles that are already present during its own deployment time.
-The errand is set to `Off` by default to reduce the risk by Operators who believe that tiles which are part of the same deployment as Compliance Scanner are scanned. 
+The Compliance Scanner tile is only aware of other tiles that are already present during its own deployment.
+(EDIT - Needs Clarification) The errand is set to `Off` by default to reduce the risk by operators who believe that tiles which are part of the same deployment as Compliance Scanner are scanned. 
 
 
 

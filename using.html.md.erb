@@ -14,36 +14,62 @@ However, this product can be used in a PCF production environment, as it does no
 
 This topic describes how to use <%= vars.product_full %>.
 
-##<a id='using'></a> Using <%= vars.product_short %>
+##<a id='start-scan'></a> Initiating a scan
 
-###<a id='start-scan'></a> Initiating a scan
-Assuming the desired benchmarks and log formats were selected
-1.Click on “REVIEW PENDING CHANGES”
+1. Confirm that your scan is configured correctly with the benchmarks and log formats you want output.
+  * For more information on configuring your scan,
+  see [Configure Scans](./installing.html#scan).
 
-**IMAGE**
+1. Click on “REVIEW PENDING CHANGES” (EDIT - Check UI)
+	**IMAGE**
 
-2. Make sure that the errand for the Compliance Scanner Add-on is selected.
+1. Enable the checkbox for the <%= vars.product_short %> tile errand.
 
-**IMAGE**
+	**IMAGE**
 
-WHY DOES IT CHECK OFF EVERYTHING? IS THAT WHAT WE WANT TO BE SEEING?
-WE ONLY WANT TO HAVE COMPLIANCE SCANNER WITH PENDING CHANGES BEFORE RUNNING A SCAN YES?
-(For screenshot, should only show compliance scanner? or with other items but with their boxes unchecked?)
-
+	(EDIT - For screenshot, show compliance scanner with other items, but with their boxes unchecked)
 
 
-3. If you are certain that there are no other changes being applied and you only want to scan, the you can uncheck the PAS tile and click “Apply Changes”. If PAS tile is checked, it will go through the motion of determining changes despite the tile not having any and wouldn’t get re-deployed.
+You have the option to enable this errand on the **Review Pending Changes** screen.
 
-If there are changes from other sources, leave the PAS errands checked to allow those changes to occur. A scan will be triggered at the end.
+When scanning is done, a second errand is triggered by the initial errand to retrieve the logs from each VM
 
-4. When complete, click into the Compliance Scanner tile, go to status. Click on the download button on the right (under LOGS) to download the all the scan result from the oscap_store (tile VM) to Ops Man.
+<%= vars.product_short %> performs one errand that initiates scanning.
+When this errand is triggered, it initiates the scanning errand on each VM.
+This errand is set to `Off` by default due to a timing issue.
+Since the default is set to off, operators must manually enable the checkbox for the Compliance Scanner errand on the **Review Pending Changes** screen.
+To set the errand to `On` by default, go to the Compliance Scanner tile,
+navigate to **Errand**, and enable the checkbox.
 
-**IMAGE**
-
-5. Go to the Logs tap and click on the zip file that corresponds to the desired scan result. The timestamp listed on the right was when the download in step 4 was initiated. This will download the zip file to your local machine.
+For more information on why the default value is set to `Off`, see [Why is the Scan Errand Off by Default?](faq.html#faq-default-off) in the FAQ topic.
 
 
-6. The result are in the follow folder structure
 
-**IMAGE**
+
+
+
+
+1. (Optional) (EDIT - What would Auditors expect? Will this be frowned upon? Might be best to not state this from a legal standpoint) If you are certain that there are no other changes being applied,
+and you only want to scan,
+then you can disable checkboxes on other tiles to prevent them from being deployed.
+Then click **Apply Changes** (EDIT - Check UI and accuracy of this statement).
+  * For example, if the PAS tile is checked, it goes through the process of determining changes.
+  This process occurs even if the tile does not have any changes,
+  and results in it not re-deploying the tile.
+
+    <p class="note"><strong>Note: </strong>
+    If there are changes from other sources, leave the PAS errands checkbox enabled to allow those changes to occur. A scan will be triggered at the end.
+
+1. When complete, click into the Compliance Scanner tile, go to status. Click on the download button on the right (under LOGS) to download the all the scan results from the `oscap_store` tile VM to Ops Manager.
+
+	**IMAGE**
+
+1. Go to the "Logs" (EDIT - Check UI) tab and click on the ZIP file that corresponds to the desired scan result.
+The timestamp listed on the right is when the download in the previous step was initiated.
+This downloads the ZIP file to your local machine.
+
+
+1. The results are in the following folder structure:
+
+	**IMAGE**
 
