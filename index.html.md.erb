@@ -5,12 +5,7 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 <strong><%= modified_date %></strong>
 
 
-<p class="note warning">
-<strong>WARNING:</strong>
-<%= vars.product_full %> is currently in beta and is intended for evaluation
-and test purposes only. However, this product can be used in a PCF production environment
-because it does not have any impact on other tiles or Linux VMs.
-</p>
+<%= partial ("beta-partial") %>
 
 <%= vars.product_full %> (PCF) provides platform operators and auditors an
 assessment of each PCF Linux VM running on Xenial stemcells and
@@ -49,7 +44,7 @@ Operators can download these reports to their local machine.
 ## <a id='features'></a>Key Features
 <%= vars.product_short %> includes the following key features:
 
-* Modified version of an industry-recognized configuration benchmark tuned for stemcells
+* Modified version of industry-recognized configuration benchmarks tuned for stemcells
 * Bundled tests written in YAML, allowing for easier readability.
 * Reports of scan results for each Linux VM in the PCF deployment that
 highlight the compliance posture. (EDIT - position? status?)

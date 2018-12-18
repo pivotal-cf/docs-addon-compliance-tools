@@ -4,13 +4,7 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 ---
 <strong><%= modified_date %></strong>
 
-
-<p class="note warning">
-<strong>WARNING! </strong>
-The <%= vars.product_full %> tile is currently in beta and is intended for evaluation and test purposes only. 
-However, this product can be used in a PCF production environment, as it does not have any impact on other tiles or VMs.
-</p>
-
+<%= partial ("beta-partial") %>
 
 This topic describes how to install and configure <%= vars.product_full %>.
 
@@ -20,9 +14,9 @@ To install the <%= vars.product_short %> file on the Ops Manager Installation Da
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/compliance/).
 
-1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
+1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
 
-1. Under the **Import a Product** button, click **+** next to the version number of <%= vars.product_short %>. 
+1. Under the **Import a Product** button, click **+** next to the version number of <%= vars.product_short %>.
 This adds the tile to your staging area.
 
 1. Click the newly added **<%= vars.product_short %>** tile.

@@ -4,13 +4,7 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 ---
 <strong><%= modified_date %></strong>
 
-
-<p class="note warning">
-<strong>WARNING! </strong>
-The <%= vars.product_full %> tile is currently in beta and is intended for evaluation and test purposes only. 
-However, this product can be used in a PCF production environment, as it does not have any impact on other tiles or VMs.
-</p>
-
+<%= partial ("beta-partial") %>
 
 This topic provides answers to Frequently Asked Questions (FAQs) for <%= vars.product_full %>.
 
@@ -58,14 +52,10 @@ unchecking the PAS tile is recommended.
 However, the scan errand on each VM generates the SCAP tests each time,
 by running XGen on XFiles.
 
-## <a id='faq-default-off'></a>Why is the Scan Errand Off by Default? 
+## <a id='faq-default-off'></a>Why is the Scan Errand Off by Default?
 This is due to a timing issue.
 For example, if an **Apply Changes** command has four items to install in addition to our tile,
 those four items will not have the scanner deployed on them.
 This is the case even if the Compliance Scanner tile is installed at the very end.
 The Compliance Scanner tile is only aware of other tiles that are already present during its own deployment.
-(EDIT - Needs Clarification) The errand is set to `Off` by default to reduce the risk by operators who believe that tiles which are part of the same deployment as Compliance Scanner are scanned. 
-
-
-
-
+(EDIT - Needs Clarification) The errand is set to `Off` by default to reduce the risk by operators who believe that tiles which are part of the same deployment as Compliance Scanner are scanned.

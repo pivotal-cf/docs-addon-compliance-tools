@@ -4,23 +4,25 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 ---
 <strong><%= modified_date %></strong>
 
+<%= partial ("beta-partial") %>
 
-<p class="note warning">
-<strong>WARNING! </strong>
-The <%= vars.product_full %> tile is currently in beta and is intended for evaluation and test purposes only. 
-However, this product can be used in a PCF production environment, as it does not have any impact on other tiles or VMs.
-</p>
+This topic describes the different benchmarks used for scanning in
+<%= vars.product_full %> (PCF).
 
 
-This topic describes the different benchmarks used for scanning in <%= vars.product_full %>.
+## <a id="overview"></a> Overview
 
+When using <%= vars.product_short %>, one of the items used to configure scans
+are Benchmark profiles. Benchmarks determine which tests are run by the scanner.
 
-## <a id='overview'></a> Overview
-When using <%= vars.product_short %>, one of the items used to configure scans are Benchmark profiles.
-Benchmarks determine which tests are run by the scanner.
+<%= vars.product_short %> offers four scanning benchmarks:
 
++ [Base Xenial](./benchmarks.html#base)
++ [Recommended Security Baseline](./benchmarks.html#recommended)
++ [Strict Security Practices](./benchmarks.html#strict)
++ [STIG for Ubuntu Xenial](./benchmarks.html#stig)
 
-## <a id='base'></a>Base Xenial
+## <a id="base"></a> Base Xenial
 This benchmark is a subset of the full STIG benchmark.
 It removes globally failing tests due to stemcell differences (diego cells VM has 8 known failed tests still).
 Since the removed failed tests do not threaten the security of the system,
@@ -30,14 +32,14 @@ This can be used to see if the configurations have been further modified.
 For more information about the STIG benchmark, see [STIG for Ubuntu Xenial](benchmarks.html#stig) below.
 
 
-## <a id='recommended'></a>Recommended Security Baseline
+## <a id="recommended"></a> Recommended Security Baseline
 This benchmark was developed internally, and includes tests based on Pivotal's minimum recommended configuration baseline.
 Your system should implement this benchmark, regardless of the user's environment or sensitivity of application data being processed.
 
 (EDIT - All Systems ... do we imply that we can use vSphere vs AWS vs Azure?)
 
 
-## <a id='strict'></a>Strict Security Practices 
+## <a id="strict"></a> Strict Security Practices
 Tests covered in this benchmark are reflective of the current best practices.
 The strict configuration being tested may not be required for low assurance applications.
 However, the tests become a requirement for systems processing sensitive data and workloads.
@@ -47,7 +49,7 @@ This would not be needed when testing a "low assurance" application.
 (EDIT - Describe "audit logging")
 
 
-## <a id='stig'></a>STIG for Ubuntu Xenial
+## <a id="stig"></a> STIG for Ubuntu Xenial
 This benchmark contains the full Ubuntu 16.04 (Xenial) Security Technical Implementation Guide (STIG) set of tests.
 This guide is published by the Defense Information Systems Agency (DISA).
 This version of the benchmark contains the standard set of STIG tests,
