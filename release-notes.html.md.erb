@@ -8,15 +8,71 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 
 These are release notes for <%= vars.product_full %> (PCF)(Beta).
 
-##<a id="v1-0"></a> v0.1 (Beta)
+##<a id="v1-0"></a> v1.0.0-beta.7
 
 **Release Date:** December 21, 2018
 
 ### Features
 
-Beta release of <%= vars.product_short %>
+This is the first, beta release of <%= vars.product_short %>.
+
+The key features in this release:
+
++ Ability to scanning of all BOSH-managed VM to outline platform secure configuration posture
+
++ Four bundled benchmarks with tests developed for cloud native OS stemcells
+
++ High-level scan reports for each VM in HTML, LOG, and XML formats
+
 
 
 ### Known Issues
 
-There are no known issues for this release.
+The some Base Xenial benchmark test fail. 
+The following table lists the tests that fail and which components they fail on. 
+
+<table class="nice">
+<col width="50%">
+<col width="50%">
+<tr>
+  <th>Components</th>
+  <th>ID of Failed Test</th>
+</tr>
+
+<tr>
+  <td>Diego VM</td>
+  <td>
+    <ul>
+     <li>SV-90191r1</li>
+     <li>SV-90193r3</li>
+     <li>SV-90235r1</li>
+     <li>SV-90237r1</li>
+     <li>SV-90263r2</li>
+     <li>SV-90277r3</li>
+     <li>SV-90491r4</li>
+    </ul>
+   </td>
+</tr>
+<tr>
+  <td>
+   <ul>
+    <li>Clock Global</li>
+    <li>Cloud Controller</li>
+    <li>Cloud Controller Worker</li>
+   </ul>
+  </td>
+  
+  <td>
+   <ul>
+     <li>SV-90191r1</li>
+     <li>SV-90491r4</li>
+   </ul>
+  </td>
+</tr>
+
+<tr>
+  <td>All components</td>
+  <td>SV-90277r3</td>
+</tr>
+</table>
+
