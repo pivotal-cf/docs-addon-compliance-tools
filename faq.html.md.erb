@@ -8,6 +8,7 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 
 This topic provides answers to Frequently Asked Questions (FAQs) for <%= vars.product_full %>.
 
+
 ## <a id='faq-look'></a>How Do I Look at Tests on VMs?
 For every configuration rule that is checked,
 there is a corresponding test written in YAML test files residing on each Virtual Machine (VM).
@@ -28,8 +29,6 @@ or on using XGen to convert them to the Security Content Automation Protocol (SC
 ## <a id='faq-oscap-vm'></a>Is the oscap_store VM Scanned?
 Yes. The `oscap_store` VM that this tile instantiates does get scanned.
 
-  (EDIT - It does? I thought it didn't...?)
-
 
 ## <a id='faq-number-of-logs'></a>How Many Scan Result Log Files Exist at a Time?
 On each VM, there is only one log file per format at a time.
@@ -38,24 +37,25 @@ Subsequent scans will overwrite these files.
 The errand that retrieves each VM's log file as a ZIP file also only keeps a single copy.
 Subsequent retrieve errands will overwrite the ZIP file.
 
-Selecting download while on the **Status** tab downloads the ZIP file to Ops Manager.
-This moves it to the **Logs** tab.
+Selecting the download icon in the **Status** tab downloads the ZIP file to Ops Manager.
+This moves the ZIP to the **Logs** tab.
 This file will have a timestamp of when download was selected.
-Selecting download multiple times creates many ZIP files in Ops Manager, each with a different timestamp.
+Selecting the download icon multiple times creates a list of ZIP files in Ops Manager,
+each with a different timestamp.
 
 
 ## <a id='faq-redeploy'></a>Does it Re-Deploy the Test Each Time Apply Changes is Clicked?
-When apply changes is clicked and the PAS tile is checked,
+When **APPLY CHANGES** is clicked and the PAS tile is checked,
 the tile does not re-deploy its packaged contents.
 Therefore, if there are no pending changes from other sources,
 unchecking the PAS tile is recommended.
 However, the scan errand on each VM generates the SCAP tests each time,
 by running XGen on XFiles.
 
+
 ## <a id='faq-default-off'></a>Why is the Scan Errand Off by Default?
 This is due to a timing issue.
-For example, if an **Apply Changes** command has four items to install in addition to our tile,
+For example, if an **APPLY CHANGES** command has four items to install in addition to our tile,
 those four items will not have the scanner deployed on them.
-This is the case even if the Compliance Scanner tile is installed at the very end.
-The Compliance Scanner tile is only aware of other tiles that are already present during its own deployment.
-(EDIT - Needs Clarification) The errand is set to `Off` by default to reduce the risk by operators who believe that tiles which are part of the same deployment as Compliance Scanner are scanned.
+This is the case even if the <%= vars.product_short %> tile is installed at the very end.
+The <%= vars.product_short %> tile is only aware of other tiles that are already present during its own deployment.
