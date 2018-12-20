@@ -24,13 +24,12 @@ are Benchmark profiles. Benchmarks determine which tests are run by the scanner.
 
 ## <a id="base"></a> Base Xenial
 This benchmark is a subset of the full STIG benchmark.
-It removes globally failing tests due to stemcell differences (diego cells VM has 8 known failed tests still).
+It removes globally failing tests due to stemcell differences.
 Since the removed failed tests do not threaten the security of the system,
 the remaining tests are meant to serve as a baseline of unaltered stemcells.
 This can be used to see if the configurations have been further modified.
 
 For more information about the STIG benchmark, see [STIG for Ubuntu Xenial](benchmarks.html#stig) below.
-
 
 ## <a id="recommended"></a> Recommended Security Baseline
 This benchmark includes tests based on Pivotal's minimum recommended configuration baseline.
