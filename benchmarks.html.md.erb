@@ -12,8 +12,8 @@ This topic describes the different benchmarks used for scanning in
 
 ## <a id="overview"></a> Overview
 
-When using <%= vars.product_short %>, one of the items used to configure scans
-are Benchmark profiles. Benchmarks determine which tests are run by the scanner.
+When configuring <%= vars.product_short %>, you choose which benchmarks you want.
+Benchmarks determine which tests are run by the scanner.
 
 <%= vars.product_short %> offers four scanning benchmarks:
 
@@ -22,33 +22,48 @@ are Benchmark profiles. Benchmarks determine which tests are run by the scanner.
 + [Strict Security Practices](./benchmarks.html#strict)
 + [STIG for Ubuntu Xenial](./benchmarks.html#stig)
 
-## <a id="base"></a> Base Xenial
-This benchmark is a subset of the full STIG benchmark.
-It removes globally failing tests due to stemcell differences.
-Since the removed failed tests do not threaten the security of the system,
-the remaining tests are meant to serve as a baseline of unaltered stemcells.
-This can be used to see if the configurations have been further modified.
 
-For more information about the STIG benchmark, see [STIG for Ubuntu Xenial](benchmarks.html#stig) below.
+## <a id="base"></a> Base Xenial
+
+This benchmark is a subset of the full STIG benchmark.
+
+The Base Xenial does not include the STIG tests that fail because of differences between the Xenial stemcells
+and standard Ubuntu Server image. 
+
+Because the removed failed tests do not threaten the security of the system,
+the remaining tests in the Base Xenial benchmark are a baseline for unaltered stemcells.
+Use this benchmark to see if the configurations have been further modified.
+
+For information about the STIG benchmark, see [STIG for Ubuntu Xenial](benchmarks.html#stig) below.
+
 
 ## <a id="recommended"></a> Recommended Security Baseline
 This benchmark includes tests based on Pivotal's minimum recommended configuration baseline.
 Your system should implement this benchmark, regardless of the user's deployment or the sensitivity of app data being processed.
 
+
 ## <a id="strict"></a> Strict Security Practices
-Tests covered in this benchmark are reflective of the current best practices.
-The strict configuration being tested may not be required for low assurance apps.
+
+Tests covered in this benchmark reflect current best practices.
+The strict configuration being tested might not be required for low assurance apps.
 However, the tests become a requirement for systems processing sensitive data and workloads.
 For example, requiring audit logging takes time and space, but it is required for sensitive tests.
 This would not be needed when testing a "low assurance" app.
 
-## <a id="stig"></a> STIG for Ubuntu Xenial
-This benchmark contains tests outlined in the Ubuntu 16.04 (Xenial) Security Technical Implementation Guide (STIG), published by the Defense Information Systems Agency (DISA).
 
-This benchmark targets traditional Ubuntu Server. When it is applied to stemcells, certain tests will fail due to the following reasons:
+## <a id="stig"></a> STIG for Ubuntu Xenial
+
+This benchmark contains tests outlined in the Ubuntu 16.04 (Xenial) Security Technical Implementation Guide (STIG)
+published by the Defense Information Systems Agency (DISA). 
+This benchmark contains the full Ubuntu 16.04 (Xenial) Security Technical Implementation Guide (STIG) set of tests.
+
+This benchmark targets a standard Ubuntu Server.
+When it is applied to stemcells, certain tests fail for the following reasons:
 
 + The file path specified in the tests is different on the stemcell.
 + The failed test is specific to a standard Ubuntu Server image, but is not applicable to a stemcell.
 + The failed test adheres to a lower security standard than what Pivotal verifies with the stemcell.
 
-To address failures of the first type, the bundled tests have been updated to reflect the paths used by stemcells. These changes do not compromise the integrity of the tests themselves. The remaining failing tests that highlight stemcell differences can help auditors further assess their security posture.
+To address failures of the first type, the bundled tests have been updated to reflect the paths used by stemcells.
+These changes do not compromise the integrity of the tests themselves.
+The remaining failing tests that highlight stemcell differences can help auditors further assess their security posture.
