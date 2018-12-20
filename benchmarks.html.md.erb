@@ -33,37 +33,23 @@ For more information about the STIG benchmark, see [STIG for Ubuntu Xenial](benc
 
 
 ## <a id="recommended"></a> Recommended Security Baseline
-This benchmark was developed internally, and includes tests based on Pivotal's minimum recommended configuration baseline.
-Your system should implement this benchmark, regardless of the user's environment or sensitivity of application data being processed.
-
-(EDIT - All Systems ... do we imply that we can use vSphere vs AWS vs Azure?)
-
+This benchmark includes tests based on Pivotal's minimum recommended configuration baseline.
+Your system should implement this benchmark, regardless of the user's deployment or the sensitivity of app data being processed.
 
 ## <a id="strict"></a> Strict Security Practices
 Tests covered in this benchmark are reflective of the current best practices.
-The strict configuration being tested may not be required for low assurance applications.
+The strict configuration being tested may not be required for low assurance apps.
 However, the tests become a requirement for systems processing sensitive data and workloads.
 For example, requiring audit logging takes time and space, but it is required for sensitive tests.
-This would not be needed when testing a "low assurance" application.
-
-(EDIT - Describe "audit logging")
-
+This would not be needed when testing a "low assurance" app.
 
 ## <a id="stig"></a> STIG for Ubuntu Xenial
-This benchmark contains the full Ubuntu 16.04 (Xenial) Security Technical Implementation Guide (STIG) set of tests.
-This guide is published by the Defense Information Systems Agency (DISA).
-This version of the benchmark contains the standard set of STIG tests,
-with small changes made to accomodate the testing of stemcells.
-Normally STIG runs against Ubuntu Server images.
-The small changes are limited to modifying the file path and regex.
-These changes do not compromise the integrity of the tests themselves.
-The failing tests from scanning using this benchmark highlights the fundamental differences between a stemcell and its standard Ubuntu counterpart.
+This benchmark contains tests outlined in the Ubuntu 16.04 (Xenial) Security Technical Implementation Guide (STIG), published by the Defense Information Systems Agency (DISA).
 
-A test can fail for the following reasons:
+This benchmark targets traditional Ubuntu Server. When it is applied to stemcells, certain tests will fail due to the following reasons:
 
-  1. The failed test is specific to a standard Ubuntu Server image,
-     but is not applicable to a stemcell
-  1. (EDIT) The failed test adheres to a lower security standard than what Pivotal(?) verifies with the stemcell.
-  1. (EDIT) It actually failed?
++ The file path specified in the tests is different on the stemcell.
++ The failed test is specific to a standard Ubuntu Server image, but is not applicable to a stemcell.
++ The failed test adheres to a lower security standard than what Pivotal verifies with the stemcell.
 
-Auditors can further assess each test individually to gauge the security impact.
+To address failures of the first type, the bundled tests have been updated to reflect the paths used by stemcells. These changes do not compromise the integrity of the tests themselves. The remaining failing tests that highlight stemcell differences can help auditors further assess their security posture.
