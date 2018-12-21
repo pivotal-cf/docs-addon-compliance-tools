@@ -2,6 +2,7 @@
 title: Using Compliance Scanner for PCF (Beta)
 owner: Pivotal Compliance and Innovation (PCI) Team
 ---
+
 <strong><%= modified_date %></strong>
 
 <%= partial ("beta-partial") %>
@@ -47,8 +48,8 @@ To begin scanning, do the following:
 
     When scanning is finished, a second errand is triggered by the Run-config-scans-on-PAS errand to retrieve the logs from each VM.
 
-##<a id='review-scan'></a> Review a Completed Scan
 
+##<a id='review-scan'></a> Review a Completed Scan
 
 To confirm that the scan completed, do the following:
 
@@ -57,7 +58,7 @@ To confirm that the scan completed, do the following:
 
     ![dialog at the end of apply changes](changes-applied.png)
 
-1. Click the **Status** tab and download the oscap_store log file.
+1. Click the **Status** tab and download the `oscap_store` log file.
 
     This downloads the log file containing scan results from the `oscap_store` VM to Ops Manager.
 
@@ -73,3 +74,9 @@ To confirm that the scan completed, do the following:
 1. Decompress the downloaded file. 
  
     The contents of the downloaded file depend on the formats and benchmarks you selected during configuration.
+    For example, a report in HTML format from the Recommended Security Baseline benchmark, might look like this.
+
+    ![HTML report showing nine failed tests](sample-html-output.png)
+
+    
+    <a href="pivotal_recommended_blobstore_example.html" target="_blank">See a larger version of this image.</a>
