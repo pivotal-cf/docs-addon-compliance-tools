@@ -21,15 +21,16 @@ This adds the tile to your staging area.
 
 1. Click the newly added **<%= vars.product_short %>** tile.
 
-**INSERT SCREENSHOT HERE**
-
-
 ## <a id='scan'></a> Configure Scans
-This section is where you configure expected values for tests, and select which set of benchmarks to run. To configure your scans, do the following:
+This section is where you configure expected values for tests and select which set of benchmarks to run. To configure your scans, do the following:
 
 1. Click the **Settings** tab.
 
+    ![Compliance Settings page](compliance-settings.png)
+
 1. Click the **System Variables** pane.
+
+    ![System Variables page](system-var.png)
 
 1. (EDIT) Some tests verify against expected values in a configuration file.<br>
     Configure the fields in the **System Variables** pane to provide the expected values:
@@ -41,29 +42,30 @@ This section is where you configure expected values for tests, and select which 
                 <td>The maximum log file size in MB.</td>
         </tr>
         <tr><td><strong>NTP Server IP</strong></td>
-                <td>The IP address of your NTP server.<br>
-                    The field takes in one server. (EDIT - Does it matter which one?)<br><br>
-                    You can find this IP address in <strong>Bosh Director</strong> > <strong>Director Config</strong> > <strong>NTP Server</strong>.<br>
+                <td>The IP address of your NTP server.<br> <br>You can find this IP address in 
+                  <strong>Bosh Director</strong> > <strong>Director Config</strong> > 
+                  <strong>NTP Server</strong>. You can only enter one server IP address. It does not 
+                  matter which NTP server you enter.
                 </td>
         </tr>
         <tr><td><strong>Syslog Host IP</strong></td>
                 <td>The IP address of your syslog host.<br><br>
                     You can find this in your Pivotal Application Service (PAS) tile under
-                    <strong>Settings > System Logging > Address</strong></td>
+                    <strong>Settings > System Logging > Address</strong>.</td>
         </tr>
         <tr><td><strong>Syslog Port</strong></td>
                 <td>The port number of the syslog port.<br><br>
                     You can find this in your Pivotal Application Service (PAS) tile under
-                    <strong>Settings > System Logging > Port</strong></td>
+                    <strong>Settings > System Logging > Port</strong>.</td>
         </tr>
     </table>
 
 1. Click **Scan Configuration**.
 
-	**INSERT SCREENSHOT HERE**
+	![Scan Configuration page](scan-config.png)
 
-1. Enable **Scan Report Formats** (minimum 1 selection required).
-   The output of a scan can be in log, xml or html format.
+1. Enable **Scan Report Formats**. You must select at least one format.
+   The outputs of a scan can be in LOG, XML, and HTML formats.
 
 1. Enable **Benchmarks** for the scanner to run:
 
@@ -73,25 +75,29 @@ This section is where you configure expected values for tests, and select which 
         <tr><td><strong>Base Xenial</strong></td>
                 <td>Includes a subset of the amended tests in the STIG benchmark,
                     where failing tests due to architectural differences are removed.<br>
-                This is meant to be used as a measure to see if configurations have been altered.<br>
-                *The Diego cell VM includes failing tests due to it's architecture. (EDIT - Discuss how to address this)</td>
+                This is meant to be used as a measure to see if configurations have been altered.<br></td>
         </tr>
     	<tr><td><strong>Recommended Security Baseline</strong></td>
-                <td>A benchmark with rules that all systems should implement, regardless of user environment or sensitivity of application data being processed.</td>
+                <td>A benchmark with rules that all systems should implement, regardless of user 
+                  environment or sensitivity of app data being processed.</td>
         </tr>
         <tr><td><strong>Strict Security Practices</strong></td>
-                <td>A benchmark with strict rules that are required of systems processing sensitive data/workloads. This is meant to run on top of the minimum recommended baseline. (EDIT - On top of? )</td>
+                <td>A benchmark with strict rules that are required of systems processing sensitive 
+                  data/workloads. This is meant to run in addition to the tests in the recommended 
+                  security baseline benchmark.</td>
         </tr>
         <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
-                <td>This benchmark includes all the configuration tests of the published DISA STIG for Ubuntu 16.04, amended with stemcell specific changes. Contains tests that would fail due to architectural differences.</td>
+                <td>Includes all the configuration tests of the published DISA STIG 
+                  for Ubuntu 16.04, amended with stemcell specific changes. Contains tests that would 
+                  fail due to architectural differences.</td>
         </tr>
     </table>
-
-A report is generated for each format and each benchmark on each Linux VM running on Xenial stemcells.
-For example, if you select **xml** and **log** formats,
-and **Base Xenial** and **STIG** benchmarks, four log files are created for each VM tested.
-
-For more information about <%= vars.product_short %> benchmarks, see [Benchmarks](./benchmarks.html).
+    <br><br>
+    A scan report is generated for each format and benchmark on each Linux VM running on Xenial stemcells.
+    For example, if you select **xml** and **log** formats,
+    and **Base Xenial** and **STIG** benchmarks, four log files are created for each VM tested.
+    <br><br>
+    For more information about <%= vars.product_short %> benchmarks, see [Benchmarks](./benchmarks.html).
 
 
 ## <a id="errands"></a> Configure Errands
@@ -100,14 +106,14 @@ This errand is disabled by default.
 This is so that a scan is not run every time changes are applied.
 
 When this errand is triggered, it initiates the scanning errand on each VM.
-For more information about initiating the scanning errand, see [Using <%= vars.product_short %>](./using.html)
+For more information about initiating the scanning errand, see [Using <%= vars.product_short %>](./using.html).
 
 When configuring the <%= vars.product_short %> tile for the first time,
 do the following:
 
 1. Click **Errands**.
 
-    **INSERT SCREENSHOT HERE**
+    ![Errands page](errands.png)
 
 1. Confirm that **Run config scans on PAS** is set to **Default (Off)**.
 
@@ -116,8 +122,10 @@ The tile creates a new VM called `oscap_store` to store the logs retrieved from 
 This pane is where the resourcing of this VM is configured.
 
 <p class="note"><strong>Note:</strong>
-The `oscap_store` VM does not do anything computationally extensive.
-Pivotal recommends using smaller sizes (EDIT - Memory?), since they are sufficient.
+The <code>oscap_store</code> VM does not do anything computationally extensive.
+Pivotal recommends using the default mirco VM type because it is sufficient.</p>
+
+1. Click **Resource Config**
 
 1. Click **Save**.
 
@@ -130,7 +138,7 @@ Follow the steps below:
 
 1. Return to the Ops Manager Installation Dashboard.
 
-1. If you are using Ops Manager v2.3 (EDIT - 2.4? or can they use v2.3 as well?) or later, click **Review Pending Changes**.
+1. If you are using Ops Manager v2.3 or later, click **Review Pending Changes**.
   * For more information about this Ops Manager page,
   see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
 
