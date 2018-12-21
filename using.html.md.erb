@@ -10,14 +10,14 @@ This topic describes how to use <%= vars.product_full %>.
 
 <%= vars.product_short %> performs one errand that initiates scanning.
 When this errand is triggered, it initiates the scanning errand on each VM.
-This errand is set to `Off` by default due to a timing issue.
-Because the default is set to off, operators must manually enable the checkbox for the
-Compliance Scanner errand on the **Review Pending Changes** screen.
 
-To set the errand to `On` by default, go to the Compliance Scanner tile,
-navigate to **Errand**, and enable the checkbox.
+The scanning errand is set to `Off` by default.
+When you are ready to perform a scan, use the **Review Pending Changes** page to turn on the errand
+and initiate scanning. See [Initiate a Scan](start-scan).
 
-For more information on why the default value is set to `Off`, see [Why is the Scan Errand Off by Default?](faq.html#faq-default-off) in the FAQ topic.
+
+For more information on why the default value is set to `Off`,
+see [Why is the Scan Errand Off by Default?](faq.html#faq-default-off) in the FAQ topic.
 
 
 
@@ -61,7 +61,11 @@ To begin scanning, do the following:
 
     When scanning is finished, a second errand is triggered by the Run-config-scans-on-PAS errand to retrieve the logs from each VM.
 
-1. When complete, click into the Compliance Scanner tile, go to status. Click on the download button on the right (under LOGS) to download the all the scan results from the `oscap_store` tile VM to Ops Manager.
+##<a id='review-scan'></a> Review a Completed Scan
+
+1. When complete, click into the Compliance Scanner tile, go to status.
+
+    Click on the download button on the right (under LOGS) to download the all the scan results from the `oscap_store` tile VM to Ops Manager.
 
 	**IMAGE**
 
