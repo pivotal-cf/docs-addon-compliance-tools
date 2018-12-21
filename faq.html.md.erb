@@ -11,14 +11,14 @@ This topic provides answers to Frequently Asked Questions (FAQs) for <%= vars.pr
 
 ## <a id='faq-look'></a>How Do I Look at Tests on VMs?
 For every configuration rule that is checked,
-there is a corresponding test written in YAML test files residing on each Virtual Machine (VM).
+there is a corresponding test written in YAML test files residing on each VM.
 It may be useful to use them as reference for internal test development,
 or validate that the test matches the description.
 To do this, do the following:
 
 1. BOSH SSH into a component VM.
 1. Navigate to `/var/vcap/packages/oscap/xfiles`.
-
+3. Search for the test ID.
 
 ## <a id='faq-write'></a>Is There a Way to Write My Own Tests?
 No. The beta release of <%= vars.product_short %> does not feature the ability to write your own tests.
