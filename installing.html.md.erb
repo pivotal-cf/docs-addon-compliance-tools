@@ -94,7 +94,7 @@ This section is where you configure expected values for tests and select which s
     </table>
     <br><br>
     A scan report is generated for each format and benchmark on each Linux VM running on Xenial stemcells.
-    For example, if you select **xml** and **log** formats,
+    For example, if you select **.xml** and **.log** formats,
     and **Base Xenial** and **STIG** benchmarks, four log files are created for each VM tested.
     <br><br>
     For more information about <%= vars.product_short %> benchmarks, see [Benchmarks](./benchmarks.html).
@@ -118,19 +118,16 @@ do the following:
 1. Confirm that **Run config scans on PAS** is set to **Default (Off)**.
 
 ## <a id="resources"></a> Configure Resources
-The tile creates a new VM called `oscap_store` to store the logs retrieved from all the other VMs that have been scanned.
-This pane is where the resourcing of this VM is configured.
+The tile creates a new VM called `oscap_store` to store the logs retrieved from all the other VMs 
+that have been scanned. 
 
 <p class="note"><strong>Note:</strong>
 The <code>oscap_store</code> VM does not do anything computationally extensive.
-Pivotal recommends using the default mirco VM type because it is sufficient.</p>
+Pivotal recommends using the default configurations because they are sufficient.</p>
 
-1. Click **Resource Config**
+1. Click **Resource Config**.
 
 1. Click **Save**.
-
-1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to install the <%= vars.product_short %> tile.
-
 
 ## <a id="apply-changes"></a> Apply Changes from Your Configuration
 Your installation is not complete until you apply your configuration changes.
@@ -138,8 +135,6 @@ Follow the steps below:
 
 1. Return to the Ops Manager Installation Dashboard.
 
-1. If you are using Ops Manager v2.3 or later, click **Review Pending Changes**.
-  * For more information about this Ops Manager page,
-  see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
+1. Click **Review Pending Changes**.
 
 1. Click **Apply Changes** to complete the installation of <%= vars.product_short %>.
