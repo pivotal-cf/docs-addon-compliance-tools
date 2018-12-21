@@ -14,22 +14,21 @@ These are release notes for <%= vars.product_full %> (PCF)(Beta).
 
 ### Features
 
-This is the first, beta release of <%= vars.product_short %>.
+This is the first release of <%= vars.product_short %>.
 
-The key features in this release:
+New features and changes in this release:
 
-+ Ability to scanning of all BOSH-managed VM to outline platform secure configuration posture
-
-+ Four bundled benchmarks with tests developed for cloud native OS stemcells
-
-+ High-level scan reports for each VM in HTML, LOG, and XML formats
-
+* Features the ability to scan all BOSH-managed VMs to verify secure platform configuration
+* Contains four bundled benchmarks with tests developed for cloud native OS stemcells
+* Allows high-level scan reports for each VM in LOG, XML, and HTML formats
 
 
 ### Known Issues
 
-The some Base Xenial benchmark test fail. 
-The following table lists the tests that fail and which components they fail on. 
+This release has the following known issues:
+
+* Some Base Xenial benchmark tests fail. 
+The following table lists the tests that fail and which components they fail on:
 
 <table class="nice">
 <col width="50%">
@@ -40,7 +39,11 @@ The following table lists the tests that fail and which components they fail on.
 </tr>
 
 <tr>
-  <td>Diego VM</td>
+  <td>
+    <ul>
+      <li>Diego VM</li>
+    </ul>
+  </td>
   <td>
     <ul>
      <li>SV-90191r1</li>
@@ -53,6 +56,7 @@ The following table lists the tests that fail and which components they fail on.
     </ul>
    </td>
 </tr>
+
 <tr>
   <td>
    <ul>
@@ -61,7 +65,6 @@ The following table lists the tests that fail and which components they fail on.
     <li>Cloud Controller Worker</li>
    </ul>
   </td>
-  
   <td>
    <ul>
      <li>SV-90191r1</li>
@@ -71,8 +74,16 @@ The following table lists the tests that fail and which components they fail on.
 </tr>
 
 <tr>
-  <td>All components</td>
-  <td>SV-90277r3</td>
+  <td>
+    <ul>
+      <li>All components</li>
+    </ul>
+  </td>
+  <td>
+    <ul>
+      <li>SV-90277r3</li>
+    </ul>
+  </td>
 </tr>
 </table>
 
