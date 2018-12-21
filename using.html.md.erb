@@ -20,20 +20,6 @@ For more information on why the default value is set to `Off`,
 see [Why is the Scan Errand Off by Default?](faq.html#faq-default-off) in the FAQ topic.
 
 
-
-
-
-
-
-1. (Optional) (EDIT - What would Auditors expect? Will this be frowned upon? Might be best to not state this from a legal standpoint) If you are certain that there are no other changes being applied,
-and you only want to scan,
-then you can disable checkboxes on other tiles to prevent them from being deployed.
-Then click **Apply Changes** (EDIT - Check UI and accuracy of this statement).
-  * For example, if the PAS tile is checked, it goes through the process of determining changes.
-  This process occurs even if the tile does not have any changes,
-  and results in it not re-deploying the tile.
-
-
 ##<a id='start-scan'></a> Initiate a Scan
 
 
@@ -53,7 +39,7 @@ To begin scanning, do the following:
     ![Review pending changes page with Compliance Scanner for PCF selected and Run config scans on PAS errand selected](review-pending-changes.png)
 
     <p class="note"><strong>Note: </strong>
-    If there are changes from other sources, leave the those products and errands checkboxes
+    If there are changes from other sources, leave those products and errands checkboxes enabled
     if you want those changes to be applied.
     A scan is triggered at the end.</p>
 
@@ -63,17 +49,27 @@ To begin scanning, do the following:
 
 ##<a id='review-scan'></a> Review a Completed Scan
 
-1. When complete, click into the Compliance Scanner tile, go to status.
 
-    Click on the download button on the right (under LOGS) to download the all the scan results from the `oscap_store` tile VM to Ops Manager.
+To confirm that the scan completed, do the following:
 
-	**IMAGE**
+1. When the changes have been applied, return to the Installation Dashboard
+   and click the <%= vars.product_short %> tile.
 
-1. Go to the "Logs" (EDIT - Check UI) tab and click on the ZIP file that corresponds to the desired scan result.
-The timestamp listed on the right is when the download in the previous step was initiated.
-This downloads the ZIP file to your local machine.
+    ![dialog at the end of apply changes](changes-applied.png)
+
+1. Click the **Status** tab and download the oscap_store log file.
+
+    This downloads the log file containing scan results from the `oscap_store` VM to Ops Manager.
+
+1. Click the **Logs** tab and click on the filename of the ZIP log file.
+
+    This downloads the scan results from the Ops Manager to your local machine.
+
+	![The logs pane from where the zipped scan logs can be downloaded](download-logs.png)
+
+    The timestamp indicates when the scan was initiated.
 
 
-1. The results are in the following folder structure:
-
-	**IMAGE**
+1. Decompress the downloaded file. 
+ 
+    The contents of the downloaded file depend on the formats and benchmarks you selected during configuration.
