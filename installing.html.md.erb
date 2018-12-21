@@ -27,13 +27,35 @@ This section is where you configure expected values for tests and select which s
 1. Click the **Settings** tab.
 
     ![Compliance Settings page](compliance-settings.png)
+    
+1. Click **Assign AZs and Networks**.
 
-1. Click the **System Variables** pane.
+1. Configure the fields as follows:
+
+    <table class="nice">
+      <th>Field</th>
+      <th>Description</th>
+      <tr>
+        <td><strong>Place singleton jobs in</strong></td>
+        <td>Select the AZ that you want the <code>oscap_store</code> VM to run in.<br> 
+          The tile runs as a singleton job.</td>
+      </tr>
+      <tr>
+        <td><strong>Balance other jobs in</strong></td>
+        <td>Ignore; not used.</td>
+      </tr>
+      <tr>
+        <td><strong>Network</strong></td>
+        <td>Select a subnet for the <code>oscap_store</code> VM. <br>This is typically the same subnet that 
+          includes the Pivotal Application Services (PAS) component VMs.</td>
+      </tr>    
+    </table>
+
+1. Click **System Variables**.
 
     ![System Variables page](system-var.png)
 
-1. (EDIT) Some tests verify against expected values in a configuration file.<br>
-    Configure the fields in the **System Variables** pane to provide the expected values:
+1. Configure the fields in the **System Variables** pane to provide the expected values for the tests:
 
     <table class="nice">
         <th>Field</th>
