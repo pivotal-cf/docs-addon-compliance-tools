@@ -8,39 +8,16 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 
 This topic describes how to use <%= vars.product_full %>.
 
-##<a id='start-scan'></a> Initiate a Scan
-
-
-To begin scanning, do the following:
-
-1. Confirm that your scan is configured correctly with the benchmarks and log formats you want output.
-
-    For more information on configuring your scan,
-    see [Configure Scans](./installing.html#scan).
-
-1. Navigate to the Ops Manager Installation Dashboard.
-
-1. Click **REVIEW PENDING CHANGES**.
-
-1. Enable the checkbox for the <%= vars.product_short %> tile errand.
-
-	**IMAGE**
-
-	(EDIT - For screenshot, show compliance scanner with other items, but with their boxes unchecked)
-
-
-You have the option to enable this errand on the **Review Pending Changes** screen.
-
-When scanning is done, a second errand is triggered by the initial errand to retrieve the logs from each VM
-
 <%= vars.product_short %> performs one errand that initiates scanning.
 When this errand is triggered, it initiates the scanning errand on each VM.
-This errand is set to `Off` by default due to a timing issue.
-Since the default is set to off, operators must manually enable the checkbox for the Compliance Scanner errand on the **Review Pending Changes** screen.
-To set the errand to `On` by default, go to the Compliance Scanner tile,
-navigate to **Errand**, and enable the checkbox.
 
-For more information on why the default value is set to `Off`, see [Why is the Scan Errand Off by Default?](faq.html#faq-default-off) in the FAQ topic.
+The scanning errand is set to `Off` by default.
+When you are ready to perform a scan, use the **Review Pending Changes** page to turn on the errand
+and initiate scanning. See [Initiate a Scan](start-scan).
+
+
+For more information on why the default value is set to `Off`,
+see [Why is the Scan Errand Off by Default?](faq.html#faq-default-off) in the FAQ topic.
 
 
 
@@ -56,10 +33,39 @@ Then click **Apply Changes** (EDIT - Check UI and accuracy of this statement).
   This process occurs even if the tile does not have any changes,
   and results in it not re-deploying the tile.
 
-    <p class="note"><strong>Note: </strong>
-    If there are changes from other sources, leave the PAS errands checkbox enabled to allow those changes to occur. A scan will be triggered at the end.
 
-1. When complete, click into the Compliance Scanner tile, go to status. Click on the download button on the right (under LOGS) to download the all the scan results from the `oscap_store` tile VM to Ops Manager.
+##<a id='start-scan'></a> Initiate a Scan
+
+
+To begin scanning, do the following:
+
+1. Confirm that your scan is configured correctly with the benchmarks and log formats you want output.
+
+    For more information on configuring your scan,
+    see [Configure Scans](./installing.html#scan).
+
+1. Navigate to the Ops Manager Installation Dashboard.
+
+1. Click **REVIEW PENDING CHANGES**.
+
+1. Enable the checkboxes for the <%= vars.product_short %> tile and the **Run config scans on PAS** errand.
+
+    ![Review pending changes page with Compliance Scanner for PCF selected and Run config scans on PAS errand selected](review-pending-changes.png)
+
+    <p class="note"><strong>Note: </strong>
+    If there are changes from other sources, leave the those products and errands checkboxes
+    if you want those changes to be applied.
+    A scan is triggered at the end.</p>
+
+1. Click **APPLY CHANGES**.
+
+    When scanning is finished, a second errand is triggered by the Run-config-scans-on-PAS errand to retrieve the logs from each VM.
+
+##<a id='review-scan'></a> Review a Completed Scan
+
+1. When complete, click into the Compliance Scanner tile, go to status.
+
+    Click on the download button on the right (under LOGS) to download the all the scan results from the `oscap_store` tile VM to Ops Manager.
 
 	**IMAGE**
 
