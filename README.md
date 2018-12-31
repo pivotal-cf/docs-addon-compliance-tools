@@ -1,6 +1,6 @@
 # docs-addon-compliance-tools
 
-This repo contains the source materials for Compliance Scanner for Pivotal Cloud Foundry (PCF) documentation.
+This repo contains the source materials for the Compliance Scanner for Pivotal Cloud Foundry (PCF) documentation.
 
 ## Branches 
                
