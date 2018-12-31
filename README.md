@@ -7,7 +7,7 @@ This repo contains the source materials for the Compliance Scanner for Pivotal C
 | Branch name | Use for… |
 |-------------| ------|
 | master      | "edge" branch for 1.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-n/
-| v1.0.0-beta.7 | v1.0.x, https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-n/ and https://docs.pivotal.io/addon-compliance-tools/1-n/ |            
+| v1.0.0-beta.7 | v1.0.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-0/ and https://docs.pivotal.io/addon-compliance-tools/1-0/ |            
                
 ## Book Repo
 
