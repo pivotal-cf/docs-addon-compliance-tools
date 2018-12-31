@@ -1,6 +1,6 @@
 # docs-addon-compliance-tools
 
-This repo contains the source materials for <%= vars.product_full %> (PCF) documentation.
+This repo contains the source materials for Compliance Scanner for Pivotal Cloud Foundry (PCF) documentation.
 
 ## Branches 
                
@@ -15,4 +15,4 @@ The book repo for this product is [docs-book-compliance-tools](https://github.co
 
 ## Style Guide
 
-Product name is <%= vars.product_short %>.
+Product name is Compliance Scanner for PCF .
