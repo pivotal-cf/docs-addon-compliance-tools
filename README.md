@@ -13,7 +13,7 @@ and, for the short product name write `<%= vars.product_short %>`.
 | Branch name | Use for… |
 |-------------| ------|
 | master      | "edge" branch for 1.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-n/
-| v1.0.0-beta| v1.0, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-0/ and https://docs.pivotal.io/addon-compliance-tools/1-0/ |            
+| v1.0.0-beta.7 | v1.0.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-0/ and https://docs.pivotal.io/addon-compliance-tools/1-0/ |            
 
 ## Book Repo
 
