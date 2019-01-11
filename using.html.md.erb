@@ -10,19 +10,16 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 This topic describes how to use <%= vars.product_full %>.
 
 <%= vars.product_short %> performs one errand that initiates scanning.
-When this errand is triggered, it initiates the scanning errand on each VM.
+When this errand is triggered, it initiates the scanning errand on each VM, including the `oscap_store` VM that the tile instantiates. 
 
-The scanning errand is set to `Off` by default.
+The scanning errand is set to `Off` by default. This is because <%= vars.product_short %> only scans tiles that are already present when you deploy it. If you install other titles at the same time <%= vars.product_short %> is installed, the addtional tiles are not scanned. 
+
+However, the scan errand on each VM does generates the Security Content Automation Protocol (SCAP)  tests each time by running XGen on XFiles.
+
 When you are ready to perform a scan, use the **Review Pending Changes** page to turn on the errand
 and initiate scanning. See [Initiate a Scan](#start-scan).
 
-
-For more information on why the default value is set to `Off`,
-see [Why is the Scan Errand Off by Default?](faq.html#faq-default-off) in the FAQ topic.
-
-
 ##<a id='start-scan'></a> Initiate a Scan
-
 
 To begin scanning, do the following:
 
@@ -38,17 +35,16 @@ To begin scanning, do the following:
 1. Enable the checkboxes for the <%= vars.product_short %> tile and the **Run config scans on PAS** errand.
 
     ![Review pending changes page with Compliance Scanner for PCF selected and Run config scans on PAS errand selected](review-pending-changes.png)
+    
+    A scan is triggered at the end
 
-    <p class="note"><strong>Note: </strong>
-    If there are changes from other sources, leave those products and errands checkboxes enabled
-    if you want those changes to be applied.
-    A scan is triggered at the end.</p>
+    <p class="note"><strong>Note: </strong>  If the PAS tile is checked, the tile does not re-deploy its packaged contents when changes are applied. If there are changes from other sources than <%= vars.product_short %>, leave those products and errands checkboxes enabled if you want those changes to be applied. If there are no changes from other sources, unchecking the PAS tile is recommended.</p>
 
 1. Click **APPLY CHANGES**.
 
-    When scanning is finished, a second errand is triggered by the Run-config-scans-on-PAS errand to retrieve the logs from each VM.
-
-
+    When scanning is finished, a second errand is triggered by the `Run-config-scans-on-PAS` errand to retrieve the logs from each VM. 
+    On each VM there is only one log file per format and one ZIP log file at a time. If you run any subsequent scans these files are overwritten.
+    
 ##<a id='review-scan'></a> Review a Completed Scan
 
 To confirm that the scan completed, do the following:
@@ -60,7 +56,7 @@ To confirm that the scan completed, do the following:
 
 1. Click the **Status** tab and download the `oscap_store` log file.
 
-    This downloads the log file containing scan results from the `oscap_store` VM to Ops Manager.
+    This downloads the log file containing scan results from the `oscap_store` VM to Ops Manager. If you select the download icon multiple times, a list of ZIP files is created in Ops Manager, each with a different timestamp.
 
 1. Click the **Logs** tab and click on the filename of the ZIP log file.
 
@@ -69,7 +65,6 @@ To confirm that the scan completed, do the following:
 	![The logs pane from where the zipped scan logs can be downloaded](download-logs.png)
 
     The timestamp indicates when the scan was initiated.
-
 
 1. Decompress the downloaded file. 
  
@@ -80,3 +75,20 @@ To confirm that the scan completed, do the following:
 
     
     <a href="base_xenial_sample.html" target="_blank">See a larger version of this image.</a>
+
+##<a id='tests'></a> View Tests on VMs
+
+For every configuration rule that is checked, there is a corresponding test written in YAML test files residing on each VM. You can use these files as reference for internal test development or to validate that the test matches the description. 
+
+In the beta release of <%= vars.product_short %> you cannot write your own YAML tests or convert these tests to the SCAP format.
+
+To view tests on VMS, do the following:
+
+1. Use the BOSH CLI to SSH into a component VM. For more information, see [BOSH SSH](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#bosh-ssh).
+1. Navigate to the following path: 
+
+    ```
+    /var/vcap/packages/oscap/xfiles
+    ```
+   
+1. Search for the test ID and open the corresponding file.
