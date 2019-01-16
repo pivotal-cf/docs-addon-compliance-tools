@@ -90,11 +90,11 @@ To confirm that the scan completed, do the following:
     
     <a href="base_xenial_sample.html" target="_blank">See a larger version of this image.</a>
     
-###<a id='folder'></a> Scan Results Folder
+###<a id='folder'></a> Find Scan Output
 
 <!-- Add placeholder vars to folder/file names-->
 
-The `oscap_store` ZIP file contains scan results from the `oscap_store` VM to Ops Manager.
+The `oscap_store` ZIP file contains scan results from the `oscap_store` VM.
 <br>
 The results of the scan are at the following path:
 
@@ -102,7 +102,7 @@ The results of the scan are at the following path:
   oscap_store/scanner/scan_results/output
   ```
   
-  The naming syntax for each log file is following:
+  The naming syntax for each log file is the following:
 
   ```
   BENCHMARK_COMPONENT_UUID.FORMAT
@@ -120,21 +120,17 @@ The results of the scan are at the following path:
   
 <!-- If you need to edit the following image you need to edit the corresponding oscap_store.html file in draw.io and then export the image to a png file. -->
     
-<p class="note"><strong>Note:</strong> You can disregard any files that are not in the <code>output</code> directory.</p>
-
 The number of log files in the `output` directory can be written as the following:
 
   ```
-  n * f * b
+  (v + i) * f * b
   ```
   Where: 
   
-  + `n` is the number of VMS in your PCF deployment. 
+  + `v` is the number of VMs in your PCF deployment. 
+  + `i` is the number of additional instances for any VM in your PCF deployment. 
   + `f` is the number of formats you configured in step 8 in [Configure Scans](./installing.html#scan).
   + `b` is the number of benchmarks you configured in step 8 in [Configure Scans](./installing.html#scan).
-
-
-
 
 ##<a id='tests'></a> View Tests on VMs
 
