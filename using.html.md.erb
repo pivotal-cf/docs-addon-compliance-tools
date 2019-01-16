@@ -10,12 +10,16 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 This topic describes how to use <%= vars.product_full %>.
 
 <%= vars.product_short %> performs one errand that initiates scanning.
-When this errand is triggered, it initiates the scanning errand on each VM, including the `oscap_store` VM that the tile instantiates. 
+When this errand is triggered, it initiates the scanning errand on each VM, including the `oscap_store` 
+VM that the tile instantiates. 
 
-The scanning errand is set to `Off` by default. This is because <%= vars.product_short %> only scans tiles that are already present when you deploy it.
-If you install other titles at the same time <%= vars.product_short %> is installed, the additional tiles are not scanned. 
+The scanning errand is set to `Off` by default. This is because <%= vars.product_short %> only scans 
+tiles that are already present when you deploy it.
+If you install other titles at the same time <%= vars.product_short %> is installed, the additional 
+tiles are not scanned. 
 
-However, the scan errand on each VM does generate the Security Content Automation Protocol (SCAP) tests each time by running XGen on XFiles.
+However, the scan errand on each VM does generate the Security Content Automation Protocol (SCAP) 
+tests each time by running XGen on XFiles.
 
 When you are ready to perform a scan, use the **Review Pending Changes** page to turn on the errand
 and initiate scanning. See [Initiate a Scan](#start-scan).
@@ -35,16 +39,20 @@ To begin scanning, do the following:
 
 1. Enable the checkboxes for the <%= vars.product_short %> tile and the **Run config scans on PAS** errand.
 
-    ![Review pending changes page with Compliance Scanner for PCF selected and Run config scans on PAS errand selected](review-pending-changes.png)
+    ![Review pending changes page with Compliance Scanner for PCF selected and Run config scans on P
+    AS errand selected](review-pending-changes.png)
     
     A scan is triggered at the end.
 
-    <p class="note"><strong>Note: </strong>  If the PAS tile is checked, the tile does not re-deploy its packaged contents when changes are applied. If there are changes from other sources than <%= vars.product_short %>, leave those products and errands checkboxes enabled if you want those changes to be applied.
+    <p class="note"><strong>Note: </strong>  If the PAS tile is checked, the tile does not re-deploy 
+      its packaged contents when changes are applied. If there are changes from other sources than 
+      <%= vars.product_short %>, leave those products and errands checkboxes enabled if you want those changes to be applied.
      If there are no changes from other sources, Pivotal recommends unchecking the PAS tile.</p>
 
 1. Click **APPLY CHANGES**.
 
-    When scanning is finished, a second errand is triggered by the `Run-config-scans-on-PAS` errand to retrieve the logs from each VM. 
+    When scanning is finished, a second errand is triggered by the `Run-config-scans-on-PAS` errand 
+    to retrieve the logs from each VM. 
     On each VM, there is only one log file per format and one ZIP log file at a time.
     If you run any subsequent scans these files are overwritten.
     
@@ -60,7 +68,8 @@ To confirm that the scan completed, do the following:
 1. Click the **Status** tab and download the `oscap_store` log file.
 
     This downloads the log file containing scan results from the `oscap_store` VM to Ops Manager.
-    If you select the download icon multiple times, a list of ZIP files is created in Ops Manager, each with a different timestamp.
+    If you select the download icon multiple times, a list of ZIP files is created in Ops Manager, 
+    each with a different timestamp.
 
 1. Click the **Logs** tab and click on the filename of the ZIP log file.
 
@@ -72,7 +81,8 @@ To confirm that the scan completed, do the following:
 
 1. Decompress the downloaded file. 
  
-    The contents of the downloaded file depend on the formats and benchmarks you selected during configuration.
+    The contents of the downloaded file depend on the formats and benchmarks you selected during 
+    configuration.
     For example, a report in HTML format from the Base Xenial benchmark, might look like this.
 
     ![HTML report header](sample-html-output.png)
@@ -80,23 +90,66 @@ To confirm that the scan completed, do the following:
     
     <a href="base_xenial_sample.html" target="_blank">See a larger version of this image.</a>
     
-###<a id='structure'></a> Log File Structure
+###<a id='folder'></a> Scan Results Folder
 
-<embed width="500" height="300" src="oscap_store.html">
+<!-- Add placeholder vars to folder/file names-->
 
-  <!-- <a href="oscap_store.html" target="_blank">See a larger version of this image.</a> -->
+The `oscap_store` ZIP file contains scan results from the `oscap_store` VM to Ops Manager.
+<br>
+The results of the scan are at the following path:
+
+  ```
+  oscap_store/scanner/scan_results/output
+  ```
+  
+  The naming syntax for each log file is following:
+
+  ```
+  BENCHMARK_COMPONENT_UUID.FORMAT
+  ```
+  Where:
+  
+  + `BENCHMARK` is the benchmark that was used for the scan. 
+  + `COMPONENT` is the VM that was scanned.  
+  + `UUID` is the uuid for the VM that was scanned. 
+  + `FORMAT` is the format of the file. 
+
+  For example, the `oscap_store` folder directory looks similar to the following image:
+
+  ![oscap_store file structure](oscap_store.png)
+  
+<!-- If you need to edit the following image you need to edit the corresponding oscap_store.html file in draw.io and then export the image to a png file. -->
+    
+<p class="note"><strong>Note:</strong> You can disregard any files that are not in the <code>output</code> directory.</p>
+
+The number of log files in the `output` directory can be written as the following:
+
+  ```
+  n * f * b
+  ```
+  Where: 
+  
+  + `n` is the number of VMS in your PCF deployment. 
+  + `f` is the number of formats you configured in step 8 in [Configure Scans](./installing.html#scan).
+  + `b` is the number of benchmarks you configured in step 8 in [Configure Scans](./installing.html#scan).
+
+
+
 
 ##<a id='tests'></a> View Tests on VMs
 
-For every configuration rule that is checked, there is a corresponding test written in YAML test files residing on each VM.
-You can use these files as reference for internal test development or to validate that the test matches the description. 
+For every configuration rule that is checked, there is a corresponding test written in YAML test 
+files residing on each VM.
+You can use these files as reference for internal test development or to validate that the test 
+matches the description. 
 
 In the beta release of <%= vars.product_short %>,
 you cannot write your own YAML tests or convert these tests to the SCAP format.
 
 To view tests on VMS, do the following:
 
-1. Use the BOSH CLI to SSH into a component VM. For more information, see [BOSH SSH](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#bosh-ssh).
+1. Use the BOSH CLI to SSH into a component VM. For more information, 
+see [BOSH SSH](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#bosh-ssh).
 1. Navigate to the following path: 
 
     ```
