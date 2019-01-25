@@ -103,7 +103,78 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
 Log files can be retrieved manually using the command line.
 To review the logs for a completed scan using the command line, do the following:
 
+1. Log into the BOSH Director.
+    1. On the Ops Manager VM, create an alias in the BOSH CLI for your BOSH Director IP address. For example:
+    <pre class="terminal">$ bosh alias-env my-env -e 10.0.0.3</pre>
+    1. Log in to the BOSH Director, specifying the newly created alias.
+    For example:
+    <pre class="terminal">$ bosh -e my-env log-in</pre>
+1. Run `bosh deployments` to list all the deployment names.
+  For example:
+  <pre class="terminal">
+  Name                      Release(s)                    Stemcell(s)
+  pivotal-container-service backup-and-restore-sdk/1.8.0  bosh-google-kvm-ubuntu-xenial-go_agent/97.47   -
+                              bosh-dns/1.10.0
+                              bosh-dns-aliases/0.0.3
+                              bpm/0.6.0
+                              cf-mysql/36.14.0
+                              docker/32.0.3
+                              kubo/0.21.13
+                              kubo-service-adapter/1.2.5
+                              oscap/0.1.61
+                              pks-telemetry/0.9.4
+  scanner-DEPLOYMENT-ID   bosh-dns/1.10.0               bosh-google-kvm-ubuntu-xenial-go_agent/170.19  -
+                              bosh-dns-aliases/0.0.3
+                              clamav/1.4.41
+                              ipsec/1.9.14
+                              ipsec-verifier/1.9.14
+                              oscap/0.1.61
+  service-instance          bosh-dns/1.10.0               bosh-google-kvm-ubuntu-xenial-go_agent/97.47
+                              bosh-dns-aliases/0.0.3        pivotal-container-service
+                              bpm/0.6.0
+                              cfcr-etcd/1.4.1
+                              kubo/0.21.13
+  </pre>
+
+1. Find the `oscap_store` VM in the list.
+  It will appear as `scanner-DEPLOYMENT-ID`, where `DEPLOYMENT-ID` is the name of your specific deployment. 
+1. Run the following command to download the logs:
+  `bosh -e my-env -d  <Scanner-deployment> run-errand scan_results --download-logs [--logs-dir <path-to-save-scan-results>]`
+
+Now the logs can be found in the directory And it'll download to your local machine, in the current folder. For example, if I'm issuing all these commands in the ~/Documents/ScanResult/ folder, then the logs will be downloaded here.
+
+
+
+
+
+SINGLE DEPLOYMENT:
+bosh -d <deployment_name> run-errand config_scanner --download-logs [--logs-dir <path-to-save-scan-results>]
+
+ALL DEPLOYMENTS:
+bosh -d  <Scanner-deployment> run-errand scan_results --download-logs [--logs-dir <path-to-save-scan-results>]
+
+NOTE: Regarding your question on if it spits out all the formats, it only gets the most recent run's log
+
+
 1. Steps to Access the VM (BOSH Director VM) where you run this
+
+1. Log in to the BOSH Director.
+    1. On the Ops Manager VM, create an alias in the BOSH CLI for your BOSH Director IP address. For example:
+    <pre class="terminal">$ bosh alias-env my-env -e 10.0.0.3</pre>
+    1. Log in to the BOSH Director, specifying the newly created alias.
+    For example:
+    <pre class="terminal">$ bosh -e my-env log-in</pre>
+1. Upload your release, specifying the path to the tarballed ClamAV binary, by running the following command:
+  <pre class="terminal">$ bosh -e my-env upload-release ~/clamav-1.3.28.tar.gz</pre>
+
+
+<!-- run bosh vms to see the deployment name of the oscap store
+ -->
+
+<!-- Pull Logs -->
+bosh -d scanner-fc11cabad7c2c296d60c logs --only=scan_results
+
+
 1. What gets downloaded
 1. Where you can find it
 
