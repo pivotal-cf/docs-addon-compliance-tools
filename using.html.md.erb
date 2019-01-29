@@ -202,11 +202,11 @@ To start a scan and review the logs for the completed scan using the command lin
     For example:
     <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs [--logs-dir .]</pre>
 
-  <p class="note"><strong>Note:</strong>
+    <p class="note"><strong>Note:</strong>
     The files generated use the most recent configuration of your tile.
     To see what the current settings are, see [Configure Scans](./installing.html#scan).</p>
 
-1. Unpack the scan_results.tgz file and unzip the output.zip to access your log files.
+1. Unzip the output.zip to access your log files.
 
 The number of log files in the `output` directory can be calculated as follows:
 
@@ -297,8 +297,23 @@ To start a scan and review the logs for the completed scan using the command lin
 
     ![output folder structure](command_line_output.png)
     
+    The naming syntax for each log file is the following:
 
-<!-- vv Put this in "Reporting" page in the future vv -->
+    ```
+    BENCHMARK_COMPONENT_UUID.FORMAT
+    ```
+    Where:
+    * `BENCHMARK` is the benchmark that was used for the scan.
+    * `COMPONENT` is the VM that was scanned.
+    * `UUID` is the UUID for the VM that was scanned.
+    * `FORMAT` is the format of the file.
+
+    For example, the `output` folder directory looks similar to the following image:
+
+    ![output folder structure](command_line_output.png)
+
+
+<!-- Put below "View Tests on VMs" section in a "Reporting" page in the future -->
 ##<a id='tests'></a> View Tests on VMs
 
 For every configuration rule that is checked, there is a corresponding test written in YAML test
