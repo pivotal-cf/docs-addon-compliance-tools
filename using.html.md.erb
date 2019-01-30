@@ -187,20 +187,20 @@ To start a scan and review the logs for the completed scan using the command lin
   </pre>
 
 1. Find the `scanner` deployment in the list.
-  It appears as `scanner-DEPLOYMENT-ID`, where `DEPLOYMENT-ID` is the name of your deployment. 
+  It appears as `scanner-DEPLOYMENT-UUID`, where `DEPLOYMENT-UUID` is the UUID of your deployment. 
 1. Run the following command to start the scan and download the logs:
   
     ```
-    bosh -e my-env -d scanner-DEPLOYMENT-ID run-errand scan_results --download-logs [--logs-dir PATH-TO-SAVE-SCAN-RESULTS]
+    bosh -e my-env -d scanner-DEPLOYMENT-UUID run-errand scan_results --download-logs --logs-dir PATH-TO-SAVE-SCAN-RESULTS
     ```
 
     Where:
-    * `DEPLOYMENT-ID` is the name of your scanner deployment.
+    * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
     * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you would like to save your logs to.
     You may also use `.` if you want the logs to be saved in your current directory.
 
     For example:
-    <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs [--logs-dir .]</pre>
+    <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir .</pre>
 
     <p class="note"><strong>Note:</strong>
     The files generated use the most recent configuration of your tile.
