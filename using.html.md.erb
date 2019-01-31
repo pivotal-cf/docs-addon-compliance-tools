@@ -197,14 +197,14 @@ To start a scan and review the logs for the completed scan using the command lin
     Where:
     * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
     * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you would like to save your logs to.
-    You may also use `.` if you want the logs to be saved in your current directory.
+    You may omit `PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
 
     For example:
     <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir .</pre>
 
     <p class="note"><strong>Note:</strong>
     The files generated use the most recent configuration of your tile.
-    To see what the current settings are, see [Configure Scans](./installing.html#scan).</p>
+    To see what the current settings are, see <a href="./installing.html#scan">Configure Scans</a>.</p>
 
 1. Unzip the output.zip to access your log files.
 
