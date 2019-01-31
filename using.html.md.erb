@@ -197,10 +197,10 @@ To start a scan and review the logs for the completed scan using the command lin
     Where:
     * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
     * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you would like to save your logs to.
-    You may omit `PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
+    You may omit `--logs-dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
 
     For example:
-    <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir .</pre>
+    <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir scanner/logs/20190131</pre>
 
     <p class="note"><strong>Note:</strong>
     The files generated use the most recent configuration of your tile.
@@ -208,21 +208,6 @@ To start a scan and review the logs for the completed scan using the command lin
 
 1. Unzip the output.zip to access your log files.
 
-    The naming syntax for each log file is the following:
-
-    ```
-    BENCHMARK_COMPONENT_UUID.FORMAT
-    ```
-    Where:
-    * `BENCHMARK` is the benchmark that was used for the scan.
-    * `COMPONENT` is the VM that was scanned.
-    * `UUID` is the UUID for the VM that was scanned.
-    * `FORMAT` is the format of the file.
-
-    For example, the `output` folder directory looks similar to the following image:
-
-    ![output folder structure](command_line_output.png)
-    
     The naming syntax for each log file is the following:
 
     ```
