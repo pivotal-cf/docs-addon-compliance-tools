@@ -223,6 +223,20 @@ To start a scan and review the logs for the completed scan using the command lin
 
     ![output folder structure](command_line_output.png)
 
+###<a id='review-cli-logs'></a>Retrieve Log Files Using the Command Line
+
+1. Run the following command to retrieve logs for the most recent scan:
+    ```
+    bosh -e my-env -d scanner-DEPLOYMENT-UUID logs --only=scan_results --dir PATH-TO-SAVE-SCAN-RESULTS
+    ```
+    Where:
+    * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
+    * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you would like to save your logs to.
+    You may omit `--dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
+
+    For example:
+    <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb logs --only=scan_results --dir .</pre>
+
 
 <!-- Put below "View Tests on VMs" section in a "Reporting" page in the future -->
 ##<a id='tests'></a> View Tests on VMs
