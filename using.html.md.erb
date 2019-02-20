@@ -35,7 +35,7 @@ Scanning VMs involves three procedures:
 
 1. [Scan the VMs](#scan-vms)
 1. [Retrieve Log Files](#review-tile)
-1. [Find Scan Output](#scan-output) 
+1. [Find Scan Output](#scan-output)
 
 ###<a id='scan-vms'></a> Scan the VMs
 
@@ -149,9 +149,16 @@ The number of log files in the `output` directory can be calculated as follows:
 
 ##<a id='terminal-scan'></a>Scan Using the Command Line
 
-You have the option of scanning VMs using the command line.
-Log files are retrieved using this command as well.
-To start a scan and review the logs for the completed scan using the command line, do the following:
+You also have the option of scanning VMs using the command line.
+There are two ways to do this:
+
+* [Scan and Retrieve Log Files](#scan-retrieve-logs)
+* [Retrieve Existing Log Files](#retrieve-only-logs)
+
+
+###<a id='scan-retrieve-logs'></a>Scan and Retrieve Log Files
+
+To start a new scan and retrieve the logs for the completed scan using the command line, do the following:
 
 1. Log in to the BOSH Director.
     1. On the Ops Manager VM, create an alias in the BOSH CLI for your BOSH Director IP address. For example:
@@ -163,7 +170,7 @@ To start a scan and review the logs for the completed scan using the command lin
   For example:
   <pre class="terminal">
   Name                      Release(s)                    Stemcell(s)
-  pivotal-container-service backup-and-restore-sdk/1.8.0  bosh-google-kvm-ubuntu-xenial-go_agent/97.47   -
+  pivotal-container-service backup-and-restore-sdk/1.8.0  bosh-google-kvm-ubuntu-xenial-go\_agent/97.47   -
                               bosh-dns/1.10.0
                               bosh-dns-aliases/0.0.3
                               bpm/0.6.0
@@ -173,13 +180,13 @@ To start a scan and review the logs for the completed scan using the command lin
                               kubo-service-adapter/1.2.5
                               oscap/0.1.61
                               pks-telemetry/0.9.4
-  scanner-f9822a33c2e0d04cb bosh-dns/1.10.0               bosh-google-kvm-ubuntu-xenial-go_agent/170.19  -
+  scanner-f9822a33c2e0d04cb bosh-dns/1.10.0               bosh-google-kvm-ubuntu-xenial-go\_agent/170.19  -
                               bosh-dns-aliases/0.0.3
                               clamav/1.4.41
                               ipsec/1.9.14
                               ipsec-verifier/1.9.14
                               oscap/0.1.61
-  service-instance          bosh-dns/1.10.0               bosh-google-kvm-ubuntu-xenial-go_agent/97.47
+  service-instance          bosh-dns/1.10.0               bosh-google-kvm-ubuntu-xenial-go\_agent/97.47
                               bosh-dns-aliases/0.0.3        pivotal-container-service
                               bpm/0.6.0
                               cfcr-etcd/1.4.1
@@ -187,41 +194,63 @@ To start a scan and review the logs for the completed scan using the command lin
   </pre>
 
 1. Find the `scanner` deployment in the list.
-  It appears as `scanner-DEPLOYMENT-UUID`, where `DEPLOYMENT-UUID` is the UUID of your deployment. 
+  It appears as `scanner-DEPLOYMENT-UUID`, where `DEPLOYMENT-UUID` is the UUID of your deployment.
 1. Run the following command to start the scan and download the logs:
+
+  ```
+  bosh -e my-env -d scanner-DEPLOYMENT-UUID run-errand scan_results --download-logs --logs-dir PATH-TO-SAVE-SCAN-RESULTS
+  ```
+
+  Where:
   
-    ```
-    bosh -e my-env -d scanner-DEPLOYMENT-UUID run-errand scan_results --download-logs --logs-dir PATH-TO-SAVE-SCAN-RESULTS
-    ```
+  * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
+  * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you would like to save your logs to.
+  You may omit `--logs-dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
 
-    Where:
-    * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
-    * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you would like to save your logs to.
-    You may omit `--logs-dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
+  For example:
+  <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir scanner/logs/20190131</pre>
 
-    For example:
-    <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir scanner/logs/20190131</pre>
+  <p class="note"><strong>Note:</strong>
+  The files generated use the most recent configuration of your tile.
+  To see what the current settings are, see <a href="./installing.html#scan">Configure Scans</a>.</p>
 
-    <p class="note"><strong>Note:</strong>
-    The files generated use the most recent configuration of your tile.
-    To see what the current settings are, see <a href="./installing.html#scan">Configure Scans</a>.</p>
 
-1. Unzip the output ZIP file to access your log files.
+###<a id='retrieve-only-logs'></a>Retrieve Existing Log Files
 
-    The naming syntax for each log file is the following:
+To retrieve existing logs for the most recent completed scan using the command line,
+use the following command:
 
-    ```
-    BENCHMARK_COMPONENT_UUID.FORMAT
-    ```
-    Where:
-    * `BENCHMARK` is the benchmark that was used for the scan.
-    * `COMPONENT` is the VM that was scanned.
-    * `UUID` is the UUID for the VM that was scanned.
-    * `FORMAT` is the format of the file.
+  ```
+  bosh -e my-env -d scanner-DEPLOYMENT-UUID logs --only=scan_results --dir PATH-TO-SAVE-SCAN-RESULTS
+  ```
+  Where:
 
-    For example, the `output` folder directory looks similar to the following image:
+  * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
+  * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you would like to save your logs to.
+  You may omit `--dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
 
-    ![output folder structure](command_line_output.png)
+  For example:
+  <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb logs --only=scan_results --dir .</pre>
+
+
+###<a id='access-logs'></a>Access Log Files
+To access your saved logs, unzip the output ZIP file.
+
+The naming syntax for each log file is the following:
+
+  ```
+  BENCHMARK_COMPONENT_UUID.FORMAT
+  ```
+  Where:
+
+  * `BENCHMARK` is the benchmark that was used for the scan.
+  * `COMPONENT` is the VM that was scanned.
+  * `UUID` is the UUID for the VM that was scanned.
+  * `FORMAT` is the format of the file.
+
+  For example, the `output` folder directory looks similar to the following image:
+
+  ![output folder structure](command_line_output.png)
 
 
 <!-- Put below "View Tests on VMs" section in a "Reporting" page in the future -->
