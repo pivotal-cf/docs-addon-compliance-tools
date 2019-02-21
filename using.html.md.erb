@@ -208,7 +208,7 @@ To start a new scan and retrieve the logs for the completed scan using the comma
   You may omit `--logs-dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
 
   For example:
-  <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir .</pre>
+  <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir scanner/logs/20190131</pre>
 
   <p class="note"><strong>Note:</strong>
   The files generated use the most recent configuration of your tile.
@@ -230,7 +230,7 @@ use the following command:
   You may omit `--dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
 
   For example:
-  <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb logs --only=scan_results --dir .</pre>
+  <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb logs --only=scan_results --dir scanner/logs/20190131</pre>
 
 
 ###<a id='access-logs'></a>Access Log Files
