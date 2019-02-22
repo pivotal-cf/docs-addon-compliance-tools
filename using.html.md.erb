@@ -204,8 +204,8 @@ To start a new scan and retrieve the logs for the completed scan using the comma
   Where:
   
   * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
-  * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you would like to save your logs to.
-  You may omit `--logs-dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
+  * `PATH-TO-SAVE-SCAN-RESULTS` is the directory where you want to save the logs.
+  You can omit `--logs-dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
 
   For example:
   <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir scanner/logs/20190131</pre>
