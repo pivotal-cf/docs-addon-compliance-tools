@@ -17,35 +17,25 @@ These are release notes for <%= vars.product_full %> (PCF)(Beta).
 
 New features and changes in this release:
 
-* Updates OpenSCAP to v1.3.0.
-* Adds index.html to provide HTML results.
-* Removes dependencies requiring the Pivotal Application Service (PAS) tile. 
-  This enables scans on Pivotal Container Service (PKS) only environemnts.
+* Updates oscap to v1.3.0 (from 1.2.17)
+* Adds index.html to provide html results.
+* Removes dependencies requiring the PAS tile. This allows scans on PKS-only environemnts.
 
-### Resolved Issue
+### Resolved Issues
 This release fixes the following issue:
 
-* An issue when scanning environments without other tiles.
+* Fixes a bug when scanning environments without other tiles.
 
-### Known Issue
+### Known Issues
 This release has the following known issue:
 
-* No support for federated single sign-on and authorization.
+* No support for federated single sign-on, and authorization.
 
 
 ##<a id="v1-0-0-7"></a> v1.0.0-beta.7
 
 **Release Date:** Month XX, 2019
 
-<<<<<<< HEAD
-### Features
-
-New features and changes in this release:
-
-*
-*
-*
-=======
 This is the first release of <%= vars.product_short %>.
 
 ### Features
@@ -54,17 +44,13 @@ New features and changes in this release:
 * Features the ability to scan all BOSH-managed VMs to verify secure platform configuration
 * Contains four bundled benchmarks with tests developed for cloud native OS stemcells
 * Allows high-level scan reports for each VM in LOG, XML, and HTML formats
->>>>>>> Edits to RNs for PR#5 [#165125601]
 
 ### Known Issues
 This release has the following known issues:
 
 * If Compliance Scanner for PCF is scanning a deployment and that deployment is destroyed before the scanning errand is finished,
   then Apply Changes errors out with the message: `Cannot iterate over null (null)`.
-<<<<<<< HEAD
 
-=======
->>>>>>> Edits to RNs for PR#5 [#165125601]
 * Some Base Xenial benchmark tests fail.
 The following table lists the tests that fail and which components they fail on:
 
