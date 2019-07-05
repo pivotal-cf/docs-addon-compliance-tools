@@ -8,8 +8,31 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 
 These are release notes for <%= vars.product_full %> (PCF)(Beta).
 
+##<a id="v100-b63"></a> v1.0.0-beta.63
 
-##<a id="v1-0-0-25"></a> v1.0.0-beta.25
+**Release Date:** July 8, 2019
+
+### Features
+
+New features and changes in this release:
+
+* Modified <%= vars.product_short %> to use a client-server architecture for
+  initiating and generating scan results.
+  This new architecture results in the following changes:
+    * Secures the communication between the store VM and all of the scanner VMs
+      through the implementation of mutual TLS (mTLS).
+    * Removes the BOSH CLI and BOSH credentials that were stored on the `oscap_store` VM.
+    * Now uses Ops Manager Root CA certificate to sign the mTLS certificates.
+
+* Added a configurable **Scanner Timeout** field for how long a scan should take.
+
+### Resolved Issue
+This release fixes the following issue:
+
+* <%= vars.product_short %> now supports federated Single Sign-On (SSO) and authorization.
+
+
+##<a id="v100-b25"></a> v1.0.0-beta.25
 
 **Release Date:** April 3, 2019
 
@@ -19,7 +42,7 @@ New features and changes in this release:
 
 * Updates OpenSCAP to v1.3.0.
 * Adds index.html to provide HTML results.
-* Removes dependencies requiring the Pivotal Application Service (PAS) tile. 
+* Removes dependencies requiring the Pivotal Application Service (PAS) tile.
   This enables scans on Pivotal Container Service (PKS) only environemnts.
 
 ### Resolved Issue
@@ -33,7 +56,7 @@ This release has the following known issue:
 * No support for federated single sign-on and authorization.
 
 
-##<a id="v1-0-0-7"></a> v1.0.0-beta.7
+##<a id="v100-b7"></a> v1.0.0-beta.7
 
 **Release Date:** December 21, 2018
 
