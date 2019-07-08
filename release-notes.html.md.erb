@@ -21,7 +21,7 @@ New features and changes in this release:
   This new architecture results in the following changes:
     * Secures the communication between the store VM and all of the scanner VMs
       through the implementation of mutual TLS (mTLS).
-    * Removes the BOSH CLI and BOSH credentials that were stored on the `oscap_store` VM.
+    * Removes credentials needed to trigger scans from the `oscap_store` VM.
     * Now uses Ops Manager Root CA certificate to sign the mTLS certificates.
 
 * Added a configurable **Scanner Timeout** field for how long a scan should take.
