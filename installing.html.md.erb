@@ -111,9 +111,8 @@ This section is where you configure expected values for tests and select which s
         </tr>
         <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
                 <td>Includes all the configuration tests of the published DISA STIG
-                  for Ubuntu 16.04, amended with stemcell-specific changes. Contains tests that would
+                  for Ubuntu 16.04, amended with stemcell specific changes. Contains tests that would
                   fail due to architectural differences.</td>
-        </tr>
     </table>
     <br><br>
     A scan report is generated for each format and benchmark on each Linux VM running on Xenial stemcells.
@@ -122,7 +121,7 @@ This section is where you configure expected values for tests and select which s
     <br><br>
     For more information about <%= vars.product_short %> benchmarks, see [Benchmarks](./benchmarks.html).
 
-1. For **Scanner Timeout**, configure the maximum time in seconds permitted for a scan.
+1. For **Scanner Timeout**, configure the maximum time in seconds permitted for a scan. The default value is `600`
 
 1. For **Open File Limit**, configure the maximum number of files that the scanner is permitted to open.
 If the scanner goes over this limit, the scan fails. The recommended value is at least three times the number of VMs.
