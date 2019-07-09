@@ -1,0 +1,61 @@
+---
+title: Troubleshooting Compliance Scanner for PCF (Beta)
+owner: Pivotal Compliance and Innovation (PCI) Team
+---
+
+<strong><%= modified_date %></strong>
+
+<%= partial ("beta-partial") %>
+
+This topic provides instructions for troubleshooting <%= vars.product_full %> (PCF).
+
+## <a id='scan-results'></a> scan_results Issues
+### <a id='scan-exitcode-1'></a> scan_results completed with error (exit code 1)
+
+#### Symptom
+Running a scan results in an `Exit code 1` error, similar to the following:
+
+<pre class="terminal">
+...
+Instance   oscap_store/43aba653-4d0a-4cfc-bc72-a136ce33e3e0
+Exit Code  1
+Stdout     2019/07/05 21:11:04 Starting store on port 38894
+           2019/07/05 21:11:05 [10.0.8.6] \<nil><br>
+           2019/07/05 21:11:05 Starting scan on 10.0.8.6
+           2019/07/05 21:11:05 Get https://10.0.8.6:38893/run: x509: certificate has expired or is not yet valid<br>
+           Received no scan results
+
+Stderr     -
+
+1 errand(s)
+Errand 'scan_results' completed with error (exit code 1)
+Exit code 1
+</pre>
+
+#### Explanation
+Your certificates are expired and need to be rotated.
+For more information on rotating your certificates, see
+[Rotating Certificates](https://docs.pivotal.io/pivotalcf/security/pcf-infrastructure/api-cert-rotation.html).
+
+
+### <a id='scan-pas-noresults'></a> scan_results does not include scans for VMs in the PAS deployment
+
+#### Symptom
+Only scan results for the `oscap_store` VM are being generated.
+VMs in the PAS deployment are not being scanned.
+
+#### Explanation
+The <%= vars.product_short %> tile is a BOSH Add-on, as well as a tile.
+When a scan is run, the `oscap_store` VM verifies each VM's OSCAP release version.
+Because of this, the latest OSCAP release must be deployed on all VMs to function properly.
+
+When upgrading <%= vars.product_short %>, you need to **Apply Changes** on PAS
+as well so that the version of <%= vars.product_short %> on the PAS VMs match.
+
+<!--
+ORIGINAL TEXT:
+The reason why it failed earlier is that our oscap_store checks each VM's oscap release version.
+Since our tile is also a bosh add-on,
+the latest oscap release hasn't been push/deployed to all the vm's,
+so that creates a mismatch
+-->
