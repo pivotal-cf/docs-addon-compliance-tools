@@ -19,7 +19,7 @@ Running a scan results in an `exit code 1` error similar to the following:
 ...
 Instance   oscap_store/43aba653-4d0a-4cfc-bc72-a136ce33e3e0
 Exit Code  1
-Stdout     2019/07/05 21:11:04 Starting store on port 28894
+Stdout     2019/07/05 21:11:04 Starting store on port 38894
            2019/07/05 21:11:05 [10.0.8.6] &lt;nil&gt;<br>
            2019/07/05 21:11:05 Starting scan on 10.0.8.6
            2019/07/05 21:11:05 Get https://10.0.8.6:28893/run: x509: certificate has expired or is not yet valid<br>
@@ -48,11 +48,10 @@ Running a scan results in an `exit code 124` error similar to the following:
 ...
 Instance   oscap_store/43aba653-4d0a-4cfc-bc72-a136ce33e3e0
 Exit Code  124
-Stdout    2019/06/24 15:43:30 Starting store on port 28894
+Stdout    2019/06/24 15:43:30 Starting store on port 38894
           2019/06/24 15:43:30 [10.0.8.5] &lt;nil&gt;<br>
           2019/06/24 15:43:30 Starting scan on 10.0.8.5
           2019/06/24 15:43:31 Received signal terminated
-          Scanner timed out, did not receive all the scan results in 1200 second(s)
 </pre>
 
 #### Explanation
@@ -79,9 +78,8 @@ VMs in the deployment are not being scanned.
 When a scan is run, the `oscap_store` VM verifies each VM's OSCAP release version.
 Because of this, the latest OSCAP release must be deployed on all VMs to function properly.
 
-#### Solution
 When installing or upgrading <%= vars.product_short %>, you must **Apply Changes**
 on PAS (and any other tiles with VMs you want to scan) after applying changes
 to the <%= vars.product_short %> tile.
-This is so that the version of <%= vars.product_short %> on the VMs match the version
+This is so the version of <%= vars.product_short %> on the VMs match the version
 being used by the scanner.
