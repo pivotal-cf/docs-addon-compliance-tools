@@ -121,7 +121,12 @@ This section is where you configure expected values for tests and select which s
     and **Base Xenial** and **STIG** benchmarks, four log files are created for each VM tested.
     <br><br>
     For more information about <%= vars.product_short %> benchmarks, see [Benchmarks](./benchmarks.html).
-    
+
+1. For **Scanner Timeout**, configure the maximum time in seconds to allow the scan to finish.
+
+1. For **Open File Limit**, configure the maximum number of files that can be opened by the scan process.
+If the scanner goes over this limit, the scan will fail. Recommended value is at least (number of VMs * 3).
+
 1. Click **Save**.
 
 
