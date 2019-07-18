@@ -27,7 +27,7 @@ This section is where you configure expected values for tests and select which s
 1. Click the **Settings** tab.
 
     ![Compliance Settings page](compliance-settings.png)
-    
+
 1. Click **Assign AZs and Networks**.
 
 1. Configure the fields as follows:
@@ -37,7 +37,7 @@ This section is where you configure expected values for tests and select which s
       <th>Description</th>
       <tr>
         <td><strong>Place singleton jobs in</strong></td>
-        <td>Select the AZ that you want the <code>oscap_store</code> VM to run in.<br> 
+        <td>Select the AZ that you want the <code>oscap_store</code> VM to run in.<br>
           The tile runs as a singleton job.</td>
       </tr>
       <tr>
@@ -46,11 +46,11 @@ This section is where you configure expected values for tests and select which s
       </tr>
       <tr>
         <td><strong>Network</strong></td>
-        <td>Select a subnet for the <code>oscap_store</code> VM. <br>This is typically the same subnet that 
+        <td>Select a subnet for the <code>oscap_store</code> VM. <br>This is typically the same subnet that
           includes the Pivotal Application Services (PAS) component VMs.</td>
-      </tr>    
+      </tr>
     </table>
-    
+
 1. Click **Save**.
 
 1. Click **System Variables**.
@@ -63,24 +63,24 @@ This section is where you configure expected values for tests and select which s
         <th>Field</th>
         <th>Description</th>
         <tr><td><strong>NTP Server IP</strong></td>
-                <td>The IP address of your NTP server.<br> <br>You can find this IP address in 
-                  <strong>Bosh Director</strong> > <strong>Director Config</strong> > 
-                  <strong>NTP Server</strong>. You can only enter one server IP address. It does not 
+                <td>The IP address of your NTP server.<br> <br>You can find this IP address in
+                  <strong>Bosh Director</strong> > <strong>Director Config</strong> >
+                  <strong>NTP Server</strong>. You can only enter one server IP address. It does not
                   matter which NTP server you enter.
                 </td>
         </tr>
         <tr><td><strong>Syslog Host IP</strong></td>
                 <td>The IP address of your syslog host.<br><br>
-                    You can find this in your Pivotal Application Service (PAS) tile under
+                    You can find this in your PAS tile under
                     <strong>Settings > System Logging > Address</strong>.</td>
         </tr>
         <tr><td><strong>Syslog Port</strong></td>
                 <td>The port number of the syslog port.<br><br>
-                    You can find this in your Pivotal Application Service (PAS) tile under
+                    You can find this in your PAS tile under
                     <strong>Settings > System Logging > Port</strong>.</td>
         </tr>
     </table>
-    
+
 1. Click **Save**.
 
 1. Click **Scan Configuration**.
@@ -101,17 +101,17 @@ This section is where you configure expected values for tests and select which s
                 This is meant to be used as a measure to see if configurations have been altered.<br></td>
         </tr>
     	<tr><td><strong>Recommended Security Baseline</strong></td>
-                <td>A benchmark with rules that all systems should implement, regardless of user 
-                  environment or sensitivity of app data being processed.</td>
+                <td>A benchmark with rules that all systems should implement, regardless of user
+                  environment or the sensitivity of the app data being processed.</td>
         </tr>
         <tr><td><strong>Strict Security Practices</strong></td>
-                <td>A benchmark with strict rules that are required of systems processing sensitive 
-                  data/workloads. This is meant to run in addition to the tests in the recommended 
+                <td>A benchmark with strict rules that are required of systems processing sensitive
+                  data or workloads. This is meant to run in addition to the tests in the recommended
                   security baseline benchmark.</td>
         </tr>
         <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
-                <td>Includes all the configuration tests of the published DISA STIG 
-                  for Ubuntu 16.04, amended with stemcell specific changes. Contains tests that would 
+                <td>Includes all the configuration tests of the published DISA STIG
+                  for Ubuntu 16.04, amended with stemcell-specific changes. Contains tests that would
                   fail due to architectural differences.</td>
         </tr>
     </table>
@@ -122,10 +122,10 @@ This section is where you configure expected values for tests and select which s
     <br><br>
     For more information about <%= vars.product_short %> benchmarks, see [Benchmarks](./benchmarks.html).
 
-1. For **Scanner Timeout**, configure the maximum time in seconds to allow the scan to finish.
+1. For **Scanner Timeout**, configure the maximum time in seconds permitted for a scan.
 
-1. For **Open File Limit**, configure the maximum number of files that can be opened by the scan process.
-If the scanner goes over this limit, the scan will fail. Recommended value is at least (number of VMs * 3).
+1. For **Open File Limit**, configure the maximum number of files that the scanner is permitted to open.
+If the scanner goes over this limit, the scan fails. The recommended value is at least three times the number of VMs.
 
 1. Click **Save**.
 
@@ -150,12 +150,12 @@ do the following:
 1. Click **Save**.
 
 ## <a id="resources"></a> Configure Resources
-The tile creates a new VM called `oscap_store` to store the logs retrieved from all the other VMs 
-that have been scanned. 
+The tile creates a new VM called `oscap_store` to store the logs retrieved from all the other VMs
+that have been scanned.
 
 <p class="note"><strong>Note:</strong>
 The <code>oscap_store</code> VM does not do anything computationally extensive.
-Pivotal recommends using the default configurations because they are sufficient.</p>
+Pivotal recommends using the default configurations.</p>
 
 1. Click **Resource Config**.
 
