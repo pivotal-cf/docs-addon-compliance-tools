@@ -10,10 +10,10 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 This topic provides instructions for troubleshooting <%= vars.product_full %> (PCF).
 
 ## <a id='scan-results'></a> scan_results Issues
-### <a id='scan-exitcode-1'></a> scan_results completed with error (exit code 1)
+### <a id='scan-exitcode-1'></a> scan_results Completed with Error (Exit Code 1)
 
 #### Symptom
-Running a scan results in an `Exit code 1` error, similar to the following:
+Running a scan results in an `exit code 1` error similar to the following:
 
 <pre class="terminal">
 ...
@@ -33,14 +33,16 @@ Exit code 1
 </pre>
 
 #### Explanation
-Your certificates are expired and need to be rotated.
-For more information on rotating your certificates, see
+Your certificates have expired.
+
+#### Solution
+Rotate your certificates. For instructions, see
 [Rotating Certificates](https://docs.pivotal.io/pivotalcf/security/pcf-infrastructure/api-cert-rotation.html).
 
-### <a id='scan-exitcode-124'></a> scan_results received signal terminated (exit code 124)
+### <a id='scan-exitcode-124'></a> scan_results Received Signal Terminated (Exit Code 124)
 
 #### Symptom
-Running a scan results in an `Exit code 1` error, similar to the following:
+Running a scan results in an `exit code 124` error similar to the following:
 
 <pre class="terminal">
 ...
@@ -54,22 +56,25 @@ Stdout    2019/06/24 15:43:30 Starting store on port 38894
 
 #### Explanation
 Your scan has reached the configured timeout period.
-For more information on configuring your scan timeout, see
+
+#### Solution
+For how to configure your scan timeout, see
 **Scanner Timeout** under [Configure Scans](./installing.html#scan).
 
-### <a id='scan-vm-noresults'></a> scan_results does not include scans for VMs in the deployment
+### <a id='scan-vm-noresults'></a> scan_results Does Not Include Scans for VMs in the Deployment
 
 #### Symptom
 Only scan results for the `oscap_store` VM are being generated.
 VMs in the deployment are not being scanned.
 
 #### Explanation
-The <%= vars.product_short %> tile is a BOSH Add-on, as well as a tile.
+<%= vars.product_short %> is a BOSH add-on, as well as a tile.
 When a scan is run, the `oscap_store` VM verifies each VM's OSCAP release version.
 Because of this, the latest OSCAP release must be deployed on all VMs to function properly.
 
+#### Solution
 When installing or upgrading <%= vars.product_short %>, you must **Apply Changes**
 on PAS (and any other tiles with VMs you want to scan) after applying changes
 to the <%= vars.product_short %> tile.
-This is so the version of <%= vars.product_short %> on the VMs match the version
+This is so that the version of <%= vars.product_short %> on the VMs match the version
 being used by the scanner.
