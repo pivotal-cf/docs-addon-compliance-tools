@@ -52,6 +52,7 @@ Stdout    2019/06/24 15:43:30 Starting store on port 28894
           2019/06/24 15:43:30 [10.0.8.5] &lt;nil&gt;<br>
           2019/06/24 15:43:30 Starting scan on 10.0.8.5
           2019/06/24 15:43:31 Received signal terminated
+          Scanner timed out, did not receive all the scan results in 1200 second(s)
 </pre>
 
 #### Explanation
@@ -60,8 +61,10 @@ For more information on configuring your scan timeout, see
 **Scanner Timeout** under [Configure Scans](./installing.html#scan).
 
 #### Solution
-Increase the scan timeout for the compliance scanning process. For how to configure your scan timeout, see
+* Increase the scan timeout for the compliance scanning process. For how to configure your scan timeout, see
 **Scanner Timeout** under [Configure Scans](./installing.html#scan). 
+
+* Increase the size of the scanner vm or the oscap_store vm accordingly.
 
 ### <a id='scan-vm-noresults'></a> scan_results Does Not Include Scans for VMs in the Deployment
 
