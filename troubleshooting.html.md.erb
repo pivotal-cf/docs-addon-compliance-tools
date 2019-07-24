@@ -57,12 +57,16 @@ Stdout    2019/06/24 15:43:30 Starting store on port 28894
 
 #### Explanation
 Your scan has reached the configured timeout period.
+This may occur if a VM lacks sufficient memory or CPU to finish its scan in time.
 
 #### Solution
-You can increase the scan timeout configuration. For more information, see
+
+Do one of the following:
+
+* Increase the scan timeout for all VMs. For more information, see
 **Scanner Timeout** under [Configure Scans](./installing.html#scan).
 
-Also consider increasing memory or CPU resources for the failing scanned VM(s).
+* Increase the memory or CPU resources for any failing scanned VMs.
 
 ### <a id='scan-vm-noresults'></a> scan_results Does Not Include Scans for VMs in the Deployment
 
