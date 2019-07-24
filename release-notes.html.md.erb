@@ -16,7 +16,7 @@ These are release notes for <%= vars.product_full %> (PCF)(Beta).
 
 New features and changes in this release:
 
-* Modified <%= vars.product_short %> to use a client-server architecture for
+* <%= vars.product_short %> now uses a client-server architecture for
   initiating and generating scan results.
   This new architecture results in the following changes:
     * Secures the communication between the store VM and all of the scanner VMs
@@ -24,7 +24,8 @@ New features and changes in this release:
     * Removes credentials needed to trigger scans from the `oscap_store` VM.
     * Now uses Ops Manager Root CA certificate to sign the mTLS certificates.
 
-* Added a configurable **Scanner Timeout** field for how long a scan should take.
+* Adds a configurable **Scanner Timeout** field to limit how long a scan takes.
+For how to configure this field, see [Configure Scans](./installing.html#scan).
 
 ### Resolved Issue
 This release fixes the following issue:
