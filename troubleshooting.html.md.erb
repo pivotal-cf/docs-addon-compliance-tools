@@ -19,10 +19,10 @@ Running a scan results in an `exit code 1` error similar to the following:
 ...
 Instance   oscap_store/43aba653-4d0a-4cfc-bc72-a136ce33e3e0
 Exit Code  1
-Stdout     2019/07/05 21:11:04 Starting store on port 38894
+Stdout     2019/07/05 21:11:04 Starting store on port 28894
            2019/07/05 21:11:05 [10.0.8.6] &lt;nil&gt;<br>
            2019/07/05 21:11:05 Starting scan on 10.0.8.6
-           2019/07/05 21:11:05 Get https://10.0.8.6:38893/run: x509: certificate has expired or is not yet valid<br>
+           2019/07/05 21:11:05 Get https://10.0.8.6:28893/run: x509: certificate has expired or is not yet valid<br>
            Received no scan results
 
 Stderr     -
@@ -48,18 +48,21 @@ Running a scan results in an `exit code 124` error similar to the following:
 ...
 Instance   oscap_store/43aba653-4d0a-4cfc-bc72-a136ce33e3e0
 Exit Code  124
-Stdout    2019/06/24 15:43:30 Starting store on port 38894
+Stdout    2019/06/24 15:43:30 Starting store on port 28894
           2019/06/24 15:43:30 [10.0.8.5] &lt;nil&gt;<br>
           2019/06/24 15:43:30 Starting scan on 10.0.8.5
           2019/06/24 15:43:31 Received signal terminated
+          Scanner timed out, did not receive all the scan results in 1200 second(s)
 </pre>
 
 #### Explanation
 Your scan has reached the configured timeout period.
 
 #### Solution
-For how to configure your scan timeout, see
+You can increase the scan timeout configuration. For more information, see
 **Scanner Timeout** under [Configure Scans](./installing.html#scan).
+
+Also consider increasing memory or CPU resources for the failing scanned VM(s).
 
 ### <a id='scan-vm-noresults'></a> scan_results Does Not Include Scans for VMs in the Deployment
 
