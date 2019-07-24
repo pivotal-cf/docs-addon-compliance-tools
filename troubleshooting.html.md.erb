@@ -57,14 +57,13 @@ Stdout    2019/06/24 15:43:30 Starting store on port 28894
 
 #### Explanation
 Your scan has reached the configured timeout period.
-For more information on configuring your scan timeout, see
-**Scanner Timeout** under [Configure Scans](./installing.html#scan).
+This may occur if one the VMs being scanned has limited resources.
 
 #### Solution
-* Increase the scan timeout for the compliance scanning process. For how to configure your scan timeout, see
-**Scanner Timeout** under [Configure Scans](./installing.html#scan). 
+You can increase the scan timeout configuration. For more information, see
+**Scanner Timeout** under [Configure Scans](./installing.html#scan).
 
-* Increase the size of the scanner vm or the oscap_store vm accordingly.
+Also consider increasing memory or CPU resources for the failing scanned VM(s).
 
 ### <a id='scan-vm-noresults'></a> scan_results Does Not Include Scans for VMs in the Deployment
 
