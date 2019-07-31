@@ -6,21 +6,26 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 
 These are release notes for <%= vars.product_full %> (PCF).
 
-##<a id="v100-b63"></a> v1.0.0 GA
+##<a id="v100"></a> v1.0.0 - General Availability (GA)
 
-**Release Date:** July 8, 2019
+**Release Date:** July 31, 2019
 
 This is the General Availability release of <%= vars.product_short %>.
 
 ### Features
 
 New features and changes in this release:
-* Changed oscap_store VM's default port to avoid collision and installation issue.
-* Increased the default scan timeout value to 20 minutes.
-* Changed the default  machine type to use 2 cpus and 2 gb of memory for the oscap_store VM
-* Scan results now compatible with STIG Viewer
-* Added test categories in the test result for the Recommended Security Baseline & Strict Security Practices benchmarks
-* Added the severity level field to  Xenial benchmark test result.
+
+* Changes the default port for the `oscap_store` VM to avoid port range collision and installation issues.
+* Increases the default value for **Scanner Timeout** to `1200`.
+* Changes the default machine type for the `oscap_store` VM to use 2&nbsp;CPUs and 2&nbsp;GB of memory.
+* Provides more information in scan results, for an improved experience when using the STIG Viewer published by DISA:
+  * Includes the benchmark used in the test results for checklist creation in the viewer.
+  * Adds the severity level field to Xenial benchmark test results.
+  * Adds the group field to test results.
+  * Adds test categories in the `Recommended Security Baseline` and
+    `Strict Security Practices` benchmark test results.
+
 
 ##<a id="v100-b63"></a> v1.0.0-beta.63
 
