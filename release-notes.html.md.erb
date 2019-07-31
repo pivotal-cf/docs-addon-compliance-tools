@@ -19,7 +19,7 @@ New features and changes in this release:
 * Changes the default port for the `oscap_store` VM to avoid port range collision and installation issues.
 * Increases the default value for **Scanner Timeout** to `1200`.
 * Changes the default machine type for the `oscap_store` VM to use 2&nbsp;CPUs and 2&nbsp;GB of memory.
-* Provides more information in scan results, for an improved experience when using the STIG Viewer published by DISA:
+* Provides additional information in scan results, for an improved experience when using the STIG Viewer tool published by DISA:
   * Includes the benchmark used in the test results for checklist creation in the viewer.
   * Adds the severity level field to Xenial benchmark test results.
   * Adds the group field to test results.
@@ -64,17 +64,17 @@ New features and changes in this release:
 * Updates OpenSCAP to v1.3.0.
 * Adds index.html to provide HTML results.
 * Removes dependencies requiring the Pivotal Application Service (PAS) tile.
-  This enables scans on Pivotal Container Service (PKS) only environemnts.
+  This enables scans on Enterprise Pivotal Container Service (Enterprise PKS)-only environments.
 
 ### Resolved Issues
 This release fixes the following issue:
 
-* Fixes a bug when scanning environments without other tiles.
+* Fixes an issue when scanning environments without other tiles.
 
 ### Known Issues
 This release has the following known issue:
 
-* No support for federated single sign-on, and authorization.
+* No support for federated SSO and authorization.
 
 
 ##<a id="v100-b7"></a> v1.0.0-beta.7
@@ -87,7 +87,7 @@ This is the first release of <%= vars.product_short %>.
 New features and changes in this release:
 
 * Features the ability to scan all BOSH-managed VMs to verify secure platform configuration
-* Contains four bundled benchmarks with tests developed for cloud native OS stemcells
+* Contains four bundled benchmarks with tests developed for cloud-native OS stemcells
 * Allows high-level scan reports for each VM in LOG, XML, and HTML formats
 
 ### Known Issues
