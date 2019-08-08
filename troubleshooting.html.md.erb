@@ -83,3 +83,46 @@ on PAS (and any other tiles with VMs you want to scan) after applying changes
 to the <%= vars.product_short %> tile.
 This is so that the version of <%= vars.product_short %> on the VMs match the version
 being used by the scanner.
+
+### <a id='scan-vm-cannot-resolve'></a> Unable to resolve store domain: no such host
+
+#### Symptom
+Running a scan results in an `exit code 1` error similar to the following:
+
+<pre class="terminal">
+...
+Instance   oscap_store/43aba653-4d0a-4cfc-bc72-a136ce33e3e0
+Exit Code  1
+Stdout    2019/08/05 09:14:01 Starting store on port 28894
+          2019/08/05 09:14:01 [172.15.0.3 172.15.0.4 172.15.0.5 172.15.1.5 172.15.1.4] &lt;nil&gt;<br>
+          2019/08/05 09:14:01 Starting scan on 172.15.0.3
+          2019/08/05 09:14:01 Unable to scan 172.15.0.3: 500
+          2019/08/05 09:14:01 Starting scan on 172.15.0.4
+          2019/08/05 09:14:01 Unable to scan 172.15.0.4: 500
+          2019/08/05 09:14:01 Starting scan on 172.15.0.5
+          2019/08/05 09:14:01 Unable to scan 172.15.0.5: 500
+          2019/08/05 09:14:01 Shutdown
+          Received no scan results
+</pre>
+
+and produces a `scanner_web_ctl.log` similar to the following:
+
+**/var/vcap/sys/log/config\_scanner/scanner\_web\_ctl.log:**
+
+<pre class="terminal">
+2019/08/05 10:21:34 Lookup store
+2019/08/05 10:21:34 Unable to resolve store domain: lookup q-s4.oscap-store.NETWORK-NAME.p-compliance-scanner-5f51f48abb5fbf23b617.bosh on 169.254.0.2:53: no such host
+</pre>
+
+Where `NETWORK-NAME` is the name given to the network being used for the Compliance Scanner for PCF tile.
+
+#### Explanation
+BOSH DNS cannot resolve the `oscap_store` VM URL if there is any capitalization in the network's **Name**.
+
+#### Solution
+Verify that the network you selected inside the **Assign AZs and Networks** pane
+of your Compliance Scanner for PCF tile is not capitalized.
+
+If this is the case, you need to edit the name of the network being used to remove capitalization.
+To do this, go into the BOSH Director tile, select the **Create Networks** pane,
+and rename the network using its **Name** field.
