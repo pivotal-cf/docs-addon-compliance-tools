@@ -127,6 +127,6 @@ If this is the case, you need to edit the name of the network being used to remo
 To do this, go into the BOSH Director tile, select the **Create Networks** pane,
 and rename the network using its **Name** field.
 
-After making this change, you must **Apply Changes** for all tiles with VMs you want to scan.
-This is so that the version of <%= vars.product_short %> on the VMs match the version
-being used by the scanner.
+After making this change, you must **Apply Changes** to all tiles with VMs you want to scan.
+This is so that the network name property is updated on the scanner VMs,
+and used to call back to the `oscap_store` VM.
