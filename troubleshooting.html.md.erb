@@ -123,10 +123,11 @@ BOSH DNS cannot resolve the `oscap_store` VM URL if there is any capitalization 
 Verify that the network you selected inside the **Assign AZs and Networks** pane
 of your Compliance Scanner for PCF tile is not capitalized.
 
-If this is the case, you need to edit the name of the network being used to remove capitalization.
-To do this, go into the BOSH Director tile, select the **Create Networks** pane,
-and rename the network using its **Name** field.
+If this is the case, you need to edit the name of the network being used to remove capitalization:
 
-After making this change, you must **Apply Changes** to all tiles with VMs you want to scan.
-This is so that the network name property is updated on the scanner VMs,
-and used to call back to the `oscap_store` VM.
+1. On the Ops Manager Installation Dashboard, click **BOSH Director**.
+2. Click **Create Networks**.
+3. Change the network **Name** to a name without capital letters, and click **Save**.
+4. Click Review Pending Changes, and then **Apply Changes** to all tiles.
+
+This updates the network name property on all VMs.
