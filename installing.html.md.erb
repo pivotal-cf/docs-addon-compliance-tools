@@ -12,7 +12,7 @@ Compliance Scanner for PCF runs a scanner daemon on each VM that requires ~100&n
 Before you install Compliance Scanner, you might need to resize your VMs accordingly.
 
 ## <a id='install'></a> Install <%= vars.product_short %>
-To install the <%= vars.product_short %> file on the Ops Manager Installation Dashboard, do the following:
+To install the <%= vars.product_short %> file on the Ops Manager Installation Dashboard:
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/compliance/).
 
@@ -24,9 +24,9 @@ This adds the tile to your staging area.
 1. Click the newly added **<%= vars.product_short %>** tile.
 
 ## <a id='scan'></a> Configure Scans
-This section is where you configure expected values for tests and select which set of benchmarks to run. To configure your scans, do the following:
+This section is where you configure expected values for tests and select which set of benchmarks to run. To configure your scans:
 
-1. Click the **Settings** tab.
+1. Click **Settings**.
 
     <%= image_tag("compliance-settings.png", :alt => "Compliance Settings page") %>
 
@@ -59,7 +59,7 @@ This section is where you configure expected values for tests and select which s
 
     <%= image_tag("system-var.png", :alt => "System Variables page", :width => "260") %>
 
-1. Configure the fields in the **System Variables** pane to provide the expected values for the tests:
+1. Configure the fields in **System Variables** to provide the expected values for the tests:
 
     <table class="nice">
         <th>Field</th>
@@ -139,8 +139,7 @@ This is so that a scan is not run every time changes are applied.
 When this errand is triggered, it initiates the scanning errand on each VM.
 For more information about initiating the scanning errand, see [Using <%= vars.product_short %>](./using.html).
 
-When configuring the <%= vars.product_short %> tile for the first time,
-do the following:
+When configuring the <%= vars.product_short %> tile for the first time, follow these steps:
 
 1. Click **Errands**.
 
@@ -163,8 +162,7 @@ Pivotal recommends using the default configurations.</p>
 1. Click **Save**.
 
 ## <a id="apply-changes"></a> Apply Changes from Your Configuration
-Your installation is not complete until you apply your configuration changes.
-Follow the steps below:
+Your installation is not complete until you apply your configuration changes:
 
 1. Return to the Ops Manager Installation Dashboard.
 
