@@ -71,6 +71,11 @@ To begin scanning, do the following:
 
 ###<a id='review-tile'></a>Retrieve Log Files
 
+<p class="note"><strong>Note: </strong>  If an S3 bucket is configured, the log files will not contain 
+  the scan output. For instructions on accessing the scan output when an S3 bucket is configured,
+  refer to <a href="#scan-output-s3">Scan Output - S3</a>.
+  For instructions on configuring an S3 bucket, refer to <a href="./installing.html#s3">Installing and Configuring</a>.</p>
+
 To review the logs for a completed scan using the <%= vars.product_short %> tile, do the following:
 
 1. When the changes have been applied, return to the Installation Dashboard
@@ -105,6 +110,17 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
 
 ###<a id='scan-output'></a> Find Scan Output
 
+The method of finding the scan output depends on whether or not an S3 bucket is configured for scan results.
+For instructions on configuring an S3 bucket, refer to <a href="./installing.html#s3">Installing and Configuring</a>.
+
+####<a id="scan-output-s3"></a>An S3 Bucket is Configured (AWS or Minio)
+
+Scan output is uploaded to the configured bucket as an archive, whose filename contains the timestamp
+of the scan. Specifically, the filename is of the form <code>compliance_scanner_yyyy-mm-ddThhmmss.tar.gz</code>.
+To retrieve the scan results, simply download and extract this archive.
+
+####<a id="scan-output-logs"></a>S3 Bucket Configuration is set to **None**
+
 The `oscap_store` ZIP file contains scan results from the `oscap_store` VM.
 <br>
 The results of the scan are at the following path:
@@ -112,6 +128,10 @@ The results of the scan are at the following path:
   ```
   oscap_store/scanner/scan_results/output
   ```
+
+---
+
+Regardless of whether the scan output was fetched from an S3 bucket or from the logs, its format is consistent.
 
   The naming syntax for each log file is the following:
 

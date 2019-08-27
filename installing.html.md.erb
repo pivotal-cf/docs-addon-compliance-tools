@@ -149,6 +149,94 @@ When configuring the <%= vars.product_short %> tile for the first time, follow t
 
 1. Click **Save**.
 
+## <a id="s3"></a> Configure S3 Upload
+You can optionally configure an S3 (or S3 compatible) bucket to upload your scan output.
+Currently, we support AWS and Minio buckets.
+
+<p class="note"><strong>Note:</strong>
+If this feature is enabled, the scan results will not be stored on the local file system of the <code>oscap_store</code> VM,
+and scan results will only be accessible through the configured bucket.
+If this feature is disabled, refer to <a href="./using.html#review-tile">Retrieve Log Files</a> for accessing the scan results.</p>
+</p>
+
+1. Click **S3 Upload**.
+
+### <a id="aws-s3"></a> AWS S3 Bucket
+If the S3 bucket you are using for scan results is hosted by AWS:
+
+1. Select **AWS S3 Bucket**
+
+1. Configure the fields as follows:
+
+    <table class="nice">
+      <th>Field</th>
+      <th>Description</th>
+      <tr>
+        <td><strong>Bucket Name</strong></td>
+        <td>Input the name of the bucket.</td>
+      </tr>
+      <tr>
+        <td><strong>Bucket Region</strong></td>
+        <td>Select the correct region that the bucket was created in.</td>
+      </tr>
+      <tr>
+        <td><strong>Access Key ID</strong></td>
+        <td>Input the access key ID for AWS credentials with access to the bucket. <br>
+          We recommend limiting the permissions of the credentials to having only write access to this bucket.</td>
+      </tr>
+      <tr>
+        <td><strong>Access Key Secret</strong></td>
+        <td>Input the access key secret for AWS credentials with access to the bucket. <br>
+          We recommend limiting the permissions of the credentials to having only write access to this bucket.</td>
+      </tr>
+    </table>
+
+  1. Click **Save**.
+
+### <a id="minio-s3"></a> Minio Bucket
+If the S3 bucket you are using for scan results is a Minio server:
+
+1. Select **Minio Bucket**
+
+1. Configure the fields as follows:
+
+    <table class="nice">
+      <th>Field</th>
+      <th>Description</th>
+      <tr>
+        <td><strong>Bucket Name</strong></td>
+        <td>Input the name of the bucket.</td>
+      </tr>
+      <tr>
+        <td><strong>Minio Host</strong></td>
+        <td>Input the fully qualified domain name of the Minio server.
+          This may include a port, but should not specify the protocol. <br>
+          For instance, <code>example.domain.com:9000</code> is a valid host.</td>
+      </tr>
+      <tr>
+        <td><strong>Bucket Region</strong></td>
+        <td>If your Minio configuration specifies a region, input that region here. <br>
+          Otherwise, this field can be left blank.</td>
+      </tr>
+      <tr>
+        <td><strong>Access Key ID</strong></td>
+        <td>Input the access key ID for the Minio server.</td>
+      </tr>
+      <tr>
+        <td><strong>Access Key Secret</strong></td>
+        <td>Input the access key secret for the Minio server.</td>
+      </tr>
+      <tr>
+        <td><strong>Bucket CA Certificate</strong></td>
+        <td>Input the CA Certificate used by the Minio server, if applicable.
+          If the Minio server does not use TLS, leave this field blank. <br><br>
+          If the Minio server is a PAS service instance, this CA Certificate should match the
+          **SAML Service Provider Credentials** field under the **UAA** form in your PAS tile.</td>
+      </tr>
+    </table>
+
+  1. Click **Save**.
+
 ## <a id="resources"></a> Configure Resources
 The tile creates a new VM called `oscap_store` to store the logs retrieved from all the other VMs
 that have been scanned.
