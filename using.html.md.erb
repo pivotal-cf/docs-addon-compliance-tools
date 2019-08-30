@@ -20,7 +20,7 @@ The scan errand on each VM does generate the Security Content Automation Protoco
 tests each time by running XGen on XFiles.
 
 
-##<a id='scan-methods'></a> Ways to Scan VMs
+## <a id='scan-methods'></a> Ways to Scan VMs
 
 You can scan VMs using the tile UI or the command line:
 
@@ -28,20 +28,20 @@ You can scan VMs using the tile UI or the command line:
 * When setting up automated scans of your VMs, see [Scan Using the Command Line](#terminal-scan).
 
 
-##<a id='tile-scan'></a> Scan Using the <%= vars.product_short %> Tile
+## <a id='tile-scan'></a> Scan Using the <%= vars.product_short %> Tile
 Scanning VMs involves three procedures:
 
 1. [Scan the VMs](#scan-vms)
 1. [Retrieve Log Files](#review-tile)
 1. [Find Scan Output](#scan-output)
 
-###<a id='scan-vms'></a> Scan the VMs
+### <a id='scan-vms'></a> Scan the VMs
 
-To begin scanning, do the following:
+To begin scanning:
 
 1. Confirm that your scan is configured correctly with the benchmarks and log formats you want output.
 
-    For more information on configuring your scan,
+    For more information about configuring your scan,
     see [Configure Scans](./installing.html#scan).
 
 1. Navigate to the Ops Manager Installation Dashboard.
@@ -55,7 +55,7 @@ To begin scanning, do the following:
 
     A scan is triggered at the end.
 
-    <p class="note"><strong>Note: </strong>  If the PAS tile is checked, the tile does not re-deploy
+    <p class="note"><strong>Note:</strong>  If the PAS tile is checked, the tile does not re-deploy
       its packaged contents when changes are applied. If there are changes from other sources than
       <%= vars.product_short %>, leave those products and errands checkboxes enabled if
       you want those changes to be applied.
@@ -69,27 +69,27 @@ To begin scanning, do the following:
     If you run any subsequent scans these files are overwritten.
 
 
-###<a id='review-tile'></a>Retrieve Log Files
+### <a id='review-tile'></a>Retrieve Log Files
 
-<p class="note"><strong>Note: </strong>  If an S3 bucket is configured, the log files will not contain 
+<p class="note"><strong>Note:</strong>  When an S3 bucket is configured, the log files do not contain
   the scan output. For instructions on accessing the scan output when an S3 bucket is configured,
-  refer to <a href="#scan-output-s3">Scan Output - S3</a>.
-  For instructions on configuring an S3 bucket, refer to <a href="./installing.html#s3">Installing and Configuring</a>.</p>
+  see <a href="#scan-output-s3">Scan Output - S3</a> below.
+  For instructions on configuring an S3 bucket, see <a href="./installing.html#s3">Installing and Configuring</a>.</p>
 
-To review the logs for a completed scan using the <%= vars.product_short %> tile, do the following:
+To review the logs for a completed scan using the <%= vars.product_short %> tile:
 
 1. When the changes have been applied, return to the Installation Dashboard
    and click the <%= vars.product_short %> tile.
 
     ![dialog at the end of apply changes](changes-applied.png)
 
-1. Click the **Status** tab and download the `oscap_store` log file.
+1. Click **Status** and download the `oscap_store` log file.
 
     This downloads the log file containing scan results from the `oscap_store` VM to Ops Manager.
     If you select the download icon multiple times, a list of ZIP files is created in Ops Manager,
     each with a different timestamp.
 
-1. Click the **Logs** tab and click on the filename of the ZIP log file.
+1. Click **Logs** and click the filename of the ZIP log file.
 
     This downloads the scan results from the Ops Manager to your local machine.
 
@@ -108,36 +108,32 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
 
     <a href="base_xenial_sample.html" target="_blank">See a larger version of this image.</a>
 
-###<a id='scan-output'></a> Find Scan Output
+### <a id='scan-output'></a> Find Scan Output
 
 The method of finding the scan output depends on whether or not an S3 bucket is configured for scan results.
-For instructions on configuring an S3 bucket, refer to <a href="./installing.html#s3">Installing and Configuring</a>.
+For instructions on configuring an S3 bucket, see <a href="./installing.html#s3">Installing and Configuring</a>.
 
-####<a id="scan-output-s3"></a>An S3 Bucket is Configured (AWS or Minio)
 
-Scan output is uploaded to the configured bucket as an archive, whose filename contains the timestamp
-of the scan. Specifically, the filename is of the form <code>compliance_scanner_yyyy-mm-ddThhmmss.tar.gz</code>.
-To retrieve the scan results, simply download and extract this archive.
+  * Scan Output for a Configured S3 Bucket
 
-####<a id="scan-output-logs"></a>S3 Bucket Configuration is set to **None**
+    * Scan output is uploaded to the configured bucket as an archive.
+    * The scan output filename contains the timestamp of the scan and takes the form
+    <code>compliance\_scanner\_YYYY-MM-DDTHHMMSS.tar.gz</code>.
+    * To retrieve the scan results, download and extract this archive.
 
-The `oscap_store` ZIP file contains scan results from the `oscap_store` VM.
-<br>
-The results of the scan are at the following path:
+  * Scan Output for a Non-configured S3 Bucket
 
-  ```
-  oscap_store/scanner/scan_results/output
-  ```
+    * The `oscap_store` ZIP file contains scan results from the `oscap_store` VM.
+    * The results of the scan are at `oscap_store/scanner/scan_results/output`.
 
----
+The scan output format is not affected by where it was fetched from, be it an S3 bucket or logs.
 
-Regardless of whether the scan output was fetched from an S3 bucket or from the logs, its format is consistent.
-
-  The naming syntax for each log file is the following:
+  The naming syntax for each log file is below:
 
   ```
   BENCHMARK_COMPONENT_UUID.FORMAT
   ```
+
   Where:
 
   + `BENCHMARK` is the benchmark that was used for the scan.
@@ -145,7 +141,7 @@ Regardless of whether the scan output was fetched from an S3 bucket or from the 
   + `UUID` is the UUID for the VM that was scanned.
   + `FORMAT` is the format of the file.
 
-  For example, the `oscap_store` folder directory looks similar to the following image:
+  For example, the `oscap_store` directory looks similar to the following image:
 
   ![oscap_store file structure](oscap_store.png)
 
@@ -157,6 +153,7 @@ The number of log files in the `output` directory can be calculated as follows:
   ```
   (v + i) * f * b
   ```
+
   Where:
 
   + `v` is the number of VMs in your PCF deployment.
@@ -165,18 +162,18 @@ The number of log files in the `output` directory can be calculated as follows:
   + `b` is the number of benchmarks you configured in [Configure Scans](./installing.html#scan).
 
 
-##<a id='terminal-scan'></a>Scan Using the Command Line
+## <a id='terminal-scan'></a>Scan Using the Command Line
 
-You also have the option of scanning VMs using the command line.
+You also have the option of scanning VMs through the CLI.
 There are two ways to do this:
 
 * [Scan and Retrieve Log Files](#scan-retrieve-logs)
 * [Retrieve Existing Log Files](#retrieve-only-logs)
 
 
-###<a id='scan-retrieve-logs'></a>Scan and Retrieve Log Files
+### <a id='scan-retrieve-logs'></a>Scan and Retrieve Log Files
 
-To start a new scan and retrieve the logs for the completed scan using the command line, do the following:
+To start a new scan and retrieve the logs for the completed scan using the CLI:
 
 1. Log in to the BOSH Director.
     1. On the Ops Manager VM, create an alias in the BOSH CLI for your BOSH Director IP address. For example:
@@ -233,10 +230,9 @@ To start a new scan and retrieve the logs for the completed scan using the comma
   To see what the current settings are, see <a href="./installing.html#scan">Configure Scans</a>.</p>
 
 
-###<a id='retrieve-only-logs'></a>Retrieve Existing Log Files
+### <a id='retrieve-only-logs'></a>Retrieve Existing Log Files
 
-To retrieve existing logs for the most recent completed scan using the command line,
-use the following command:
+To retrieve existing logs for the most recent completed scan using the CLI, run:
 
   ```
   bosh -e my-env -d scanner-DEPLOYMENT-UUID logs --only=scan_results --dir PATH-TO-SAVE-SCAN-RESULTS
@@ -244,17 +240,17 @@ use the following command:
   Where:
 
   * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
-  * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you would like to save your logs to.
-  You may omit `--dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
+  * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you save your logs.
+  Omit `--dir PATH-TO-SAVE-SCAN-RESULTS` to save the logs to your current directory.
 
   For example:
   <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb logs --only=scan_results --dir scanner/logs/20190131</pre>
 
 
-###<a id='access-logs'></a>Access Log Files
+### <a id='access-logs'></a>Access Log Files
 To access your saved logs, unzip the output ZIP file.
 
-The naming syntax for each log file is the following:
+The naming syntax for each log file is below:
 
   ```
   BENCHMARK_COMPONENT_UUID.FORMAT
@@ -266,13 +262,13 @@ The naming syntax for each log file is the following:
   * `UUID` is the UUID for the VM that was scanned.
   * `FORMAT` is the format of the file.
 
-  For example, the `output` folder directory looks similar to the following image:
+  For example, the `output` directory looks similar to the following image:
 
   ![output folder structure](command_line_output.png)
 
 
 <!-- Put below "View Tests on VMs" section in a "Reporting" page in the future -->
-##<a id='tests'></a> View Tests on VMs
+## <a id='tests'></a> View Tests on VMs
 
 For every configuration rule that is checked, there is a corresponding test written in YAML test
 files residing on each VM.
@@ -282,7 +278,7 @@ matches the description.
 In the beta release of <%= vars.product_short %>,
 you cannot write your own YAML tests or convert these tests to the SCAP format.
 
-To view tests on VMS, do the following:
+To view tests on VMs:
 
 1. Use the BOSH CLI to SSH into a component VM. For more information,
 see [BOSH SSH](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#bosh-ssh).
