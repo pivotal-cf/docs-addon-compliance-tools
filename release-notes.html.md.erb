@@ -6,21 +6,25 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 
 These are release notes for <%= vars.product_full %> (PCF).
 
-##<a id="v1-0"></a> v2.0
+##<a id="v116"></a> v1.1.6
 
-**Release Date:** MMMM XX, 2019
+**Release Date: September 6, 2019**
 
 ### Features
-
 New features and changes in this release:
 
-*
-*
-*
+* Adds ability to cancel running scans.
+* Adds ability to store scan results in Amazon S3 Buckets and MinIO Object Storage.
+* Adds compatibility with STIG viewer.
+* Adds ability to configure **Open File Limit** in the tile.
+* Adds additional logging for test duration and timestamps.
+* Replace log formatted output with the csv format.
+* Updates packaged benchmarks.
+* Updates golang to v1.12.9.
+* Updates bundled OpenSCAP to v1.3.1.
 
+### Resolved Issue
+This release fixes the following issues:
 
-### Known Issues
-
-This release has the following known issues:
-
-*
+* Fixes BOSH DNS lookup issue due to a network name having uppercase.
+* Fixes the `oscap_store` VM's error code from `0` to `1`.
