@@ -288,3 +288,81 @@ see [BOSH SSH](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.ht
     ```
 
 1. Search for the test ID and open the corresponding file.
+
+## Cancel a Running Scan
+A running scan can be cancelled using the command line as follows:
+
+1. Log in to the BOSH Director.
+    1. On the Ops Manager VM, create an alias in the BOSH CLI for your BOSH Director IP address. For example:
+    <pre class="terminal">$ bosh alias-env my-env -e 10.0.0.3</pre>
+    1. Log in to the BOSH Director, specifying the newly created alias.
+    For example:
+    <pre class="terminal">$ bosh -e my-env log-in</pre>
+
+1. Run `bosh -e my-env tasks` to get the task ID of the `scan_results` errand. For example:
+
+  <pre class="terminal">
+  ID  State       Started At                    Last Activity At              User   Deployment    Description                                            Result
+  65  processing  Fri Sep  6 19:06:53 UTC 2019  Thu Jan  1 00:00:00 UTC 1970  admin  my-deployment run errand scan_results from deployment my-deployment  -
+
+  1 tasks
+  </pre>
+
+  In this case, the task ID is `65`.
+
+  <p class="note"><strong>Note: </strong> If the scan was started using the command line as described in
+      [Scan Using the Command Line](#terminal-scan), you can press `CTRL + C` while the scan is running
+      to stop waiting for the scan to complete. This will not cancel the scan, but will allow you to
+      issue new commands through the CLI.</p>
+
+1. Run `bosh -e my-env cancel-task <task id>` in order to cancel the `scan_results` errand. You should see `Succeeded`
+   in the output. If you initiated the command through Ops Manager, the Ops Manager log output for the errand should
+   look similar to the following:
+
+   <pre class="terminal">
+   Task 65 | 19:06:53 | Preparing deployment: Preparing deployment (00:00:01)
+   Task 65 | 19:06:54 | Running errand: oscap-store/fa844bb0-5739-497a-a3db-f96a86a3dc2a (0) (00:00:05)
+                      L Error: Task 65 cancelled
+   Task 65 | 19:07:00 | Fetching logs for oscap-store/fa844bb0-5739-497a-a3db-f96a86a3dc2a (0): Finding and packing log files (00:00:01)
+   Task 65 | 19:07:01 | Error: Task 65 cancelled
+
+   Task 65 Started  Fri Sep  6 19:06:53 UTC 2019
+   Task 65 Finished Fri Sep  6 19:07:01 UTC 2019
+   Task 65 Duration 00:00:08
+   Task 65 cancelled
+
+   Running errand 'scan_results':
+     Expected task '65' to succeed but state is 'cancelled'
+
+   Exit code 1
+   </pre>
+
+### Interpreting the Errand Log
+To retrieve the errand log, refer to [Retrieve Existing Log Files](#retrieve-only-logs).
+The output directory will contain the file `store.log`, which should look similar to the following:
+
+```
+2019/09/06 19:06:54 Starting store on port 28894
+2019/09/06 19:06:54 [10.0.0.12 10.0.0.11 10.0.0.9 10.0.0.10] <nil>
+2019/09/06 19:06:54 Starting scan on 10.0.0.12
+2019/09/06 19:06:54 Starting scan on 10.0.0.11
+2019/09/06 19:06:54 Starting scan on 10.0.0.9
+2019/09/06 19:06:54 Starting scan on 10.0.0.10
+2019/09/06 19:06:59 Received signal terminated
+2019/09/06 19:06:59 Attempting to cancel scan on host 10.0.0.10
+2019/09/06 19:06:59 Attempting to cancel scan on host 10.0.0.12
+2019/09/06 19:06:59 Attempting to cancel scan on host 10.0.0.11
+2019/09/06 19:06:59 Attempting to cancel scan on host 10.0.0.9
+2019/09/06 19:06:59 Host 10.0.0.10 successfully acknowledged cancel request
+2019/09/06 19:06:59 Host 10.0.0.12 successfully acknowledged cancel request
+2019/09/06 19:06:59 Host 10.0.0.11 successfully acknowledged cancel request
+2019/09/06 19:06:59 Host 10.0.0.9 successfully acknowledged cancel request
+2019/09/06 19:06:59 Shutdown
+```
+
+<p class="note"><strong>Note: </strong> The errand log can also be found at the path
+  `/var/vcap/sys/log/scan_results/store.log` on the store VM.</p>
+
+Upon running `bosh -e my-env cancel-task <task id>`, the `scan_results` errand will log
+`"Received signal terminated"`, and will attempt to cancel the scan on every VM. When a VM
+receives a cancel message, it will terminate the running scan process.
