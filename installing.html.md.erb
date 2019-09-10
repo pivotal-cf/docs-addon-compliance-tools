@@ -146,21 +146,16 @@ When configuring the <%= vars.product_short %> tile for the first time:
 
 1. Click **Save**.
 
-## <a id="s3"></a> Configure S3 Upload
-To optionally configure an S3 (or S3-compatible) bucket to upload your scan output,
-click **S3 Upload**. The bucket must be hosted by AWS or Minio.
+## <a id="s3"></a> (Optional) Configure S3 Upload
+To store scan results in an S3 bucket or a Minio S3-compatible bucket, configure an S3 upload. <%# Insert reason why the reader might want to do this. %>
+If you do not use an S3 bucket for scan results, then the scan results are stored in the `oscap_store` of each VM.
+For more information, see [Retrieve Log Files](./using.html#review-tile).
 
-<p class="note"><strong>Note:</strong>
-If this feature is enabled, the scan results are not stored on the local file system of the <code>oscap_store</code> VM,
-and scan results are only accessible through the configured bucket.
-If this feature is disabled, see <a href="./using.html#review-tile">Retrieve Log Files</a> for information about accessing the scan results.</p>
-
-### <a id="aws-s3"></a> AWS S3 Bucket
-If the S3 bucket you use for scan results is hosted by AWS:
-
-1. Select **AWS S3 Bucket**
-
-1. Configure the fields as follows:
+1. Click **S3 Upload**
+<%# Insert screenshot. %>
+1. To use an S3 bucket:
+  * Click **AWS S3 Bucket**.
+  * Configure the fields as follows:
 
     <table class="nice">
       <th>Field</th>
@@ -185,14 +180,9 @@ If the S3 bucket you use for scan results is hosted by AWS:
       </tr>
     </table>
 
-1. Click **Save**.
-
-### <a id="minio-s3"></a> Minio Bucket
-If the S3 bucket you use for scan results is hosted on a Minio server:
-
-1. Select **Minio Bucket**
-
-1. Configure the fields as follows:
+1. To use a Minio bucket:
+  * Select **Minio Bucket**.
+  * Configure the fields as follows:
 
     <table class="nice">
       <th>Field</th>
