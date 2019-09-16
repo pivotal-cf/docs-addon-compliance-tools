@@ -147,15 +147,16 @@ When configuring the <%= vars.product_short %> tile for the first time:
 1. Click **Save**.
 
 ## <a id="s3"></a> (Optional) Configure S3 Upload
-To store scan results in an S3 bucket or a Minio S3-compatible bucket,
+To store scan results in an Amazon S3 bucket or a Minio S3-compatible bucket,
 configure an S3 upload.
 
-Doing this uploads scan results to an S3 bucket, avoiding the need to download
-BOSH logs through Ops Manager.
-This means auditors do not need access to Ops Manager,
-or have to rely on the operator to get scan results.
-Additionally, when using a SEIM, automating the consumption of the scan
-results is easier, and does not require access to the Ops Manager API.
+If you configure an S3 bucket, then <%= vars.product_short %> uploads scan
+results to the S3 bucket.
+This means that auditors do not need access to Ops Manager to download BOSH logs
+or rely on the operator to give them scan results.
+Additionally, when using a Security Information and Event Management (SIEM) system,
+automating the consumption of the scan results is easier and does not require
+access to the Ops Manager API.
 
 If you do not use an S3 bucket for scan results, then the scan results are stored in the `oscap_store` VM.
 For more information, see [Retrieve Log Files](./using.html#review-tile).
