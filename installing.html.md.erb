@@ -164,76 +164,77 @@ For more information, see [Retrieve Log Files](./using.html#review-tile).
 1. Click **S3 Upload**
 
 1. To use an S3 bucket:
-  * Click **AWS S3 Bucket**.
+  1. Select **AWS S3 Bucket**.
 
-    <%= image_tag("bucket-aws.png", :alt => "AWS S3.", :width => "300") %>
+        <%= image_tag("bucket-aws.png", :alt => "AWS S3.", :width => "300") %>
 
-  * Configure the fields as follows:
+  1. Configure the fields as follows:
 
-    <table class="nice">
-      <th>Field</th>
-      <th>Description</th>
-      <tr>
-        <td><strong>Bucket Name</strong></td>
-        <td>Enter the name of the bucket.</td>
-      </tr>
-      <tr>
-        <td><strong>Bucket Region</strong></td>
-        <td>Select the region that the bucket was created in.</td>
-      </tr>
-      <tr>
-        <td><strong>Access Key ID</strong></td>
-        <td>Enter the access key ID for AWS credentials with access to the bucket. <br>
-          Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
-      </tr>
-      <tr>
-        <td><strong>Access Key Secret</strong></td>
-        <td>Enter the access key secret for AWS credentials with access to the bucket. <br>
-          Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
-      </tr>
-    </table>
+        <table class="nice">
+          <th>Field</th>
+          <th>Description</th>
+          <tr>
+            <td><strong>Bucket Name</strong></td>
+            <td>Enter the name of the bucket.</td>
+          </tr>
+          <tr>
+            <td><strong>Bucket Region</strong></td>
+            <td>Select the region that the bucket was created in.</td>
+          </tr>
+          <tr>
+            <td><strong>Access Key ID</strong></td>
+            <td>Enter the access key ID for AWS credentials with access to the bucket. <br>
+              Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
+          </tr>
+          <tr>
+            <td><strong>Access Key Secret</strong></td>
+            <td>Enter the access key secret for AWS credentials with access to the bucket. <br>
+              Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
+          </tr>
+        </table>
 
 1. To use a Minio bucket:
-  * Select **Minio Bucket**.
 
-    <%= image_tag("bucket-minio.png", :alt => "Minio Object Storage.", :width => "300") %>
+  1. Select **Minio Bucket**.
 
-  * Configure the fields as follows:
+        <%= image_tag("bucket-minio.png", :alt => "Minio Object Storage.", :width => "300") %>
 
-    <table class="nice">
-      <th>Field</th>
-      <th>Description</th>
-      <tr>
-        <td><strong>Bucket Name</strong></td>
-        <td>Enter the name of the bucket.</td>
-      </tr>
-      <tr>
-        <td><strong>Minio Host</strong></td>
-        <td>Enter the fully qualified domain name of the Minio server.
-          This can include a port, but should not specify the protocol. <br>
-          For instance, <code>example.domain.com:9000</code> is a valid host.</td>
-      </tr>
-      <tr>
-        <td><strong>Bucket Region</strong></td>
-        <td>If your Minio configuration specifies a region, enter that region here. <br>
-          Otherwise, this field can be left blank.</td>
-      </tr>
-      <tr>
-        <td><strong>Access Key ID</strong></td>
-        <td>Enter the access key ID for the Minio server.</td>
-      </tr>
-      <tr>
-        <td><strong>Access Key Secret</strong></td>
-        <td>Enter the access key secret for the Minio server.</td>
-      </tr>
-      <tr>
-        <td><strong>Bucket CA Certificate</strong></td>
-        <td>Enter the CA Certificate used by the Minio server, if applicable.
-          If the Minio server does not use TLS, leave this field blank. <br><br>
-          If the Minio server is a PAS service instance, this CA Certificate must match the
-          <strong>SAML Service Provider Credentials</strong> field under the <strong>UAA</strong> form in your PAS tile.</td>
-      </tr>
-    </table>
+  1. Configure the fields as follows:
+
+        <table class="nice">
+          <th>Field</th>
+          <th>Description</th>
+          <tr>
+            <td><strong>Bucket Name</strong></td>
+            <td>Enter the name of the bucket.</td>
+          </tr>
+          <tr>
+            <td><strong>Minio Host</strong></td>
+            <td>Enter the fully qualified domain name of the Minio server.
+              This can include a port, but should not specify the protocol. <br>
+              For instance, <code>example.domain.com:9000</code> is a valid host.</td>
+          </tr>
+          <tr>
+            <td><strong>Bucket Region</strong></td>
+            <td>If your Minio configuration specifies a region, enter that region here. <br>
+              Otherwise, this field can be left blank.</td>
+          </tr>
+          <tr>
+            <td><strong>Access Key ID</strong></td>
+            <td>Enter the access key ID for the Minio server.</td>
+          </tr>
+          <tr>
+            <td><strong>Access Key Secret</strong></td>
+            <td>Enter the access key secret for the Minio server.</td>
+          </tr>
+          <tr>
+            <td><strong>Bucket CA Certificate</strong></td>
+            <td>Enter the CA Certificate used by the Minio server, if applicable.
+              If the Minio server does not use TLS, leave this field blank. <br><br>
+              If the Minio server is a PAS service instance, this CA Certificate must match the
+              <strong>SAML Service Provider Credentials</strong> field under the <strong>UAA</strong> form in your PAS tile.</td>
+          </tr>
+        </table>
 
 1. Click **Save**.
 
