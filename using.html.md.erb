@@ -335,36 +335,23 @@ To cancel a running scan:
     bosh -e ENVIRONMENT-ALIAS cancel-task TASK-ID
     ```
 
-    You will see `Succeeded` in the output.
-    <br><br>
-    If you started the scan using Ops Manager, the Ops Manager log output for the errand
-    looks similar to:
-
+    For example:
     <pre class="terminal">
-    Task 65 | 19:06:53 | Preparing deployment: Preparing deployment (00:00:01)
-    Task 65 | 19:06:54 | Running errand: oscap-store/fa844bb0-5739-497a-a3db-f96a86a3dc2a (0) (00:00:05)
-                      L Error: Task 65 cancelled
-    Task 65 | 19:07:00 | Fetching logs for oscap-store/fa844bb0-5739-497a-a3db-f96a86a3dc2a (0): Finding and packing log files (00:00:01)
-    Task 65 | 19:07:01 | Error: Task 65 cancelled
+    $ bosh cancel-task 994
+    Using environment '10.0.0.5' as client 'ops_manager'
 
-    Task 65 Started  Fri Sep  6 19:06:53 UTC 2019
-    Task 65 Finished Fri Sep  6 19:07:01 UTC 2019
-    Task 65 Duration 00:00:08
-    Task 65 cancelled
-
-    Running errand 'scan_results':
-     Expected task '65' to succeed but state is 'cancelled'
-
-    Exit code 1
+    Succeeded
     </pre>
 
-### <a id="interpret-scan"></a> Interpreting the Errand Log <%# might need a better heading title %>
+
+### <a id="interpret-scan"></a> Errand Logs After Cancelling a Scan
 
 After running the BOSH `cancel-task` command, the `scan_results` errand outputs
-`"Received signal terminated"`, and attempts to cancel the scan on every VM. When a VM
+`Received signal terminated`, and attempts to cancel the scan on every VM. When a VM
 receives the cancel message, it terminates the running scan process.
 
-This process is logged in the `store.log` file in the output directory, for example:
+After the scan has cancelled, the `store.log` file in the output directory will
+look similar to the example below:
 
 <pre class="terminal">
 2019/09/06 19:06:54 Starting store on port 28894
@@ -385,7 +372,32 @@ This process is logged in the `store.log` file in the output directory, for exam
 2019/09/06 19:06:59 Shutdown
 </pre>
 
-To retrieve the errand log, refer to [Retrieve Existing Log Files](#retrieve-only-logs).
+To retrieve the errand log, see [Retrieve Existing Log Files](#retrieve-only-logs).
 
 <p class="note"><strong>Note: </strong> The errand log can also be found at the path
   <code>/var/vcap/sys/log/scan_results/store.log</code> on the store VM.</p>
+
+<br>
+If you started the scan using Ops Manager, you can view the log output for the
+`scan_results` errand in Ops Manager. <%# is this correct? %>
+
+After the scan has cancelled, the Ops Manager log output for the errand will look
+similar to the example below:
+
+<pre class="terminal">
+Task 65 | 19:06:53 | Preparing deployment: Preparing deployment (00:00:01)
+Task 65 | 19:06:54 | Running errand: oscap-store/fa844bb0-5739-497a-a3db-f96a86a3dc2a (0) (00:00:05)
+                  L Error: Task 65 cancelled
+Task 65 | 19:07:00 | Fetching logs for oscap-store/fa844bb0-5739-497a-a3db-f96a86a3dc2a (0): Finding and packing log files (00:00:01)
+Task 65 | 19:07:01 | Error: Task 65 cancelled
+
+Task 65 Started  Fri Sep  6 19:06:53 UTC 2019
+Task 65 Finished Fri Sep  6 19:07:01 UTC 2019
+Task 65 Duration 00:00:08
+Task 65 cancelled
+
+Running errand 'scan_results':
+ Expected task '65' to succeed but state is 'cancelled'
+
+Exit code 1
+</pre>
