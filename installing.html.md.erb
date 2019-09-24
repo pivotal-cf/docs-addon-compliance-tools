@@ -123,13 +123,16 @@ This section is where you configure expected values for tests and select which s
     <br><br>
     For more information about <%= vars.product_short %> benchmarks, see [Benchmarks](./benchmarks.html).
 
-1. For **Scanner Timeout**, configure the maximum time in seconds permitted for a scan. The default value is `1200`.
+1. For **Scanner Timeout**, configure the maximum time in seconds permitted for a scan.
+    The default value is `1200`.
 
-1. For **Enforce CPU limit**, If `Enabled` configure the CPU limit percentage (1 to 100) the Scanner is allowed to use.
+1. For **Enforce CPU limit**, configure the CPU limit percentage (between `1` and `100`)
+  that the Scanner is allowed to use.
+  The default value is `Disable`.
 
-   Setting CPU limit affects only 1 core. For example: In a system with 4 core with cpu limit 100%, will allow the scanner to utilize only 1 out of the 4 cores
-
-   The default value is `Disable`
+    <p class="note"><strong>Note:</strong>
+      <strong>Enforce CPU limit</strong> affects only 1 core. For example: In a system with 4 cores with a cpu limit set to <code>100</code>, the scanner will only use 1 of the 4 cores.
+      </p>
 
 1. Click **Save**.
 
