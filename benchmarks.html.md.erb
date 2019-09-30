@@ -16,8 +16,8 @@ Benchmarks determine which tests are run by the scanner.
 <%= vars.product_short %> offers four scanning benchmarks:
 
 + [Base Xenial](./benchmarks.html#base)
-+ [Recommended Security Baseline](./benchmarks.html#recommended)
-+ [Strict Security Practices](./benchmarks.html#strict)
++ [CIS Level 1](./benchmarks.html#cis-level-1)
++ [CIS Level 2](./benchmarks.html#cis-level-2)
 + [STIG for Ubuntu Xenial](./benchmarks.html#stig)
 
 
@@ -35,18 +35,15 @@ Use this benchmark to see if the configurations have been further modified.
 For information about the STIG benchmark, see [STIG for Ubuntu Xenial](benchmarks.html#stig) below.
 
 
-## <a id="recommended"></a> Recommended Security Baseline
-This benchmark includes tests based on Pivotal's minimum recommended configuration baseline.
-Your system should implement this benchmark, regardless of the user's deployment or the sensitivity of app data being processed.
+## <a id="cis-level-1"></a> CIS Level 1
+The CIS Level 1 profile is considered a base recommendation that can be implemented fairly promptly and is designed to not have an extensive performance impact. 
+The intent of the Level 1 profile benchmark is to lower the attack surface of your organization while keeping machines usable and not hindering business functionality.
 
 
-## <a id="strict"></a> Strict Security Practices
+## <a id="cis-level-2"></a> CIS Level 2
 
-Tests covered in this benchmark reflect current best practices.
-The strict configuration being tested might not be required for low assurance apps.
-However, the tests become a requirement for systems processing sensitive data and workloads.
-For example, requiring audit logging takes time and space, but it is required for sensitive tests.
-This would not be needed when testing a "low assurance" app.
+The CIS Level 2 profile is considered to be "defense in depth" and is intended for environments where security is paramount. 
+The recommendations associated with the Level 2 profile can have an adverse effect on your organization if not implemented appropriately or without due care.
 
 
 ## <a id="stig"></a> STIG for Ubuntu Xenial
