@@ -72,10 +72,10 @@ To begin scanning:
 
 ### <a id='review-tile'></a>Retrieve Log Files
 
-<p class="note"><strong>Note:</strong>  When an S3 bucket is configured, the log files do not contain
-  the scan output. For instructions on accessing the scan output when an S3 bucket is configured,
-  see <a href="#scan-output-s3">Scan Output - S3</a> below.
-  For instructions on configuring an S3 bucket, see <a href="./installing.html#s3">Installing and Configuring</a>.</p>
+<p class="note"><strong>Note:</strong>  When an external store is configured, the log files do not contain
+  the scan output. For instructions on accessing the scan output when an external store is configured,
+  see <a href="#scan-output-external-store">Scan Output - External Store</a> below.
+  For instructions on configuring an external store, see <a href="./installing.html#external-store">Installing and Configuring</a>.</p>
 
 To review the logs for a completed scan using the <%= vars.product_short %> tile:
 
@@ -111,23 +111,24 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
 
 ### <a id='scan-output'></a> Find Scan Output
 
-The method of finding the scan output depends on whether or not an S3 bucket is configured for scan results.
-For instructions on configuring an S3 bucket, see <a href="./installing.html#s3">Installing and Configuring</a>.
+The method of finding the scan output depends on whether or not an external store is configured for scan results.
+For instructions on configuring an external store, see <a href="./installing.html#external-store">Installing and Configuring</a>.
 
+  <a id='scan-output-external-store'></a>
 
-  * Scan Output for a Configured S3 Bucket
+  * Scan Output for a Configured External Store
 
-    * Scan output is uploaded to the configured bucket as an archive.
+    * Scan output is uploaded to the configured store as an archive.
     * The scan output filename contains the timestamp of the scan and takes the form
     <code>compliance\_scanner\_YYYY-MM-DDTHHMMSS.tar.gz</code>.
     * To retrieve the scan results, download and extract this archive.
 
-  * Scan Output for a Non-configured S3 Bucket
+  * Scan Output for a Non-configured External Store
 
     * The `oscap_store` ZIP file contains scan results from the `oscap_store` VM.
     * The results of the scan are at `oscap_store/scanner/scan_results/output`.
 
-The scan output format is not affected by where it was fetched from, be it an S3 bucket or logs.
+The scan output format is not affected by where it was fetched from, be it an external store or logs.
 
   The naming syntax for each log file is below:
 

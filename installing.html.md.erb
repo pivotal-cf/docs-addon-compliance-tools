@@ -157,22 +157,22 @@ When configuring the <%= vars.product_short %> tile for the first time:
 
 1. Click **Save**.
 
-## <a id="s3"></a> (Optional) Configure S3 Upload
-To store scan results in an Amazon S3 bucket or a Minio S3-compatible bucket,
-configure an S3 upload.
+## <a id="external-store"></a> (Optional) Configure External Store Upload
+To store scan results in an Amazon S3 bucket, a Minio S3-compatible bucket, or an Azure Blob Storage Container
+configure an external store upload.
 
-If you configure an S3 bucket, then <%= vars.product_short %> uploads scan
-results to the S3 bucket.
+If you configure an external store, then <%= vars.product_short %> uploads scan
+results to that store.
 This means that auditors do not need access to Ops Manager to download BOSH logs
 or rely on the operator to give them scan results.
 Additionally, when using a Security Information and Event Management (SIEM) system,
 automating the consumption of the scan results is easier and does not require
 access to the Ops Manager API.
 
-If you do not use an S3 bucket for scan results, then the scan results are stored in the `oscap_store` VM.
+If you do not use an external store for scan results, then the scan results are stored in the `oscap_store` VM.
 For more information, see [Retrieve Log Files](./using.html#review-tile).
 
-1. Click **S3 Upload**
+1. Click **External Store Upload**
 
 1. To use an S3 bucket:
   1. Select **AWS S3 Bucket**.
@@ -244,6 +244,31 @@ For more information, see [Retrieve Log Files](./using.html#review-tile).
               If the Minio server does not use TLS, leave this field blank. <br><br>
               If the Minio server is a PAS service instance, this CA Certificate must match the
               <strong>SAML Service Provider Credentials</strong> field under the <strong>UAA</strong> form in your PAS tile.</td>
+          </tr>
+        </table>
+
+1. To use an Azure Blob Storage Container:
+
+  1. Select **Azure Blob Storage Container**.
+
+  1. Configure the fields as follows:
+
+        <table class="nice">
+          <th>Field</th>
+          <th>Description</th>
+          <tr>
+            <td><strong>Container URL</strong></td>
+            <td>Enter the container url for an existing Azure Blob Storage Container.
+            This url can be obtained from the container properties in the Azure portal.
+            For instance, <code>https://mystorageaccount.blob.core.windows.net/mycontainername</code></td>
+          </tr>
+          <tr>
+            <td><strong>Storage Account Name</strong></td>
+            <td>Enter the storage account name for the Azure Blob Storage Container.</td>
+          </tr>
+          <tr>
+            <td><strong>Storage Account Key</strong></td>
+            <td>Enter the storage account key for the Azure Blob Storage Container.</td>
           </tr>
         </table>
 
