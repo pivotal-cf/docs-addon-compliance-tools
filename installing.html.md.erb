@@ -92,7 +92,7 @@ This section is where you configure expected values for tests and select which s
 
 1. Click **Scan Configuration**.
 
-    <%= image_tag("scan-config.png", :alt => "Scan Configuration page", :width => "400") %>
+    <%= image_tag("scan-config.png", :alt => "Scan Configuration page", :width => "300") %>
 
 1. Enable **Scan Report Formats**. You must select at least one format.
    The outputs of a scan can be in LOG, XML, and HTML formats.
@@ -143,23 +143,21 @@ This section is where you configure expected values for tests and select which s
 
 1. Click **Save**.
 
+## <a id='scheduled'></a> Configure Scheduled Scan
+<%= vars.product_short %> can be configured to run a scan at a scheduled time and day of the week.
+The default values are `"00:00"` and `Sunday`.
 
-## <a id="errands"></a> Configure Errands
-<%= vars.product_short %> performs one errand that initiates scanning.
-This errand is disabled by default.
-This is so that a scan is not run every time changes are applied.
+To change the scheduled scan values:
 
-When this errand is triggered, it initiates the scanning errand on each VM.
-For more information about initiating the scanning errand, see [Using <%= vars.product_short %>](./using.html).
+1. Select **Scheduled Scans**.
 
-When configuring the <%= vars.product_short %> tile for the first time:
+    <%= image_tag("scheduled-scans.png", :alt => "Scheduled Scans Configuration page", :width => "300") %>
 
-1. Click **Errands**.
-
-    <%= image_tag("errands.png", :alt => "Errands page") %>
-
-1. Confirm that **Run configured scans** is set to **Default (Off)**.
-
+1. Select **Enable**.
+1. Set the **Scheduled scan start time** value.
+  The **Scheduled scan start time** must be in 24-hour format `HH:MM`.
+1. Select a **Scheduled scan day**.
+  Only one value may be selected.
 1. Click **Save**.
 
 ## <a id="external-store"></a> (Optional) Configure External Store Upload
@@ -281,6 +279,24 @@ For more information, see [Retrieve Log Files](./using.html#review-tile).
           <td>Enter the storage account key for the Azure Blob Storage Container.</td>
         </tr>
       </table>
+
+1. Click **Save**.
+
+## <a id="errands"></a> Configure Errands
+<%= vars.product_short %> performs one errand that initiates scanning.
+This errand is disabled by default.
+This is so that a scan is not run every time changes are applied.
+
+When this errand is triggered, it initiates the scanning errand on each VM.
+For more information about initiating the scanning errand, see [Using <%= vars.product_short %>](./using.html).
+
+When configuring the <%= vars.product_short %> tile for the first time:
+
+1. Click **Errands**.
+
+    <%= image_tag("errands.png", :alt => "Errands page") %>
+
+1. Confirm that **Run configured scans** is set to **Default (Off)**.
 
 1. Click **Save**.
 
