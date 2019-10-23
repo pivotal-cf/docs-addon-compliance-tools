@@ -81,6 +81,11 @@ This section is where you configure expected values for tests and select which s
                     You can find this in your PAS tile under
                     <strong>Settings > System Logging > Port</strong>.</td>
         </tr>
+        <tr><td><strong>Custom SSH Banner</strong></td>
+                <td>The text expected when verifying the login SSH Banner on VMs during a scan.<br><br>
+                    The default value (which comes from the stemcell) is:<br>
+                    Unauthorized use is strictly prohibited. All access and activity is subject to logging and monitoring.</td>
+        </tr>
     </table>
 
 1. Click **Save**.
@@ -158,7 +163,7 @@ When configuring the <%= vars.product_short %> tile for the first time:
 1. Click **Save**.
 
 ## <a id="external-store"></a> (Optional) Configure External Store Upload
-To store scan results in an Amazon S3 bucket, a Minio S3-compatible bucket, or an Azure Blob Storage Container
+To store scan results in an Amazon S3 bucket, a Minio S3-compatible bucket, or an Azure Blob Storage Container,
 configure an external store upload.
 
 If you configure an external store, then <%= vars.product_short %> uploads scan
@@ -172,107 +177,110 @@ access to the Ops Manager API.
 If you do not use an external store for scan results, then the scan results are stored in the `oscap_store` VM.
 For more information, see [Retrieve Log Files](./using.html#review-tile).
 
+### <a id="s3-bucket"></a>S3 bucket
 1. Click **External Store Upload**
+1. Select **AWS S3 Bucket**.
 
-1. To use an S3 bucket:
-  1. Select **AWS S3 Bucket**.
+      <%= image_tag("bucket-aws.png", :alt => "The External Store Upload page in Ops Manager with the AWS S3 Bucket radio button selected.", :width => "500") %>
 
-        <%= image_tag("bucket-aws.png", :alt => "The External Store Upload page in Ops Manager with the AWS S3 Bucket radio button selected.", :width => "500") %>
+1. Configure the fields:
 
-  1. Configure the fields as follows:
+      <table class="nice">
+        <th>Field</th>
+        <th>Description</th>
+        <tr>
+          <td><strong>Bucket Name</strong></td>
+          <td>Enter the name of the bucket.</td>
+        </tr>
+        <tr>
+          <td><strong>Bucket Region</strong></td>
+          <td>Select the region that the bucket was created in.</td>
+        </tr>
+        <tr>
+          <td><strong>Access Key ID</strong></td>
+          <td>Enter the access key ID for AWS credentials with access to the bucket. <br>
+            Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
+        </tr>
+        <tr>
+          <td><strong>Secret Access Key</strong></td>
+          <td>Enter the access key secret for AWS credentials with access to the bucket. <br>
+            Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
+        </tr>
+      </table>
 
-        <table class="nice">
-          <th>Field</th>
-          <th>Description</th>
-          <tr>
-            <td><strong>Bucket Name</strong></td>
-            <td>Enter the name of the bucket.</td>
-          </tr>
-          <tr>
-            <td><strong>Bucket Region</strong></td>
-            <td>Select the region that the bucket was created in.</td>
-          </tr>
-          <tr>
-            <td><strong>Access Key ID</strong></td>
-            <td>Enter the access key ID for AWS credentials with access to the bucket. <br>
-              Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
-          </tr>
-          <tr>
-            <td><strong>Secret Access Key</strong></td>
-            <td>Enter the access key secret for AWS credentials with access to the bucket. <br>
-              Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
-          </tr>
-        </table>
+1. Click **Save**.
 
-1. To use a Minio bucket:
+### <a id="minio-bucket"></a>Minio bucket
+1. Click **External Store Upload**
+1. Select **Minio Bucket**.
 
-  1. Select **Minio Bucket**.
+      <%= image_tag("bucket-minio.png", :alt => "The External Store Upload page in Ops Manager with the Minio Bucket radio button selected.", :width => "500") %>
 
-        <%= image_tag("bucket-minio.png", :alt => "The External Store Upload page in Ops Manager with the Minio Bucket radio button selected.", :width => "500") %>
+1. Configure the fields:
 
-  1. Configure the fields as follows:
+      <table class="nice">
+        <th>Field</th>
+        <th>Description</th>
+        <tr>
+          <td><strong>Bucket Name</strong></td>
+          <td>Enter the name of the bucket.</td>
+        </tr>
+        <tr>
+          <td><strong>Minio Host</strong></td>
+          <td>Enter the fully qualified domain name of the Minio server.
+            This can include a port, but should not specify the protocol. <br>
+            For instance, <code>example.domain.com:9000</code> is a valid host.</td>
+        </tr>
+        <tr>
+          <td><strong>Bucket Region</strong></td>
+          <td>If your Minio configuration specifies a region, enter that region here. <br>
+            Otherwise, this field can be left blank.</td>
+        </tr>
+        <tr>
+          <td><strong>Access Key ID</strong></td>
+          <td>Enter the access key ID for the Minio server.</td>
+        </tr>
+        <tr>
+          <td><strong>Secret Access Key</strong></td>
+          <td>Enter the access key secret for the Minio server.</td>
+        </tr>
+        <tr>
+          <td><strong>Bucket CA Certificate</strong></td>
+          <td>Enter the CA Certificate used by the Minio server, if applicable.
+            If the Minio server does not use TLS, leave this field blank. <br><br>
+            If the Minio server is a PAS service instance, this CA Certificate must match the
+            <strong>SAML Service Provider Credentials</strong> field under the <strong>UAA</strong> form in your PAS tile.</td>
+        </tr>
+      </table>
 
-        <table class="nice">
-          <th>Field</th>
-          <th>Description</th>
-          <tr>
-            <td><strong>Bucket Name</strong></td>
-            <td>Enter the name of the bucket.</td>
-          </tr>
-          <tr>
-            <td><strong>Minio Host</strong></td>
-            <td>Enter the fully qualified domain name of the Minio server.
-              This can include a port, but should not specify the protocol. <br>
-              For instance, <code>example.domain.com:9000</code> is a valid host.</td>
-          </tr>
-          <tr>
-            <td><strong>Bucket Region</strong></td>
-            <td>If your Minio configuration specifies a region, enter that region here. <br>
-              Otherwise, this field can be left blank.</td>
-          </tr>
-          <tr>
-            <td><strong>Access Key ID</strong></td>
-            <td>Enter the access key ID for the Minio server.</td>
-          </tr>
-          <tr>
-            <td><strong>Secret Access Key</strong></td>
-            <td>Enter the access key secret for the Minio server.</td>
-          </tr>
-          <tr>
-            <td><strong>Bucket CA Certificate</strong></td>
-            <td>Enter the CA Certificate used by the Minio server, if applicable.
-              If the Minio server does not use TLS, leave this field blank. <br><br>
-              If the Minio server is a PAS service instance, this CA Certificate must match the
-              <strong>SAML Service Provider Credentials</strong> field under the <strong>UAA</strong> form in your PAS tile.</td>
-          </tr>
-        </table>
+1. Click **Save**.
 
-1. To use an Azure Blob Storage Container:
+### <a id="azure-blob"></a> Azure Blob Storage Container
+1. Click **External Store Upload**
+1. Select **Azure Blob Storage Container**.
 
-  1. Select **Azure Blob Storage Container**.
+      <%= image_tag("bucket-azure-blob.png", :alt => "The External Store Upload page in Ops Manager with the Azure Blob Storage Container radio button selected.", :width => "500") %>
 
-        <%= image_tag("bucket-azure-blob.png", :alt => "The External Store Upload page in Ops Manager with the Azure Blob Storage Container radio button selected.", :width => "500") %>
+1. Configure the fields:
 
-  1. Configure the fields as follows:
-
-        <table class="nice">
-          <th>Field</th>
-          <th>Description</th>
-          <tr>
-            <td><strong>Container URL</strong></td>
-            <td>Enter the container URL for an existing Azure Blob Storage Container.
-            Get this URL from the container properties in the Azure portal.
-            For example: <code>https://mystorageaccount.blob.core.windows.net/mycontainername</code></td>
-          </tr>
-          <tr>
-            <td><strong>Storage Account Name</strong></td>
-            <td>Enter the storage account name for the Azure Blob Storage Container.</td>
-          </tr>
-          <tr>
-            <td><strong>Storage Account Key</strong></td>
-            <td>Enter the storage account key for the Azure Blob Storage Container.</td>
-          </tr>
-        </table>
+      <table class="nice">
+        <th>Field</th>
+        <th>Description</th>
+        <tr>
+          <td><strong>Container URL</strong></td>
+          <td>Enter the container URL for an existing Azure Blob Storage Container.
+          Get this URL from the container properties in the Azure portal.
+          For example: <code>https://mystorageaccount.blob.core.windows.net/mycontainername</code></td>
+        </tr>
+        <tr>
+          <td><strong>Storage Account Name</strong></td>
+          <td>Enter the storage account name for the Azure Blob Storage Container.</td>
+        </tr>
+        <tr>
+          <td><strong>Storage Account Key</strong></td>
+          <td>Enter the storage account key for the Azure Blob Storage Container.</td>
+        </tr>
+      </table>
 
 1. Click **Save**.
 
