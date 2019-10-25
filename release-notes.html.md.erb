@@ -1,5 +1,5 @@
 ---
-title: Release Notes for Compliance Scanner for PCF
+title: Release Notes for Compliance Scanner
 owner: Pivotal Compliance and Innovation (PCI) Team
 ---
 <strong><%= modified_date %></strong>
@@ -8,7 +8,7 @@ These are release notes for <%= vars.product_full %>.
 
 ##<a id="1-2-16"></a> v1.2.16
 
-**Release Date: October 23, 2019**
+**Release Date: October 24, 2019**
 
 ### Features
 New features and changes in this release:
@@ -16,19 +16,18 @@ New features and changes in this release:
 * You can now use an Azure Blob Storage Container to store scan results.
   For information, see [(Optional) Configure External Store Upload](installing.html#azure-blob).
 
-* Benchmarks used with <%= vars.product_short %> have been updated:
-  * The CIS Ubuntu Linux 16.04 LTS – Level 1 benchmark replaces the Recommended Security Baseline benchmark.
-  * The CIS Ubuntu Linux 16.04 LTS – Level 2 benchmark replaces the Strict Security Practices benchmark.
-
-    For information about these new benchmarks, see [Benchmarks for Pivotal Compliance Scanner](benchmarks.html).
-
-* Adds a Custom SSH Banner field.
-  This is used to provide the text expected when verifying the login SSH Banner on VMs during a scan.
-  For more information, see [System Variables](./installing.html#scan).
-
 * Adds the ability to schedule scans.
+  This allows the User to schedule a time and day of the week to run their scan.
+  For more information, see [Configure Scheduled Scan](./installing.html#scheduled-scan).
+
+* Benchmarks used with <%= vars.product_short %> have been updated:
+  * The **CIS Ubuntu Linux 16.04 LTS – Level 1** benchmark replaces the Recommended Security Baseline benchmark.
+  * The **CIS Ubuntu Linux 16.04 LTS – Level 2** benchmark replaces the Strict Security Practices benchmark.
+    <br>For information about these new benchmarks, see [Benchmarks for Pivotal Compliance Scanner](benchmarks.html).
+
+* Adds a **Custom SSH Banner** field.
   This is used to provide the text expected when verifying the login SSH Banner on VMs during a scan.
-  For more information, see [Configure Scheduled Scan](./installing.html#scheduled).
+  For more information, see [Configure System Variables](./installing.html#system-variables).
 
 * Updates golang dependency to v1.13.1
 
@@ -40,6 +39,3 @@ There are no known issues for this release.
 
 To view the release notes for another product version, select the version from
 dropdown at the top of this page.
-
-
-<%# Reformat Configure Scans, and redo screenshot to not have all options %>

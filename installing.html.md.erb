@@ -1,5 +1,5 @@
 ---
-title: Installing and Configuring Compliance Scanner for PCF
+title: Installing and Configuring Compliance Scanner
 owner: Pivotal Compliance and Innovation (PCI) Team
 ---
 <strong><%= modified_date %></strong>
@@ -23,16 +23,16 @@ This adds the tile to your staging area.
 
 1. Click the newly added **<%= vars.product_short %>** tile.
 
-## <a id='scan'></a> Configure Scans
-This section is where you configure expected values for tests and select which set of benchmarks to run. To configure your scans:
+## <a id='azs-networks'></a> Configure AZs and Networks
+To configure your AZs and Networks:
 
-1. Click **Settings**.
+1. Select **Assign AZs and Networks**.
 
-    <%= image_tag("compliance-settings.png", :alt => "Compliance Settings page") %>
+    <%= image_tag("azs-networks.png", :alt => "Assign AZs and Networks page") %>
 
-1. Click **Assign AZs and Networks**.
+<%# TODO: Needs screenshot!!! %>
 
-1. Configure the fields as follows:
+1. Configure the fields:
 
     <table class="nice">
       <th>Field</th>
@@ -55,7 +55,11 @@ This section is where you configure expected values for tests and select which s
 
 1. Click **Save**.
 
-1. Click **System Variables**.
+## <a id='system-variables'></a> Configure System Variables
+This section is where you configure expected values for tests and select which set of benchmarks to run.
+To configure your system variables:
+
+1. Select **System Variables**.
 
     <%= image_tag("system-var.png", :alt => "System Variables page", :width => "260") %>
 
@@ -90,7 +94,10 @@ This section is where you configure expected values for tests and select which s
 
 1. Click **Save**.
 
-1. Click **Scan Configuration**.
+## <a id='scans'></a> Configure Scans
+To configure scans:
+
+1. Select **Scan Configuration**.
 
     <%= image_tag("scan-config.png", :alt => "Scan Configuration page", :width => "300") %>
 
@@ -143,9 +150,16 @@ This section is where you configure expected values for tests and select which s
 
 1. Click **Save**.
 
-## <a id='scheduled'></a> Configure Scheduled Scan
+## <a id='scheduled-scan'></a> Configure Scheduled Scan
 <%= vars.product_short %> can be configured to run a scan at a scheduled time and day of the week.
-The default values are `"00:00"` and `Sunday`.
+<br>The default values are `"00:00"` and `Sunday`.
+
+<p class="note"><strong>Note:</strong>
+Pivotal recommends setting up external storage to store the scan result reports.
+If you do not do this, <%= vars.product_short %> will overwrite your previous local reports.
+For more information on setting up external storage, see
+<a href="#external-store">(Optional) Configure External Store Upload</a> below.
+</p>
 
 To change the scheduled scan values:
 
@@ -176,7 +190,9 @@ If you do not use an external store for scan results, then the scan results are 
 For more information, see [Retrieve Log Files](./using.html#review-tile).
 
 ### <a id="s3-bucket"></a>S3 bucket
-1. Click **External Store Upload**
+To configure an external store upload using an S3 bucket:
+
+1. Select **External Store Upload**
 1. Select **AWS S3 Bucket**.
 
       <%= image_tag("bucket-aws.png", :alt => "The External Store Upload page in Ops Manager with the AWS S3 Bucket radio button selected.", :width => "500") %>
@@ -209,7 +225,9 @@ For more information, see [Retrieve Log Files](./using.html#review-tile).
 1. Click **Save**.
 
 ### <a id="minio-bucket"></a>Minio bucket
-1. Click **External Store Upload**
+To configure an external store upload using a Minio bucket:
+
+1. Select **External Store Upload**
 1. Select **Minio Bucket**.
 
       <%= image_tag("bucket-minio.png", :alt => "The External Store Upload page in Ops Manager with the Minio Bucket radio button selected.", :width => "500") %>
@@ -254,7 +272,9 @@ For more information, see [Retrieve Log Files](./using.html#review-tile).
 1. Click **Save**.
 
 ### <a id="azure-blob"></a> Azure Blob Storage Container
-1. Click **External Store Upload**
+To configure an external store upload using an Azure Blob:
+
+1. Select **External Store Upload**
 1. Select **Azure Blob Storage Container**.
 
       <%= image_tag("bucket-azure-blob.png", :alt => "The External Store Upload page in Ops Manager with the Azure Blob Storage Container radio button selected.", :width => "500") %>
@@ -292,7 +312,7 @@ For more information about initiating the scanning errand, see [Using <%= vars.p
 
 When configuring the <%= vars.product_short %> tile for the first time:
 
-1. Click **Errands**.
+1. Select **Errands**.
 
     <%= image_tag("errands.png", :alt => "Errands page") %>
 
@@ -308,7 +328,9 @@ that have been scanned.
 The <code>oscap_store</code> VM does not do anything computationally extensive.
 Pivotal recommends using the default configurations.</p>
 
-1. Click **Resource Config**.
+To configure resources:
+
+1. Select **Resource Config**.
 
 1. Click **Save**.
 
