@@ -61,7 +61,7 @@ To configure your system variables:
 
 1. Select **System Variables**.
 
-    <%= image_tag("system-var.png", :alt => "System Variables page", :width => "260") %>
+    <%= image_tag("system-var.png", :alt => "System Variables page") %>
 
 1. Configure the fields in **System Variables** to provide the expected values for the tests:
 
@@ -88,7 +88,10 @@ To configure your system variables:
         <tr><td><strong>Custom SSH Banner</strong></td>
                 <td>The text expected when verifying the login SSH Banner on VMs during a scan.<br><br>
                     The default value (which comes from the stemcell) is:<br>
-                    Unauthorized use is strictly prohibited. All access and activity is subject to logging and monitoring.</td>
+                    <code>Unauthorized use is strictly prohibited. All access and activity is subject to logging and monitoring.</code>
+
+                    If you modified this text in your stemcell, then enter the modified text in this field.
+                  </td>
         </tr>
     </table>
 
