@@ -15,7 +15,8 @@ directory of the `docs-book-compliance-tools` repo.
 
 | Branch name | Use for… |
 |-------------| ------|
-| master      | "edge" branch for 1.2.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-n/
+| master      | "edge" branch for 1.3.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-n/
+| 1.2 | v1.2.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-2/ and https://docs.pivotal.io/addon-compliance-tools/1-2/ |
 | 1.1 | v1.1.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-1/ and https://docs.pivotal.io/addon-compliance-tools/1-1/ |
 | 1.0 | v1.0.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-0/ and https://docs.pivotal.io/addon-compliance-tools/1-0/ |            
 
