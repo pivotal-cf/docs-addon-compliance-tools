@@ -8,7 +8,7 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 assessment of each <%= vars.platform_name %> Linux VM running on Xenial stemcells and,
 if it is compliant, with configuration guidelines.
 
-The following VM types on an Ops Manager instance are skipped for scanning
+The following VM types on an <%= vars.ops_manager_full %> instance are skipped for scanning
 and do not have Compliance Scanner deployed on them:
 
   * Linux VMs running on Trusty stemcells
@@ -29,11 +29,11 @@ Ubuntu configuration benchmarks for stemcells.
   * XFiles: A group of YAML files that contains configuration tests written in YAML.
   * The XCCDF Generator (XGen): This translates XFiles tests to the SCAP format.
 
-<%= vars.product_short %> is installed through Ops Manager.
+<%= vars.product_short %> is installed through <%= vars.ops_manager %>.
 As part of the installation, it deploys each packaged component to each <%= vars.platform_name %> Linux VM
 and instantiates a new Linux VM, `oscap_store`, for log retrieval.
 
-Scans are errands that are triggered through Ops Manager.
+Scans are errands that are triggered through <%= vars.ops_manager %>.
 After a successful scan, operators can retrieve reports through the tile.
 Operators can download these reports to their local machine.
 
@@ -71,11 +71,11 @@ The following table provides version and version-support information about
         <td>OpenSCAP 1.3.1</td>
     </tr>
     <tr>
-        <td>Compatible Ops Manager version(s)</td>
+        <td>Compatible <%= vars.ops_manager %> version(s)</td>
         <td>2.3, 2.4, 2.5, 2.6, and 2.7</td>
     </tr>
     <tr>
-        <td>Compatible Pivotal Application Service version(s)</td>
+        <td>Compatible <%= vars.app_runtime_full %> version(s)</td>
         <td>2.3, 2.4, 2.5, 2.6, and 2.7</td>
     </tr>
     <tr>
