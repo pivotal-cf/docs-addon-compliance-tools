@@ -114,14 +114,14 @@ and produces a `scanner_web_ctl.log` similar to the following:
 2019/08/05 10:21:34 Unable to resolve store domain: lookup q-s4.oscap-store.NETWORK-NAME.p-compliance-scanner-5f51f48abb5fbf23b617.bosh on 169.254.0.2:53: no such host
 </pre>
 
-Where `NETWORK-NAME` is the name given to the network being used for the Compliance Scanner for PCF tile.
+Where `NETWORK-NAME` is the name given to the network being used for the <%= vars.product_short %> tile.
 
 #### Explanation
 BOSH DNS cannot resolve the `oscap_store` VM URL if there is any capitalization in the network's **Name**.
 
 #### Solution
 Verify that the network you selected inside the **Assign AZs and Networks** pane
-of your Compliance Scanner for PCF tile is not capitalized.
+of your <%= vars.product_short %> tile is not capitalized.
 
 If this is the case, you need to edit the name of the network being used to remove capitalization:
 

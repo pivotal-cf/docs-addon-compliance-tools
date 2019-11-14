@@ -5,7 +5,7 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 <strong><%= modified_date %></strong>
 
 <%= vars.product_full %> provides platform operators and auditors an
-assessment of each PCF Linux VM running on Xenial stemcells and,
+assessment of each <%= vars.platform_name %> Linux VM running on Xenial stemcells and,
 if it is compliant, with configuration guidelines.
 
 The following VM types on an Ops Manager instance are skipped for scanning
@@ -30,7 +30,7 @@ Ubuntu configuration benchmarks for stemcells.
   * The XCCDF Generator (XGen): This translates XFiles tests to the SCAP format.
 
 <%= vars.product_short %> is installed through Ops Manager.
-As part of the installation, it deploys each packaged component to each PCF Linux VM
+As part of the installation, it deploys each packaged component to each <%= vars.platform_name %> Linux VM
 and instantiates a new Linux VM, `oscap_store`, for log retrieval.
 
 Scans are errands that are triggered through Ops Manager.
@@ -46,7 +46,7 @@ release page on Pivotal Network.
 
 * Modified version of industry-recognized configuration benchmarks tuned for stemcells
 * Bundled tests written in YAML, allowing for easier readability
-* Reports of scan results for each Linux VM in the PCF deployment that
+* Reports of scan results for each Linux VM in the <%= vars.platform_name %> deployment that
   highlight the compliance posture
 * Compatible with DISA STIG Viewer v2.9
 
@@ -106,4 +106,4 @@ stemcells 97.x and 170.x and later.</p>
 ## <a id="feedback"></a>Feedback
 Please provide any bugs, feature requests,
 or questions to the
-[Pivotal Cloud Foundry Feedback list](mailto:pivotal-cf-feedback@pivotal.io).
+[Pivotal Platform Feedback list](mailto:pivotal-cf-feedback@pivotal.io).
