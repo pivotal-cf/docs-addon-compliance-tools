@@ -136,21 +136,65 @@ To configure scans:
     <br><br>
     For more information about <%= vars.product_short %> benchmarks, see [Benchmarks](./benchmarks.html).
 
-1. For **Scanner Timeout**, configure the maximum time in seconds permitted for a scan.
-    The default value is `1200`.
+1. Configure the remaining fields:
 
-1. For **CPU Limit**, configure the CPU limit percentage (between `1` and `100`) that the scanner is allowed to use.
+    <table class="nice">
+        <th>Field</th>
+        <th>Description</th>
 
-    <p class="note"><strong>Note:</strong>
-      <strong>CPU Limit</strong> affects only 1 core. For example:
-       In a system with four cores with a CPU limit set to <code>100</code>,
-       the scanner only uses one of the four cores.
-      </p>
+        <tr><td><strong>Scanner Timeout</strong></td>
+            <td>Set to the maximum time in seconds permitted for a scan.
+                The default value is <code>1200</code>.</td>
+        </tr>
 
-1. For **Enforce CPU Limit**, configure the strictness of enforcing the **CPU Limit**.
-    * If set to **Always**, the limit set by **CPU Limit** is always enforced.
-    * If set to **When other processes are using CPU resources**, the limit set by **CPU Limit** is only enforced when other processes are using CPU resources.
-      Usage can exceed the limit if enough idle CPU cycles are available.
+        <tr><td><strong>CPU Limit</strong></td>
+            <td>Set the percentage of CPU that the <%= vars.product_short %> processes can use.
+                Integers from <code>1</code> to <code>100</code> are valid.<br>
+                Setting this field to <code>100</code> permits the use of one full core.
+
+                <p class="note"><strong>Note:</strong>
+                <strong>CPU Limit</strong> affects only one core.
+                 For example, in a system with four cores, if you set the CPU limit to <code>100</code>,
+                 <%= vars.product_short %> uses only one of the four cores.
+                 </p>
+             </td>
+        </tr>
+
+        <tr><td><strong>Enforce CPU Limit</strong></td>
+            <td>Set the enforcement policy for the <strong>CPU Limit</strong>:<br>
+          <ul>
+            <li><strong>Always</strong>: Ensures the <strong>CPU limit</strong> is always enforced.</li>
+            <li><strong>When other processes are using CPU resources</strong>: Permits the CPU usage to
+              exceed the limit set by <strong>CPU limit</strong> if idle CPU cycles are available.</li>
+          </ul>
+        </tr>
+      </table> 
+
+1. Click **Save**.
+
+## <a id='scheduled-scan'></a> Configure Scheduled Scan
+<%= vars.product_short %> can be configured to run a scan at a scheduled time and day of the week.
+<br>The default values are `"00:00"` and `Sunday`.
+
+<p class="note"><strong>Note:</strong>
+Pivotal recommends setting up external storage to store the scan result reports.
+If you do not do this, <%= vars.product_short %> will overwrite your previous local reports.
+For more information on setting up external storage, see
+<a href="#external-store">(Optional) Configure External Store Upload</a> below.
+</p>
+
+To change the scheduled scan values:
+
+1. Select **Scheduled Scans**.
+
+    <%= image_tag("scheduled-scans.png", :alt => "Scheduled Scans Configuration page", :width => "300") %>
+
+      </table> 
+
+1. For **Enforce CPU Limit**, set the enforcement policy for the **CPU Limit**.
+    * **Always**: Ensures the **CPU Limit** is always enforced.
+    * **When other processes are using CPU resources**: Permits the CPU usage to exceed the limit
+      that is set by **CPU Limit** if enough idle CPU cycles are available.
 
 1. Click **Save**.
 
