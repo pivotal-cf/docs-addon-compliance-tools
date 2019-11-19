@@ -199,29 +199,64 @@ To configure an external store upload using an S3 bucket:
       <%= image_tag("bucket-aws.png", :alt => "The External Store Upload page in Ops Manager with the AWS S3 Bucket radio button selected.", :width => "500") %>
 
 1. Configure the fields:
+  1. Using AWS S3 Credentials
+    <table class="nice">
+      <th>Field</th>
+      <th>Description</th>
+      <tr>
+        <td><strong>Bucket Name</strong></td>
+        <td>Enter the name of the bucket.</td>
+      </tr>
+      <tr>
+        <td><strong>Bucket Region</strong></td>
+        <td>Select the region that the bucket was created in.</td>
+      </tr>
+      <tr>
+        <td><strong>Access Key ID</strong></td>
+        <td>Enter the access key ID for AWS credentials with access to the bucket. <br>
+          Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
+      </tr>
+      <tr>
+        <td><strong>Secret Access Key</strong></td>
+        <td>Enter the access key secret for AWS credentials with access to the bucket. <br>
+          Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
+      </tr>
+    </table>
 
-      <table class="nice">
-        <th>Field</th>
-        <th>Description</th>
-        <tr>
-          <td><strong>Bucket Name</strong></td>
-          <td>Enter the name of the bucket.</td>
-        </tr>
-        <tr>
-          <td><strong>Bucket Region</strong></td>
-          <td>Select the region that the bucket was created in.</td>
-        </tr>
-        <tr>
-          <td><strong>Access Key ID</strong></td>
-          <td>Enter the access key ID for AWS credentials with access to the bucket. <br>
-            Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
-        </tr>
-        <tr>
-          <td><strong>Secret Access Key</strong></td>
-          <td>Enter the access key secret for AWS credentials with access to the bucket. <br>
-            Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
-        </tr>
-      </table>
+  1. Using AWS Instance Profile
+    <table class="nice">
+      <th>Field</th>
+      <th>Description</th>
+      <tr>
+        <td><strong>Bucket Name</strong></td>
+        <td>Enter the name of the bucket.</td>
+      </tr>
+      <tr>
+        <td><strong>Bucket Region</strong></td>
+        <td>Select the region that the bucket was created in.</td>
+      </tr>
+    </table>
+
+    1. Add the instance profile to VM Extensions
+      ```
+      om configure-director --config <(echo "
+      vmextensions-configuration:
+      - name: s3_instance_profile
+        cloud_properties:
+          iam_instance_profile: INSTANCE_PROFILE
+      ")
+      ```
+      Where `INSTANCE_PROFILE` is the instance profile with access to the S3 bucket.
+    1. Update Compliance Scanner to use VM Extensions
+      ```
+      om configure-product --config <( echo "
+      product-name: p-compliance-scanner
+      resource-config:
+        oscap_store:
+          additional_vm_extensions:
+          - s3_instance_profile
+      ")
+      ```
 
 1. Click **Save**.
 
