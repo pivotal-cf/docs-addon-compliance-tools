@@ -237,77 +237,123 @@ access to the Ops Manager API.
 If you do not use an external store for scan results, then the scan results are stored in the `oscap_store` VM.
 For more information, see [Retrieve Log Files](./using.html#review-tile).
 
-### <a id="s3-bucket"></a>S3 bucket
-To configure an external store upload using an S3 bucket:
+### <a id="s3-bucket"></a>Configure to Upload to an S3 Bucket
 
-1. Select **External Store Upload**
+There are two ways that you can give <%= vars.product_short %> access to an Amazon S3 bucket:
+
++ **Using Access Key ID and Secret Access Key:** This is the easier method.
+  If you have the access key ID and the secret access key, enter them in the fields.
+
++ **Using an instance profile for the S3 bucket:** If you do not have the access key ID and the secret access key
+  but you do have the name of an instance profile for the S3 bucket,
+  then you can use :w
+the `om` command-line interface (CLI)
+  to give <%= vars.product_short %> the name of the instance profile for the S3 bucket.
+
+#### To configure an external store upload using an S3 bucket:
+
+1. Select **External Store Upload**.
 1. Select **AWS S3 Bucket**.
 
       <%= image_tag("bucket-aws.png", :alt => "The External Store Upload page in Ops Manager with the AWS S3 Bucket radio button selected.", :width => "500") %>
 
-1. Configure the fields:
-  1. Using AWS S3 Credentials
+3. Configure the fields:
+
     <table class="nice">
       <th>Field</th>
       <th>Description</th>
       <tr>
         <td><strong>Bucket Name</strong></td>
-        <td>Enter the name of the bucket.</td>
+        <td>Enter the name of the S3 bucket.</td>
       </tr>
       <tr>
         <td><strong>Bucket Region</strong></td>
-        <td>Select the region that the bucket was created in.</td>
+        <td>Select the region that the S3 bucket was created in.</td>
       </tr>
       <tr>
         <td><strong>Access Key ID</strong></td>
-        <td>Enter the access key ID for AWS credentials with access to the bucket. <br>
-          Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
+        <td>Enter the access key ID for AWS credentials with access to the S3 bucket. <br>
+          Pivotal recommends that you ensure the credentials permit write access to just this S3 bucket.<br>
+          If you do not have this key, click <strong>Save</strong>
+          and follow the steps in <a href="#instance-profile">To
+          use an instance profile to configure the S3 bucket</a> below.</td>
       </tr>
       <tr>
         <td><strong>Secret Access Key</strong></td>
-        <td>Enter the access key secret for AWS credentials with access to the bucket. <br>
-          Pivotal recommends that you ensure the credentials permit write access to just this bucket.</td>
+        <td>Enter the access key secret for AWS credentials with access to the S3 bucket. <br>
+          Pivotal recommends that you ensure the credentials permit write access to just this S3 bucket.<br>
+          If you do not have this key, click <strong>Save</strong>
+          and follow the steps in <a href="#instance-profile">To
+          use an instance profile to configure the S3 bucket</a> below.</td>
       </tr>
     </table>
 
-  1. Using AWS Instance Profile
-    <table class="nice">
-      <th>Field</th>
-      <th>Description</th>
-      <tr>
-        <td><strong>Bucket Name</strong></td>
-        <td>Enter the name of the bucket.</td>
-      </tr>
-      <tr>
-        <td><strong>Bucket Region</strong></td>
-        <td>Select the region that the bucket was created in.</td>
-      </tr>
-    </table>
+6. Click **Save**.
 
-    1. Add the instance profile to VM Extensions
-      ```
-      om configure-director --config <(echo "
-      vmextensions-configuration:
-      - name: s3_instance_profile
-        cloud_properties:
-          iam_instance_profile: INSTANCE_PROFILE
-      ")
-      ```
-      Where `INSTANCE_PROFILE` is the instance profile with access to the S3 bucket.
-    1. Update Compliance Scanner to use VM Extensions
-      ```
-      om configure-product --config <( echo "
-      product-name: p-compliance-scanner
-      resource-config:
-        oscap_store:
-          additional_vm_extensions:
-          - s3_instance_profile
-      ")
-      ```
 
-1. Click **Save**.
+####<a name="instance-profile"></a>To use an instance profile to configure the S3 bucket:
 
-### <a id="minio-bucket"></a>Minio Bucket
+For security reasons, you might not have the keys for the S3 bucket.
+However, if you have the instance profile name for the S3 bucket, you can use the following steps.
+You need the `om` CLI to do these steps.
+For introductory information about the `om` CLI,
+see [Ops Manager CLI (om)](https://docs.pivotal.io/platform/customizing/ops-man-api-cli.html).
+
+
+1. On the command line, run:
+
+    ```
+om configure-director --config <(echo "
+vmextensions-configuration:
+- name: s3_instance_profile
+  cloud_properties:
+    iam_instance_profile: INSTANCE-PROFILE
+")
+    ```
+
+    Where is `INSTANCE-PROFILE` is the name of the instance profile for the S3 bucket.
+
+    For example:
+
+    <pre class="terminal">
+    $ om configure-director --config <(echo "
+vmextensions-configuration:
+&#8208; name: s3_instance_profile
+  cloud_properties:
+    iam_instance_profile: scan_store_bucket
+")<br>
+started configuring vm extensions
+applying vmextensions configuration for the following:
+	s3_instance_profile
+finished configuring vm extensions
+
+    </pre>
+
+1. Run:
+
+    ```
+om configure-product --config <( echo "
+product-name: p-compliance-scanner
+resource-config:
+  oscap_store:
+    additional_vm_extensions:
+    - s3_instance_profile
+")
+    ```
+
+    Example output:
+
+    <pre class="terminal">
+configuring product...
+network properties are not provided, nothing to do here
+product properties are not provided, nothing to do here
+applying resource configuration for the following jobs:
+	oscap_store
+errands are not provided, nothing to do here
+finished configuring product
+     </pre>
+
+### <a id="minio-bucket"></a>Configure to Upload to a Minio Bucket
 To configure an external store upload using a Minio bucket:
 
 1. Select **External Store Upload**
@@ -354,7 +400,7 @@ To configure an external store upload using a Minio bucket:
 
 1. Click **Save**.
 
-### <a id="azure-blob"></a> Azure Blob Storage Container
+### <a id="azure-blob"></a> Configure to Upload to a Azure Blob Storage Container
 To configure an external store upload using an Azure Blob:
 
 1. Select **External Store Upload**
