@@ -246,8 +246,7 @@ There are two ways that you can give <%= vars.product_short %> access to an Amaz
 
 + **Using an instance profile for the S3 bucket:** If you do not have the access key ID and the secret access key
   but you do have the name of an instance profile for the S3 bucket,
-  then you can use :w
-the `om` command-line interface (CLI)
+  then you can use the `om` command-line interface (CLI)
   to give <%= vars.product_short %> the name of the instance profile for the S3 bucket.
 
 #### To configure an external store upload using an S3 bucket:
@@ -303,11 +302,11 @@ see [Ops Manager CLI (om)](https://docs.pivotal.io/platform/customizing/ops-man-
 1. On the command line, run:
 
     ```
-om configure-director --config <(echo "
-vmextensions-configuration:
-- name: s3_instance_profile
-  cloud_properties:
-    iam_instance_profile: INSTANCE-PROFILE
+ om configure-director --config <(echo "
+ vmextensions-configuration:
+ - name: s3_instance_profile
+      cloud_properties:
+        iam_instance_profile: INSTANCE-PROFILE
 ")
     ```
 
@@ -317,10 +316,10 @@ vmextensions-configuration:
 
     <pre class="terminal">
     $ om configure-director --config <(echo "
-vmextensions-configuration:
-&#8208; name: s3_instance_profile
-  cloud_properties:
-    iam_instance_profile: scan_store_bucket
+    vmextensions-configuration:
+    &#8208; name: s3_instance_profile
+      cloud_properties:
+        iam_instance_profile: scan_store_bucket
 ")<br>
 started configuring vm extensions
 applying vmextensions configuration for the following:
@@ -332,12 +331,12 @@ finished configuring vm extensions
 1. Run:
 
     ```
-om configure-product --config <( echo "
-product-name: p-compliance-scanner
-resource-config:
-  oscap_store:
-    additional_vm_extensions:
-    - s3_instance_profile
+ om configure-product --config <( echo "
+ product-name: p-compliance-scanner
+ resource-config:
+      oscap_store:
+        additional_vm_extensions:
+        - s3_instance_profile
 ")
     ```
 
