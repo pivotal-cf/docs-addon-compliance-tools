@@ -79,7 +79,7 @@ Because of this, the latest OSCAP release must be deployed on all VMs to functio
 
 #### Solution
 When installing or upgrading <%= vars.product_short %>, you must **Apply Changes**
-on PAS (and any other tiles with VMs you want to scan) after applying changes
+on <%= vars.app_runtime_abbr %> (and any other tiles with VMs you want to scan) after applying changes
 to the <%= vars.product_short %> tile.
 This is so that the version of <%= vars.product_short %> on the VMs match the version
 being used by the scanner.
@@ -125,7 +125,7 @@ of your <%= vars.product_short %> tile is not capitalized.
 
 If this is the case, you need to edit the name of the network being used to remove capitalization:
 
-1. On the Ops Manager Installation Dashboard, click **BOSH Director**.
+1. On the <%= vars.ops_manager %> Installation Dashboard, click **BOSH Director**.
 2. Click **Create Networks**.
 3. Change the network **Name** to a name without capital letters, and click **Save**.
 4. Click Review Pending Changes, and then **Apply Changes** to all tiles.
