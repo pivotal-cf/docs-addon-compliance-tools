@@ -12,11 +12,11 @@ This topic describes how to install and configure <%= vars.product_full %>.
 Before you install <%= vars.product_full %>, you might need to resize your VMs accordingly.
 
 ## <a id='install'></a> Install <%= vars.product_short %>
-To install the <%= vars.product_short %> file on the Ops Manager Installation Dashboard:
+To install the <%= vars.product_short %> file on the <%= vars.ops_manager %> Installation Dashboard:
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/compliance/).
 
-1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
+1. Navigate to the <%= vars.ops_manager %> Installation Dashboard and click **Import a Product** to upload the product file.
 
 1. Under the **Import a Product** button, click **+** next to the version number of <%= vars.product_short %>.
 This adds the tile to your staging area.
@@ -47,7 +47,7 @@ To configure your AZs and Networks:
       <tr>
         <td><strong>Network</strong></td>
         <td>Select a subnet for the <code>oscap_store</code> VM. <br>This is typically the same subnet that
-          includes the Pivotal Application Services (PAS) component VMs.</td>
+          includes the <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>) component VMs.</td>
       </tr>
     </table>
 
@@ -75,12 +75,12 @@ To configure your system variables:
         </tr>
         <tr><td><strong>Syslog Host IP</strong></td>
                 <td>The IP address of your syslog host.<br><br>
-                    You can find this in your PAS tile under
+                    You can find this in your <%= vars.app_runtime_abbr %> tile under
                     <strong>Settings > System Logging > Address</strong>.</td>
         </tr>
         <tr><td><strong>Syslog Port</strong></td>
                 <td>The port number of the syslog port.<br><br>
-                    You can find this in your PAS tile under
+                    You can find this in your <%= vars.app_runtime_abbr %> tile under
                     <strong>Settings > System Logging > Port</strong>.</td>
         </tr>
         <tr><td><strong>Custom SSH Banner</strong></td>
@@ -168,7 +168,7 @@ To configure scans:
               exceed the limit set by <strong>CPU limit</strong> if idle CPU cycles are available.</li>
           </ul>
         </tr>
-      </table> 
+      </table>
 
 1. Click **Save**.
 
@@ -189,7 +189,7 @@ To change the scheduled scan values:
 
     <%= image_tag("scheduled-scans.png", :alt => "Scheduled Scans Configuration page", :width => "300") %>
 
-      </table> 
+      </table>
 
 1. For **Enforce CPU Limit**, set the enforcement policy for the **CPU Limit**.
     * **Always**: Ensures the **CPU Limit** is always enforced.
@@ -228,11 +228,11 @@ configure an external store upload.
 
 If you configure an external store, then <%= vars.product_short %> uploads scan
 results to that store.
-This means that auditors do not need access to Ops Manager to download BOSH logs
+This means that auditors do not need access to <%= vars.ops_manager %> to download BOSH logs
 or rely on the operator to give them scan results.
 Additionally, when using a Security Information and Event Management (SIEM) system,
 automating the consumption of the scan results is easier and does not require
-access to the Ops Manager API.
+access to the <%= vars.ops_manager %> API.
 
 If you do not use an external store for scan results, then the scan results are stored in the `oscap_store` VM.
 For more information, see [Retrieve Log Files](./using.html#review-tile).
@@ -296,7 +296,7 @@ For security reasons, you might not have the keys for the S3 bucket.
 However, if you have the instance profile name for the S3 bucket, you can use the following steps.
 You need the `om` CLI to do these steps.
 For introductory information about the `om` CLI,
-see [Ops Manager CLI (om)](https://docs.pivotal.io/platform/customizing/ops-man-api-cli.html).
+see [<%= vars.ops_manager %> CLI (om)](https://docs.pivotal.io/platform/customizing/ops-man-api-cli.html).
 
 
 1. On the command line, run:
@@ -392,8 +392,8 @@ To configure an external store upload using a Minio bucket:
           <td><strong>Bucket CA Certificate</strong></td>
           <td>Enter the CA Certificate used by the Minio server, if applicable.
             If the Minio server does not use TLS, leave this field blank. <br><br>
-            If the Minio server is a PAS service instance, this CA Certificate must match the
-            <strong>SAML Service Provider Credentials</strong> field under the <strong>UAA</strong> form in your PAS tile.</td>
+            If the Minio server is a <%= vars.app_runtime_abbr %> service instance, this CA Certificate must match the
+            <strong>SAML Service Provider Credentials</strong> field under the <strong>UAA</strong> form in your <%= vars.app_runtime_abbr %> tile.</td>
         </tr>
       </table>
 
@@ -538,7 +538,7 @@ To configure resources:
 ## <a id="apply-changes"></a> Apply Changes from Your Configuration
 Your installation is not complete until you apply your configuration changes:
 
-1. Return to the Ops Manager Installation Dashboard.
+1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click **Review Pending Changes**. Verify that all products are selected.
 
