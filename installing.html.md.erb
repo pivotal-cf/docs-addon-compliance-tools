@@ -189,32 +189,6 @@ To change the scheduled scan values:
 
     <%= image_tag("scheduled-scans.png", :alt => "Scheduled Scans Configuration page", :width => "300") %>
 
-      </table>
-
-1. For **Enforce CPU Limit**, set the enforcement policy for the **CPU Limit**.
-    * **Always**: Ensures the **CPU Limit** is always enforced.
-    * **When other processes are using CPU resources**: Permits the CPU usage to exceed the limit
-      that is set by **CPU Limit** if enough idle CPU cycles are available.
-
-1. Click **Save**.
-
-## <a id='scheduled-scan'></a> Configure Scheduled Scan
-<%= vars.product_short %> can be configured to run a scan at a scheduled time and day of the week.
-<br>The default values are `"00:00"` and `Sunday`.
-
-<p class="note"><strong>Note:</strong>
-Pivotal recommends setting up external storage to store the scan result reports.
-If you do not do this, <%= vars.product_short %> will overwrite your previous local reports.
-For more information on setting up external storage, see
-<a href="#external-store">(Optional) Configure External Store Upload</a> below.
-</p>
-
-To change the scheduled scan values:
-
-1. Select **Scheduled Scans**.
-
-    <%= image_tag("scheduled-scans.png", :alt => "Scheduled Scans Configuration page", :width => "300") %>
-
 1. Select **Enable**.
 1. Set the **Scheduled scan start time** value.
   The **Scheduled scan start time** must be in 24-hour format `HH:MM`.
