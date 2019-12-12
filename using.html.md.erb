@@ -42,7 +42,7 @@ To begin scanning:
 1. Confirm that your scan is configured correctly with the benchmarks and log formats you want output.
 
     For more information about configuring your scan,
-    see [Configure Scans](./installing.html#scan).
+    see [Configure Scans](./installing.html#scans).
 
 1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
 
@@ -138,7 +138,7 @@ For instructions on configuring an external store, see <a href="./installing.htm
   + `COMPONENT` is the VM that was scanned.
   + `UUID` is the UUID for the VM that was scanned.
   + `FORMAT` is the format of the file and is one of the formats that you configured
-  in [Configure Scans](./installing.html#scan).
+  in [Configure Scans](./installing.html#scans).
 
   For example, the `oscap_store` directory looks similar to the following image:
 
@@ -157,8 +157,8 @@ The number of log files in the `output` directory can be calculated as follows:
 
   + `v` is the number of VMs in your <%= vars.platform_name %> deployment.
   + `i` is the number of additional instances for any VM in your <%= vars.platform_name %> deployment.
-  + `f` is the number of formats you configured in [Configure Scans](./installing.html#scan).
-  + `b` is the number of benchmarks you configured in [Configure Scans](./installing.html#scan).
+  + `f` is the number of formats you configured in [Configure Scans](./installing.html#scans).
+  + `b` is the number of benchmarks you configured in [Configure Scans](./installing.html#scans).
 
 
 ## <a id='terminal-scan'></a>Scan Using the Command Line
@@ -225,7 +225,7 @@ To start a new scan and retrieve the logs for the completed scan using the CLI:
 
     <p class="note"><strong>Note:</strong>
     The files generated use the most recent configuration of your tile.
-    To see what the current settings are, see <a href="./installing.html#scan">Configure Scans</a>.</p>
+    To see what the current settings are, see <a href="./installing.html#scans">Configure Scans</a>.</p>
 
 
 ### <a id='retrieve-only-logs'></a>Retrieve Existing Log Files
@@ -259,7 +259,7 @@ The naming syntax for each log file is below:
   * `COMPONENT` is the VM that was scanned.
   * `UUID` is the UUID for the VM that was scanned.
   * `FORMAT` is the format of the file and is one of the formats that you configured
-  in [Configure Scans](./installing.html#scan).
+  in [Configure Scans](./installing.html#scans).
 
   For example, the `output` directory looks similar to the following image:
 
