@@ -139,38 +139,17 @@ To configure scans:
 1. For **Scanner Timeout**, configure the maximum time in seconds permitted for a scan.
     The default value is `1200`.
 
-1. Configure **Enforce CPU limit**:
+1. For **Enforce CPU limit**, if you want to enable a CPU usage limit for the Scanner,
+  click **Enable**.
+  You can configure the CPU limit percentage (between `1` and `100`)
+  The default value is `Disable`.
 
-    <table class="nice">
-        <th>Field</th>
-        <th>Description</th>
+    <p class="note"><strong>Note:</strong>
+     <strong>Enforce CPU limit</strong> affects only 1 core. For example:
+      In a system with four cores with a CPU limit set to <code>100</code>,
+      the scanner only uses one of the four cores.
+     </p>
 
-        <tr><td><strong>Scanner Timeout</strong></td>
-            <td>Set to the maximum time in seconds permitted for a scan.
-                The default value is <code>1200</code>.</td>
-        </tr>
-
-        <tr><td><strong>CPU Limit</strong></td>
-            <td>Set the percentage of CPU that the <%= vars.product_short %> processes can use.
-                Integers from <code>1</code> to <code>100</code> are valid.<br>
-                Setting this field to <code>100</code> permits the use of one full core.
-
-                <p class="note"><strong>Note:</strong>
-                <strong>CPU Limit</strong> affects only one core.
-                 For example, in a system with four cores, if you set the CPU limit to <code>100</code>,
-                 <%= vars.product_short %> uses only one of the four cores.
-                 </p>
-             </td>
-        </tr>
-
-        <tr><td><strong>Enforce CPU Limit</strong></td>
-            <td>Set the enforcement policy for the <strong>CPU Limit</strong>:<br>
-          <ul>
-            <li><strong>Always</strong>: Ensures the <strong>CPU limit</strong> is always enforced.</li>
-            <li><strong>When other processes are using CPU resources</strong>: Permits the CPU usage to
-              exceed the limit set by <strong>CPU limit</strong> if idle CPU cycles are available.</li>
-          </ul>
-        </tr>
       </table>
 
 1. Click **Save**.
