@@ -5,8 +5,8 @@ This repo contains the source materials for the Compliance Scanner for Pivotal C
 ## Style Notes
 
 A variable is used instead of the product name in these docs.
-For the full product name, write: `<%= vars.product_full %>`,
-and, for the short product name write `<%= vars.product_short %>`.
+For the full product name, write: `Compliance Scanner for PCF`,
+and, for the short product name write `Compliance Scanner`.
 
 ## Branches
 
