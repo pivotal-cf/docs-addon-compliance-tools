@@ -126,14 +126,14 @@ To configure scans:
                   <td>Includes a configuration profile that
                     provides "defense in depth" for use in environments where security is
                     very important.</td>
-    
+
         </tr>
         <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
                 <td>Includes all the configuration tests of the published DISA STIG
                   for Ubuntu 16.04, amended with stemcell specific changes. Contains tests that would
                   fail due to architectural differences.</td>
     </table>
-    <br><br>
+    <br>
     A scan report is generated for each format and benchmark on each Linux VM running on Xenial stemcells.
     For example, if you select **.xml** and **.csv** formats,
     and **Base Xenial** and **STIG** benchmarks, four CSV files are created for each VM tested.
@@ -145,16 +145,16 @@ To configure scans:
 
 1. For **Enforce CPU limit**, if you want to enable a CPU usage limit for the Scanner,
   click **Enable**.
-  You can configure the CPU limit percentage (between `1` and `100`)
-  The default value is `Disable`.
+  You can configure the CPU limit percentage (between `1` and `100`).
 
     <p class="note"><strong>Note:</strong>
-     <strong>Enforce CPU limit</strong> affects only 1 core. For example:
-      In a system with four cores with a CPU limit set to <code>100</code>,
+     <strong>Enforce CPU limit</strong> affects only one core. For example,
+      in a system with four cores with a CPU limit set to <code>100</code>,
       the scanner only uses one of the four cores.
      </p>
 
-      </table>
+    By default, CPU usage limit is disabled.
+
 
 1. Click **Save**.
 
