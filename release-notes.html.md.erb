@@ -46,7 +46,7 @@ New features and changes in this release:
     * Secures the communication between the store VM and all of the scanner VMs
       through the implementation of mutual TLS (mTLS).
     * Removes credentials needed to trigger scans from the `oscap_store` VM.
-    * Now uses Ops Manager Root CA certificate to sign the mTLS certificates.
+    * Now uses <%= vars.ops_manager %> Root CA certificate to sign the mTLS certificates.
 
 * Adds a configurable **Scanner Timeout** field to limit how long a scan takes.
 For how to configure this field, see [Configure Scans](./installing.html#scan).
