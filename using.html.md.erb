@@ -44,7 +44,7 @@ To begin scanning:
     For more information about configuring your scan,
     see [Configure Scans](./installing.html#scan).
 
-1. Navigate to the Ops Manager Installation Dashboard.
+1. Navigate to the <%= vars.ops_manager_full %> Installation Dashboard.
 
 1. Click **REVIEW PENDING CHANGES**.
 
@@ -86,13 +86,13 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
 
 1. Click **Status** and download the `oscap_store` log file.
 
-    This downloads the log file containing scan results from the `oscap_store` VM to Ops Manager.
-    If you select the download icon multiple times, a list of ZIP files is created in Ops Manager,
+    This downloads the log file containing scan results from the `oscap_store` VM to <%= vars.ops_manager %>.
+    If you select the download icon multiple times, a list of ZIP files is created in <%= vars.ops_manager %>,
     each with a different timestamp.
 
 1. Click **Logs** and click the filename of the ZIP log file.
 
-    This downloads the scan results from the Ops Manager to your local machine.
+    This downloads the scan results from the <%= vars.ops_manager %> to your local machine.
 
 	![The logs pane from where the zipped scan logs can be downloaded](download-logs.png)
 
@@ -178,7 +178,7 @@ There are two ways to do this:
 To start a new scan and retrieve the logs for the completed scan using the CLI:
 
 1. Log in to the BOSH Director.
-    1. On the Ops Manager VM, create an alias in the BOSH CLI for your BOSH Director IP address. For example:
+    1. On the <%= vars.ops_manager %> VM, create an alias in the BOSH CLI for your BOSH Director IP address. For example:
     <pre class="terminal">$ bosh alias-env my-env -e 10.0.0.3</pre>
     1. Log in to the BOSH Director, specifying the newly created alias.
     For example:
@@ -297,7 +297,7 @@ see [BOSH SSH](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.ht
 To cancel a running scan:
 
 1. Log in to the BOSH Director.
-    1. On the Ops Manager VM, create an alias in the BOSH CLI for your BOSH Director IP address:
+    1. On the <%= vars.ops_manager %> VM, create an alias in the BOSH CLI for your BOSH Director IP address:
     <pre><code>$ bosh alias-env ENVIRONMENT-ALIAS -e IP-ADDRESS</code></pre> <%# do you have to create an alias every time you log in to the bosh director %>
     For example:
     <pre class="terminal">$ bosh alias-env my-env -e 10.0.0.3</pre>
@@ -380,10 +380,10 @@ To retrieve the errand log, see [Retrieve Existing Log Files](#retrieve-only-log
   <code>/var/vcap/sys/log/scan_results/store.log</code> on the store VM.</p>
 
 <br>
-If you started the scan using Ops Manager, you can view the log output for the
-`scan_results` errand in Ops Manager. <%# is this correct? %>
+If you started the scan using <%= vars.ops_manager %>, you can view the log output for the
+`scan_results` errand in <%= vars.ops_manager %>. <%# is this correct? %>
 
-After the scan has cancelled, the Ops Manager log output for the errand will look
+After the scan has cancelled, the <%= vars.ops_manager %> log output for the errand will look
 similar to the example below:
 
 <pre class="terminal">

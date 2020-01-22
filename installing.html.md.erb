@@ -12,11 +12,11 @@ This topic describes how to install and configure Compliance Scanner for PCF.
 Before you install <%= vars.product_short %>, you might need to resize your VMs accordingly.
 
 ## <a id='install'></a> Install <%= vars.product_short %>
-To install the <%= vars.product_short %> file on the Ops Manager Installation Dashboard:
+To install the <%= vars.product_short %> file on the <%= vars.ops_manager_full %> Installation Dashboard:
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/compliance/).
 
-1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
+1. Navigate to the <%= vars.ops_manager %> Installation Dashboard and click **Import a Product** to upload the product file.
 
 1. Under the **Import a Product** button, click **+** next to the version number of <%= vars.product_short %>.
 This adds the tile to your staging area.
@@ -163,11 +163,11 @@ configure an S3 upload.
 
 If you configure an S3 bucket, then <%= vars.product_short %> uploads scan
 results to the S3 bucket.
-This means that auditors do not need access to Ops Manager to download BOSH logs
+This means that auditors do not need access to <%= vars.ops_manager %> to download BOSH logs
 or rely on the operator to give them scan results.
 Additionally, when using a Security Information and Event Management (SIEM) system,
 automating the consumption of the scan results is easier and does not require
-access to the Ops Manager API.
+access to the <%= vars.ops_manager %> API.
 
 If you do not use an S3 bucket for scan results, then the scan results are stored in the `oscap_store` VM.
 For more information, see [Retrieve Log Files](./using.html#review-tile).
@@ -337,7 +337,7 @@ Pivotal recommends using the default configurations.</p>
 ## <a id="apply-changes"></a> Apply Changes from Your Configuration
 Your installation is not complete until you apply your configuration changes:
 
-1. Return to the Ops Manager Installation Dashboard.
+1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click **Review Pending Changes**. Verify that all products are selected.
 
