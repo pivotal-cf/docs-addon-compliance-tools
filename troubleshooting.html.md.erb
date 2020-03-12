@@ -131,3 +131,39 @@ If this is the case, you need to edit the name of the network being used to remo
 4. Click Review Pending Changes, and then **Apply Changes** to all tiles.
 
 This updates the network name property on all VMs.
+
+#### Symptom
+Running a scan results in an `exit code 1` error similar to the following:
+
+<pre class="terminal">
+...
+Instance   oscap_store/43aba653-4d0a-4cfc-bc72-a136ce33e3e0
+Exit Code  1
+Stdout    2020/03/12 16:51:12 Starting store on port 28894
+          2020/03/12 16:51:12 [10.0.0.8 10.0.0.10 10.0.0.9 10.0.0.11] <nil>
+          2020/03/12 16:51:12 Starting scan on 10.0.0.8
+          2020/03/12 16:51:12 Starting scan on 10.0.0.10
+          2020/03/12 16:51:12 Starting scan on 10.0.0.9
+          2020/03/12 16:51:12 Starting scan on 10.0.0.11
+          2020/03/12 16:51:36 ReportFailed
+          2020/03/12 16:51:36 Received  from 10.0.0.11:59566
+          2020/03/12 16:51:36 10.0.0.11:59566 failed: Error from daemon: exit status 124 (check the logs at: /var/vcap/sys/log/config_scanner/daemon.log)
+          2020/03/12 16:51:36 Attempting to cancel scan on host 10.0.0.9
+          2020/03/12 16:51:36 Attempting to cancel scan on host 10.0.0.8
+          2020/03/12 16:51:36 Attempting to cancel scan on host 10.0.0.10
+          2020/03/12 16:51:36 Failed to cancel scan on host <redacted>: Get https://10.0.0.10:28893/cancel: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+          2020/03/12 16:51:36 Failed to cancel scan on host <redacted>: Get https://10.0.0.8:28893/cancel: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+          2020/03/12 16:51:36 Failed to cancel scan on host <redacted>: Get https://10.0.0.9:28893/cancel: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+          2020/03/12 16:51:36 Shutdown
+          Scanner exited with 1 code
+</pre>
+
+#### Explanation
+The `oscap_store` receives a 'ReportFailed' event from one of the vms being scanned. The error indicates that the scan timed out on that particular vm (i.e: 10.0.0.11:59566 failed: Error from daemon: exit status 124).
+
+This could happen if an timeout increase was only applied to the `oscap_store` vm.
+
+#### Solution
+
+* Increase the scan timeout for *all* VMs. For more information, see
+**Scanner Timeout** under [Configure Scans](./installing.html#scans).
