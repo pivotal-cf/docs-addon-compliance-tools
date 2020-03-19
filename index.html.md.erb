@@ -96,6 +96,35 @@ The following table provides version and version-support information about
     </tr>
 </table>
 
+## <a id="ports"></a> Ports
+
+<%= vars.product_short %> uses the following ports:
+
+<table>
+  <tr>
+    <th width="15%">VM Type</th>
+    <th width="70%">Description</th>
+    <th width="15%">Port</th>
+  </tr>
+  <tr>
+    <td>oscap_store</td>
+    <td>The port used by oscap_store to receive the scan results from VMs with <%= vars.product_short %>.
+      The oscap_store VM initiates scan requests to other VMs and aggregates the results</td>
+    <td><code>28894</code></td>
+  </tr>
+  <tr>
+    <td>VM with <%= vars.product_short %></td>
+    <td>The port used by the scanning server running on each of the VMs with <%= vars.product_short %> installed.
+      This starts the scan on the VM through the daemon client (using the rpc_port)</td>
+    <td><code>28893</code></td>
+  </tr>
+  <tr>
+    <td>VM with <%= vars.product_short %></td>
+    <td>The port bound to the loopback interface.
+      The scanning server receiving the request passes the request through to the RPC server using the port doing the scan</td>
+    <td><code>28895</code></td>
+  </tr>
+</table>
 
 ## <a id="limitations"></a>Limitations
 
