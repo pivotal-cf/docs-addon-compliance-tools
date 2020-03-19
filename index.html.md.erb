@@ -98,33 +98,33 @@ The following table provides version and version-support information about
 
 ## <a id="ports"></a> Ports
 
-<%= vars.product_short %> uses the following ports
+<%= vars.product_short %> uses the following ports:
 
 <table>
   <tr>
-    <th width="33%">VM Type</th>
-    <th width="33%">Description</th>
-    <th width="33%">Port</th>
+    <th width="15%">VM Type</th>
+    <th width="70%">Description</th>
+    <th width="15%">Port</th>
   </tr>
   <tr>
     <td>oscap_store</td>
-    <td>The port used by oscap_store to receive the scan results from the VMS with the scanner (The oscap_store VM initiates scan requests to other VMs and aggregate results)</td>
-    <td>28894</td>
+    <td>The port used by oscap_store to receive the scan results from VMs with <%= vars.product_short %>.
+      The oscap_store VM initiates scan requests to other VMs and aggregates the results</td>
+    <td><code>28894</code></td>
   </tr>
   <tr>
-    <td>VM with the scanner</td>
-    <td>The port used by the scanning server running on each of the VMs with compliance scanner installed on. Will start the scan on the VM through the daemon client (using the rpc_port)</td>
-    <td>28893</td>
+    <td>VM with <%= vars.product_short %></td>
+    <td>The port used by the scanning server running on each of the VMs with <%= vars.product_short %> installed.
+      This starts the scan on the VM through the daemon client (using the rpc_port)</td>
+    <td><code>28893</code></td>
   </tr>
   <tr>
-    <td>VM with the scanner</td>
-    <td>The port is bound to the loopback interface, the scanning server receiving the request passes the request through to the RPC server via the port doing the actual scan</td>
-    <td>28895</td>
+    <td>VM with <%= vars.product_short %></td>
+    <td>The port bound to the loopback interface.
+      The scanning server receiving the request passes the request through to the RPC server using the port doing the scan</td>
+    <td><code>28895</code></td>
   </tr>
 </table>
-
-* Consider whitelisting the syslog forwarding port, and the aws/minio/azure bucket ports on the oscap_store if those feature are enabled.
-
 
 ## <a id="limitations"></a>Limitations
 
