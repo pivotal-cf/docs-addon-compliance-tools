@@ -162,12 +162,12 @@ Stdout    2020/03/12 16:51:12 Starting store on port 28894
 
 #### Explanation
 The `oscap_store` receives a `ReportFailed` event from one of the VMs being scanned.
-The error indicates that the scan timed out on that particular VM
-(i.e: 10.0.0.11:59566 failed: Error from daemon: exit status 124).
+The error message `10.0.0.11:59566 failed: Error from daemon: exit status 124`
+indicates that the scan timed out on that particular VM.
 
-This can happen if an timeout increase was only applied to the `oscap_store` VM.
+This can happen if a timeout increase was only applied to the `oscap_store` VM.
 
 #### Solution
 
-* Increase the scan timeout for all VMs. For more information, see
+Increase the scan timeout for all VMs. For more information, see
 [Scanner Timeout](./installing.html#scanner-timeout).
