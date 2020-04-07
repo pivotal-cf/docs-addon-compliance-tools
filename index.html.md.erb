@@ -12,7 +12,7 @@ For more information about all the versions certified for CIS Benchmarks, see
 the <a href="https://www.cisecurity.org/partner/pivotal/"> Pivotal - Certified Products</a> CIS page.</p>
 
 <%= vars.product_full %> provides platform operators and auditors an
-assessment of each <%= vars.platform_name %> Linux VM running on Xenial stemcells and,
+assessment of each Linux VM running on Xenial stemcells and,
 if it is compliant, with configuration guidelines.
 
 The following VM types on an <%= vars.ops_manager_full %> instance are skipped for scanning
@@ -37,7 +37,7 @@ Ubuntu configuration benchmarks for stemcells.
   * The XCCDF Generator (XGen): This translates XFiles tests to the SCAP format.
 
 <%= vars.product_short %> is installed through <%= vars.ops_manager %>.
-As part of the installation, it deploys each packaged component to each <%= vars.platform_name %> Linux VM
+As part of the installation, it deploys each packaged component to each Linux VM
 and instantiates a new Linux VM, `oscap_store`, for log retrieval.
 
 Scans are errands that are triggered through <%= vars.ops_manager %>.
@@ -55,7 +55,7 @@ release page on Pivotal Network.
 * Compatible with DISA STIG Viewer v2.9
 * Modified version of industry-recognized configuration benchmarks tuned for stemcells
 * Bundled tests written in YAML, allowing for easier readability
-* Reports of scan results for each Linux VM in the <%= vars.platform_name %> deployment that
+* Reports of scan results for each Linux VM in the deployment that
   highlight the compliance posture
 
 
