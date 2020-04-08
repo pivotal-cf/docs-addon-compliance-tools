@@ -7,9 +7,6 @@ owner: Pivotal Compliance and Innovation (PCI) Team
 <%= partial '../../compliance/partials/branding-change'%>
 <%= partial '../../compliance/partials/pcf-name-change'%>
 
-<p class="note"><%= vars.product_full %> is certified by the Center for Internet Security (CIS).
-For more information about all the versions certified for CIS Benchmarks, see
-the <a href="https://www.cisecurity.org/partner/pivotal/"> Pivotal - Certified Products</a> CIS page.</p>
 
 <%= vars.product_full %> provides platform operators and auditors an
 assessment of each Linux VM running on Xenial stemcells and,
@@ -31,7 +28,7 @@ a stemcell results in numerous false positives.
 Ubuntu configuration benchmarks for stemcells.
 
 <%= vars.product_short %> packages the following files for deployment on each BOSH-managed Linux VM:
-
+ 
   * The OpenSCAP (OSCAP) scanner
   * XFiles: A group of YAML files that contains configuration tests written in YAML.
   * The XCCDF Generator (XGen): This translates XFiles tests to the SCAP format.
@@ -46,7 +43,7 @@ Operators can download these reports to their local machine.
 
 For more information on the tests, test coverage, and test criteria covered by these benchmarks,
 see the PDF files included on the [<%= vars.product_short %>](https://network.pivotal.io/products/p-compliance-scanner/)
-release page on Pivotal Network.
+release page on VMware Tanzu Network.
 
 ## <a id='features'></a>Key Features
 <%= vars.product_short %> includes the following key features:
@@ -79,11 +76,11 @@ The following table provides version and version-support information about
         <td>OpenSCAP 1.3.1</td>
     </tr>
     <tr>
-        <td>Compatible <%= vars.ops_manager %> version(s)</td>
+        <td>Compatible <%= vars.ops_manager %> versions</td>
         <td>2.3, 2.4, 2.5, 2.6, and 2.7</td>
     </tr>
     <tr>
-        <td>Compatible <%= vars.app_runtime_full %> version(s)</td>
+        <td>Compatible <%= vars.app_runtime_full %> versions</td>
         <td>2.3, 2.4, 2.5, 2.6, and 2.7</td>
     </tr>
     <tr>
@@ -141,7 +138,3 @@ The following table provides version and version-support information about
 stemcells 97.x and 170.x and later.</p>
 
 
-## <a id="feedback"></a>Feedback
-
-Please provide any bugs, feature requests, or questions to the
-[Pivotal Platform Feedback list](mailto:pivotal-cf-feedback@pivotal.io).

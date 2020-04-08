@@ -14,7 +14,7 @@ Before you install <%= vars.product_full %>, you might need to resize your VMs a
 ## <a id='install'></a> Install <%= vars.product_short %>
 To install the <%= vars.product_short %> file on the <%= vars.ops_manager %> Installation Dashboard:
 
-1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/compliance/).
+1. Download the product file from [VMware Tanzu Network](https://network.pivotal.io/products/compliance/).
 
 1. Navigate to the <%= vars.ops_manager %> Installation Dashboard and click **Import a Product** to upload the product file.
 
@@ -180,7 +180,7 @@ To configure scans:
 <br>The default values are `"00:00"` and `Sunday`.
 
 <p class="note"><strong>Note:</strong>
-Pivotal recommends setting up external storage to store the scan result reports.
+VMware recommends setting up external storage to store the scan result reports.
 If you do not do this, <%= vars.product_short %> will overwrite your previous local reports.
 For more information on setting up external storage, see
 <a href="#external-store">(Optional) Configure External Store Upload</a> below.
@@ -249,7 +249,7 @@ There are two ways that you can give <%= vars.product_short %> access to an Amaz
       <tr>
         <td><strong>Access Key ID</strong></td>
         <td>Enter the access key ID for AWS credentials with access to the S3 bucket. <br>
-          Pivotal recommends that you ensure the credentials permit write access to just this S3 bucket.<br>
+          VMware recommends that you ensure the credentials permit write access to just this S3 bucket.<br>
           If you do not have this key, click <strong>Save</strong>
           and follow the steps in <a href="#instance-profile">To
           use an instance profile to configure the S3 bucket</a> below.</td>
@@ -257,7 +257,7 @@ There are two ways that you can give <%= vars.product_short %> access to an Amaz
       <tr>
         <td><strong>Secret Access Key</strong></td>
         <td>Enter the access key secret for AWS credentials with access to the S3 bucket. <br>
-          Pivotal recommends that you ensure the credentials permit write access to just this S3 bucket.<br>
+          VMware recommends that you ensure the credentials permit write access to just this S3 bucket.<br>
           If you do not have this key, click <strong>Save</strong>
           and follow the steps in <a href="#instance-profile">To
           use an instance profile to configure the S3 bucket</a> below.</td>
@@ -454,7 +454,7 @@ To configure syslog forwarding:
       <tr>
         <td><strong>Transport Protocol</strong></td>
         <td>Select the transport protocol used to send system logs to the server.
-        Pivotal recommends TCP.</td>
+        VMware recommends TCP.</td>
       </tr>
 
       <tr>
@@ -504,7 +504,7 @@ that have been scanned.
 
 <p class="note"><strong>Note:</strong>
 The <code>oscap_store</code> VM does not do anything computationally extensive.
-Pivotal recommends using the default configurations.</p>
+VMware recommends using the default configurations.</p>
 
 To configure resources:
 

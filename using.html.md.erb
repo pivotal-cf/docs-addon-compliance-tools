@@ -50,7 +50,7 @@ To begin scanning:
 
 1. Enable the checkboxes for the <%= vars.product_short %> tile and the **Run configured scans** errand.
 
-    ![Review pending changes page with Pivotal Compliance Scanner selected and Run configured scans
+    ![Review pending changes page with Compliance Scanner selected and Run configured scans
     errand selected](review-pending-changes.png)
 
     A scan is triggered at the end.
@@ -183,8 +183,8 @@ To start a new scan and retrieve the logs for the completed scan using the CLI:
 1. Run `bosh deployments` to list all the deployment names.
   For example:
   <pre class="terminal">
-  Name                      Release(s)                    Stemcell(s)
-  pivotal-container-service backup-and-restore-sdk/1.8.0  bosh-google-kvm-ubuntu-xenial-go\_agent/97.47   -
+  Name                      Releases                    Stemcells
+  container-service backup-and-restore-sdk/1.8.0  bosh-google-kvm-ubuntu-xenial-go\_agent/97.47   -
                               bosh-dns/1.10.0
                               bosh-dns-aliases/0.0.3
                               bpm/0.6.0
@@ -201,7 +201,7 @@ To start a new scan and retrieve the logs for the completed scan using the CLI:
                               ipsec-verifier/1.9.14
                               oscap/0.1.61
   service-instance          bosh-dns/1.10.0               bosh-google-kvm-ubuntu-xenial-go\_agent/97.47
-                              bosh-dns-aliases/0.0.3        pivotal-container-service
+                              bosh-dns-aliases/0.0.3        container-service
                               bpm/0.6.0
                               cfcr-etcd/1.4.1
                               kubo/0.21.13
