@@ -1,6 +1,6 @@
 ---
 title: Compliance Scanner
-owner: Pivotal Compliance and Innovation (PCI) Team
+owner:  Compliance and Innovation (PCI) Team
 ---
 <strong><%= modified_date %></strong>
 
@@ -27,7 +27,7 @@ a stemcell results in numerous false positives.
 Ubuntu configuration benchmarks for stemcells.
 
 <%= vars.product_short %> packages the following files for deployment on each BOSH-managed Linux VM:
- 
+
   * The OpenSCAP (OSCAP) scanner
   * XFiles: A group of YAML files that contains configuration tests written in YAML.
   * The XCCDF Generator (XGen): This translates XFiles tests to the SCAP format.
@@ -42,7 +42,7 @@ Operators can download these reports to their local machine.
 
 For more information on the tests, test coverage, and test criteria covered by these benchmarks,
 see the PDF files included on the [<%= vars.product_short %>](https://network.pivotal.io/products/p-compliance-scanner/)
-release page on VMware Tanzu Network.
+release page on <%= vars.product_network %>.
 
 ## <a id='features'></a>Key Features
 <%= vars.product_short %> includes the following key features:
@@ -117,7 +117,7 @@ The following table provides version and version-support information about
   <tr>
     <td>VM with <%= vars.product_short %></td>
     <td>The port bound to the loopback interface.
-      The scanning server that receives the request passes the request to the RPC server using the port that is 
+      The scanning server that receives the request passes the request to the RPC server using the port that is
       doing the scan.</td>
     <td><code>28895</code></td>
   </tr>
@@ -135,5 +135,3 @@ The following table provides version and version-support information about
 
 <p class="note"><strong>Note:</strong> <%= vars.product_short %> can only scan Linux VMs running on Xenial
 stemcells 97.x and 170.x and later.</p>
-
-
