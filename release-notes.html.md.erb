@@ -1,15 +1,54 @@
 ---
 title: Release Notes for Compliance Scanner
-owner: Pivotal Compliance and Innovation (PCI) Team
+owner:  Platform Security & Compliance Team
 ---
 <strong><%= modified_date %></strong>
-
-<%= partial '../../compliance/partials/branding-change'%>
-<%= partial '../../compliance/partials/pcf-name-change'%>
 
 These are release notes for <%= vars.product_full %>.
 
 <%= partial vars.path_to_partials + "/upgrade-planner" %>
+
+##<a id="1-2-32"></a> v1.2.32
+
+**Release Date: April XX, 2020**
+
+### Features
+
+New features and changes in this release:
+
+* **CPU limit** for <%= vars.product_short %> is now configured independently of the **Enforce CPU limit** field.
+  When you upgrade to v1.3 from v1.2, the value of **CPU limit** is reset to
+  the installation default of 50%.<br>
+  For instructions on setting the **CPU limit**, see [Configure Scans](./installing.html#scans).
+
+*  You can now configure an S3 bucket for scan results if you have the instance profile name of the S3 bucket.
+   You no longer need to know the access key ID and the secret access key for the S3 bucket.
+   For information, see [Configure to Upload to an S3 Bucket](installing.html#s3-bucket).
+
+<!-- --- Divider between November work and current work --- -->
+
+* Changed the communication protocol between the Scanner Web and the Scanner Daemon from unix socket to TCP with mTLS.
+* Sped up targeted benchmark runs.
+* Added support for s3 using AWS instance profiles to authenticate. For more information, see [Using AWS Instance Profile](./installing.html#instance-profile).
+
+* Updated oscap to 1.3.2
+
+* Updated benchmarks:
+
+	* Added STIG audit rules (SV-90369r2_rule, SV-90387r3_rule, SV-90437r3_rule, SV-90445r3_rule, SV-90465r3_rule, SV-95681r1_rule, SV-90459r3_rule)
+	* Removed exceptions for CIS audit rules (4.1.6, 4.1.7)
+	* Fixed CIS rules
+	* Added NIST Control Map to the STIG Benchmark
+
+### Resolved Issues
+
+* Fixed cgroups to use a single core when scanning
+* Fixed Schedule Scan
+
+### Known Issues
+
+There are no known issues for this release.
+
 
 ##<a id="1-2-16"></a> v1.2.16
 

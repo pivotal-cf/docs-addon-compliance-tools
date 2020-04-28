@@ -1,6 +1,6 @@
 ---
 title: Benchmarks for Compliance Scanner
-owner: Pivotal Compliance and Innovation (PCI) Team
+owner:  Platform Security & Compliance Team
 ---
 <strong><%= modified_date %></strong>
 
@@ -62,7 +62,7 @@ When it is applied to stemcells, certain tests fail for the following reasons:
 
 + The file path specified in the tests is different on the stemcell.
 + The failed test is specific to a standard Ubuntu Server image, but is not applicable to a stemcell.
-+ The failed test adheres to a lower security standard than what Pivotal verifies with the stemcell.
++ The failed test adheres to a lower security standard than what is verified with the stemcell.
 
 To address failures of the first type, the bundled tests have been updated to reflect the paths used by stemcells.
 These changes do not compromise the integrity of the tests themselves.
