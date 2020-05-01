@@ -26,5 +26,5 @@ The book repo for this product is [docs-book-compliance-tools](https://github.co
 
 ## Style Guide
 
-Product name is  Compliance Scanner in v1.2 and later.
+Product name is Compliance Scanner in v1.2 and later.
 Product name is Compliance Scanner for PCF in v1.1 and earlier.
