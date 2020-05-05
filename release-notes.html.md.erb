@@ -10,7 +10,7 @@ These are release notes for <%= vars.product_full %>.
 
 ##<a id="1-2-32"></a> v1.2.32
 
-**Release Date: April XX, 2020**
+**Release Date: May XX, 2020**
 
 ### Features
 New features and changes in this release:
@@ -51,6 +51,7 @@ This release fixes the following issues:
 
 * **Fixed cgroups issue:** A single core is now used when scanning.
 * **Fix Schedule Scan issue:** It can now be run as VCAP.
+* **Fix permission issue causing Scheduled Scan to not work:** Process is now run as VCAP.
 
 ### Known Issues
 There are no known issues for this release.
@@ -84,7 +85,7 @@ New features and changes in this release:
 ### Known Issues
 
 * **cgroups:** issue as of 1.1 (INSERT TEXT)
-* **Schedule Scan:** Does not work due to not having permissions to run under root.
+* **Schedule Scan:** Permission issue causes scheduled scan to not work when run under root.
 
 ## <a id="view"></a> View Release Notes for Another Version
 
