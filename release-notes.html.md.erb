@@ -47,11 +47,10 @@ New features and changes in this release:
       * **4.1.10** - Fix failing test due to stemcell changes
 
 ### Resolved Issues
-This release fixes the following issues:
+This release has the following fixes:
 
-* **Fixed cgroups issue:** A single core is now used when scanning.
-* **Fix Schedule Scan issue:** It can now be run as VCAP.
-* **Fix permission issue causing Scheduled Scan to not work:** Process is now run as VCAP.
+* **Fixes permission issue causing Scheduled Scan to not work:** Process is now run as VCAP.
+* **Fixes cgroups issue:** A single core is now used when scanning.
 
 ### Known Issues
 There are no known issues for this release.
@@ -83,9 +82,11 @@ New features and changes in this release:
 * Updates golang dependency to v1.13.1
 
 ### Known Issues
+This release has the following issues:
 
-* **cgroups:** issue as of 1.1 (INSERT TEXT)
 * **Schedule Scan:** Permission issue causes scheduled scan to not work when run under root.
+* **cgroups:** Scans use more resources due to multiple cores of a VM being used to run scans.
+  This may cause performance issues on Diego Cell VMs with many apps.
 
 ## <a id="view"></a> View Release Notes for Another Version
 
