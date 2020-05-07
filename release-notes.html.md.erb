@@ -39,3 +39,5 @@ This release fixes the following issues:
 This release has the following issue:
 
 * Rule `R-95-2` of the `Recommended Security Baseline` benchmark fails incorrectly.
+* **cgroups:** Scans use more resources due to multiple cores of a VM being used to run scans.
+  This might cause performance issues on Diego Cell VMs with many apps.
