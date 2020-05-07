@@ -10,7 +10,7 @@ These are release notes for <%= vars.product_full %>.
 
 ##<a id="1-2-32"></a> v1.2.32
 
-**Release Date: May XX, 2020**
+**Release Date: May 11, 2020**
 
 ### Features
 New features and changes in this release:
@@ -30,15 +30,15 @@ New features and changes in this release:
 
 * Changes the communication protocol between the Scanner Web and the Scanner Daemon from Unix socket to TCP with mTLS.
 * Speeds up targeted benchmark runs.
-* Updates bundled OpenSCAP to 1.3.2
+* Updates bundled OpenSCAP to v1.3.2
 * Updates STIG benchmark:
-  * **Adds audit rules:** SV-90369r2\_rule, SV-90387r3\_rule, SV-90437r3\_rule, SV-90445r3\_rule, SV-90465r3\_rule, SV-95681r1\_rule, SV-90459r3\_rule
+  * **Adds audit rules:** SV-90369r2&#95;rule, SV-90387r3&#95;rule, SV-90437r3&#95;rule, SV-90445r3&#95;rule, SV-90465r3&#95;rule, SV-95681r1&#95;rule, SV-90459r3&#95;rule
   * Adds NIST Control Map to the STIG benchmark
 
 * Updates CIS benchmark:
   * **Removes exceptions for audit rules:** 4.1.6, 4.1.7
   * **Fixes CIS Level 1 rules:**
-      * **1.1.17, 1.1.18, 1.1.19** - Remove the check for `cd roms`
+      * **1.1.17, 1.1.18, 1.1.19** - Remove the verification for `cd roms`
       * **2.2.7-2** - Use `dpkg` instead of `systemctl`
       * **4.2.1.2** - Remove duplicate log entries and remove unneeded log files for `rsyslog` configuration
       * **4.3** - Ignore `/var/log/cloud-init.log` to be log rotated
@@ -73,10 +73,10 @@ New features and changes in this release:
 * Benchmarks used with <%= vars.product_short %> have been updated:
   * The **CIS Ubuntu Linux 16.04 LTS – Level 1** benchmark replaces the Recommended Security Baseline benchmark.
   * The **CIS Ubuntu Linux 16.04 LTS – Level 2** benchmark replaces the Strict Security Practices benchmark.
-    <br>For information about these new benchmarks, see [Benchmarks for Pivotal Compliance Scanner](benchmarks.html).
+    <br>For information about these new benchmarks, see [Benchmarks for <%= vars.product_full %>](benchmarks.html).
 
 * Adds a **Custom SSH Banner** field.
-  This is used to provide the text expected when verifying the login SSH Banner on VMs during a scan.
+  Use this to provide the text expected when verifying the login SSH Banner on VMs during a scan.
   For more information, see [Configure System Variables](./installing.html#system-variables).
 
 * Updates golang dependency to v1.13.1
@@ -86,7 +86,7 @@ This release has the following issues:
 
 * **Schedule Scan:** Permission issue causes scheduled scan to not work when run under root.
 * **cgroups:** Scans use more resources due to multiple cores of a VM being used to run scans.
-  This may cause performance issues on Diego Cell VMs with many apps.
+  This might cause performance issues on Diego Cell VMs with many apps.
 
 ## <a id="view"></a> View Release Notes for Another Version
 
