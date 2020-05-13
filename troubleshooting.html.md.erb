@@ -171,3 +171,51 @@ This can happen if a timeout increase was only applied to the `oscap_store` VM.
 
 Increase the scan timeout for all VMs. For more information, see
 [Scanner Timeout](./installing.html#scanner-timeout).
+
+### <a id='skipping-scans'></a> Scan successful with Post errors
+
+#### Symptom
+Windows VMs and VMs without Compliance Scanner installed would show Post errors during a successful scan.
+
+<pre class="terminal">
+...
+Instance   oscap_store/bcb225db-f29f-4356-9d6a-525cbc99f6e1
+Exit Code  0
+Stdout     [2020-05-13 14:02:42] Starting scan
+          2020/05/13 14:02:42 Starting store on port 28894
+          2020/05/13 14:02:42 [10.0.4.6 10.0.4.7 10.0.4.5] &lt;nil&gt;
+          2020/05/13 14:02:42 Starting scan on 10.0.4.6
+          2020/05/13 14:02:42 Starting scan on 10.0.4.7
+          2020/05/13 14:02:47 Post https://10.0.4.7:28893/run: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+          2020/05/13 14:02:47 Starting scan on 10.0.4.5
+          2020/05/13 14:02:47 Post https://10.0.4.5:28893/run: dial tcp 10.0.4.5:28893: connect: connection refused
+          2020/05/13 14:03:31 ReportFinished
+          2020/05/13 14:03:31 Received oscap_store-bcb225db-f29f-4356-9d6a-525cbc99f6e1.tgz from 10.0.4.6:33670
+          2020/05/13 14:03:31 Shutdown
+            adding: benchmarks/ (stored 0%)
+            adding: benchmarks/CIS-Level-2.xml (deflated 90%)
+            adding: benchmarks/Base-Xenial.xml (deflated 93%)
+...
+</pre>
+
+#### Explanation
+`net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)` is from Windows VMs.
+`dial tcp 10.0.4.5:28893: connect: connection refused` is from Linux VMs without Compliance Scanner installed and running.
+These VMs are skipped and does not prevent the remainder of the scans from completing.
+
+#### Solution
+If the hosts that provide the errors are Windows VMs, then this is expected as Compliance Scanner is not supported for Windows.
+If the hosts that provide the errors are VMs that were expected to have Compliance Scanner installed and running, then an 'Apply Change' on the corresponding deployment and the Compliance Scanner Tile would be required to ensure that the VMs have the Compliance Scanner installed and running.
+
+To validate this, the operator can run `bosh instances --ps` and validate that the corresponding VM shows that `scanner_daemon` and `scanner_web` are in a `running` state.
+<pre class="terminal">
+Instance                                          Process               Process State  AZ          IPs       Deployment
+vm/bcb225db-f29f-4356-9d6a-525cbc99f6e1           -                     running        us-east1-b  10.0.4.6  p-compliance-scanner-a7c5cc7f126925f45180
+~                                                 bosh-dns              running        -           -         -
+~                                                 bosh-dns-healthcheck  running        -           -         -
+~                                                 bosh-dns-resolvconf   running        -           -         -
+~                                                 scanner_daemon        running        -           -         -
+~                                                 scanner_web           running        -           -         -
+~                                                 system-metrics-agent  running        -           -         -
+</pre>
+
