@@ -212,12 +212,21 @@ These VMs are skipped and do not prevent the remainder of the scans from being c
 There are a few situations to consider:
 
 * **If the hosts that provide the errors are Windows VMs:**<br>
+<<<<<<< HEAD
   This is the expected behavior. <%= vars.product_short %> does not currently support Windows.
 * **If the hosts that provide the errors are VMs that were expected to have <%= vars.product_short %> installed and running:**<br>
   Performing an "Apply Changes" on the deployment and on the <%= vars.product_full %>
   tile is required to ensure that the VMs have the <%= vars.product_short %> installed and running.
 
   To verify that <%= vars.product_short %> is installed and running, the operator can run `bosh instances --ps` and ensure that the VMs show that `scanner_daemon` and `scanner_web` are in a `running` state:
+=======
+  This is expected behavior. <%= vars.product_short %> does not currently support Windows.
+* **If the hosts that provide the errors are VMs that were expected to have <%= vars.product_short %> installed and running:**<br>
+  Performing an "Apply Changes" on the deployment and the Compliance Scanner Tile is required to make sure
+  that the VMs have the <%= vars.product_short %> installed and running.
+
+  To verify that <%= vars.product_short %> is installed and running, the operator can run `bosh instances --ps` and make sure that the VMs show that `scanner_daemon` and `scanner_web` are in a `running` state:
+>>>>>>> e977551... Edit to PR25 [#172827815]
 
   <pre class="terminal">
   Instance                                          Process               Process State  AZ          IPs       Deployment
@@ -225,7 +234,12 @@ There are a few situations to consider:
   ~                                                 bosh-dns              running        -           -         -
   ~                                                 bosh-dns-healthcheck  running        -           -         -
   ~                                                 bosh-dns-resolvconf   running        -           -         -
+<<<<<<< HEAD
   ~                                                 scanner\_daemon        running        -           -         -
   ~                                                 scanner\_web           running        -           -         -
+=======
+  ~                                                 scanner_daemon        running        -           -         -
+  ~                                                 scanner_web           running        -           -         -
+>>>>>>> e977551... Edit to PR25 [#172827815]
   ~                                                 system-metrics-agent  running        -           -         -
   </pre>
