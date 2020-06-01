@@ -123,12 +123,12 @@ BOSH DNS cannot resolve the `oscap_store` VM URL if there is any capitalization 
 Verify that the network you selected inside the **Assign AZs and Networks** pane
 of your <%= vars.product_short %> tile is not capitalized.
 
-If this is the case, you need to edit the name of the network being used to remove capitalization:
+If this is the case, you must edit the name of the network being used to remove the capitalization:
 
 1. On the <%= vars.ops_manager %> Installation Dashboard, click **BOSH Director**.
 2. Click **Create Networks**.
 3. Change the network **Name** to a name without capital letters, and click **Save**.
-4. Click Review Pending Changes, and then **Apply Changes** to all tiles.
+4. Click **Review Pending Changes**, and then **Apply Changes** to all tiles.
 
 This updates the network name property on all VMs.
 
@@ -172,7 +172,7 @@ This can happen if a timeout increase was only applied to the `oscap_store` VM.
 Increase the scan timeout for all VMs. For more information, see
 [Scanner Timeout](./installing.html#scanner-timeout).
 
-### <a id='skipping-scans'></a> Scan Successful with POST Errors
+### <a id='post-errors'></a> Scan Successful with POST Errors
 
 #### Symptom
 Linux VMs without <%= vars.product_short %> installed and all Windows VMs show `POST` errors during a successful scan.
@@ -212,12 +212,12 @@ These VMs are skipped and do not prevent the remainder of the scans from being c
 There are a few situations to consider:
 
 * **If the hosts that provide the errors are Windows VMs:**<br>
-  This is expected behavior. <%= vars.product_short %> does not currently support Windows.
+  This is the expected behavior. <%= vars.product_short %> does not currently support Windows.
 * **If the hosts that provide the errors are VMs that were expected to have <%= vars.product_short %> installed and running:**<br>
-  Performing an "Apply Changes" on the deployment and the Compliance Scanner Tile is required to make sure
-  that the VMs have the <%= vars.product_short %> installed and running.
+  Performing an "Apply Changes" on the deployment and on the <%= vars.product_full %>
+  tile is required to ensure that the VMs have the <%= vars.product_short %> installed and running.
 
-  To verify that <%= vars.product_short %> is installed and running, the operator can run `bosh instances --ps` and make sure that the VMs show that `scanner_daemon` and `scanner_web` are in a `running` state:
+  To verify that <%= vars.product_short %> is installed and running, the operator can run `bosh instances --ps` and ensure that the VMs show that `scanner_daemon` and `scanner_web` are in a `running` state:
 
   <pre class="terminal">
   Instance                                          Process               Process State  AZ          IPs       Deployment
@@ -225,7 +225,7 @@ There are a few situations to consider:
   ~                                                 bosh-dns              running        -           -         -
   ~                                                 bosh-dns-healthcheck  running        -           -         -
   ~                                                 bosh-dns-resolvconf   running        -           -         -
-  ~                                                 scanner_daemon        running        -           -         -
-  ~                                                 scanner_web           running        -           -         -
+  ~                                                 scanner\_daemon        running        -           -         -
+  ~                                                 scanner\_web           running        -           -         -
   ~                                                 system-metrics-agent  running        -           -         -
   </pre>
