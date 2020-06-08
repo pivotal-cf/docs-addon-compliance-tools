@@ -201,14 +201,14 @@ Stdout    2020-05-13 14:02:42 Starting scan
 </pre>
 
 #### Explanation
-Scan results include errors:
+Scan results include errors for VMs that <%= vars.product_short %> has skipped:
 
-* **Error for Windows VMs:**<br>
+* **For Windows VMs:**<br>
   `net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)`
-* **Error for Linux VMs without <%= vars.product_short %> installed and running:**<br>
+* **For Linux VMs without <%= vars.product_short %> installed and running:**<br>
   `dial tcp 10.0.4.5:28893: connect: connection refused`
 
-These VMs are skipped and do not prevent the remainder of the scans from being completed.
+The above errors do not prevent the remainder of the scans from being completed.
 
 #### Solution
 There are a few situations to consider:
@@ -217,20 +217,19 @@ There are a few situations to consider:
   This is the expected behavior. <%= vars.product_short %> does not currently support Windows.
 * **If the hosts that provide the errors are VMs that you expect to have <%= vars.product_short %> installed and running:**<br>
   Perform an "Apply Changes" on the deployment and the <%= vars.product_full %>
-  tile to ensure that the VMs have the <%= vars.product_short %> installed and running.
-
-  To verify that <%= vars.product_short %> is installed and running, you can run `bosh instances --ps`. 
-  Ensure that each VM shows that the `scanner_daemon` and `scanner_web` processes are in a `running` state.
-  
+  tile to ensure that the VMs have the <%= vars.product_short %> installed and running.<br><br>
+  To verify that <%= vars.product_short %> is installed and running, you can run `bosh instances --ps`.
+  Ensure that each VM shows that the `scanner_daemon` and `scanner_web` processes are in a `running` state.<br><br>
   For example:
 
-  <pre class="terminal">
-  Instance                                          Process               Process State  AZ          IPs       Deployment
-  vm/bcb225db-f29f-4356-9d6a-525cbc99f6e1           -                     running        us-east1-b  10.0.4.6  p-compliance-scanner-a7c5cc7f126925f45180
-  ~                                                 bosh-dns              running        -           -         -
-  ~                                                 bosh-dns-healthcheck  running        -           -         -
-  ~                                                 bosh-dns-resolvconf   running        -           -         -
-  ~                                                 scanner\_daemon        running        -           -         -
-  ~                                                 scanner\_web           running        -           -         -
-  ~                                                 system-metrics-agent  running        -           -         -
-  </pre>
+    <pre class="terminal">
+    $ bosh instances --ps<br>
+    Instance                                          Process               Process State  AZ          IPs       Deployment
+    vm/bcb225db-f29f-4356-9d6a-525cbc99f6e1           -                     running        us-east1-b  10.0.4.6  p-compliance-scanner-a7c5cc7f126925f45180
+    ~                                                 bosh-dns              running        -           -         -
+    ~                                                 bosh-dns-healthcheck  running        -           -         -
+    ~                                                 bosh-dns-resolvconf   running        -           -         -
+    ~                                                 scanner_daemon        running        -           -         -
+    ~                                                 scanner_web           running        -           -         -
+    ~                                                 system-metrics-agent  running        -           -         -
+    </pre>
