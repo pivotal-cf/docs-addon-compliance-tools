@@ -53,15 +53,15 @@ To configure your AZs and Networks:
 
 1. Click **Save**.
 
-## <a id='system-variables'></a> Configure System Variables
+## <a id='scan-variables'></a> Configure Scan Variables
 This section is where you configure expected values for tests and select which set of benchmarks to run.
-To configure your system variables:
+To configure your scan variables:
 
-1. Select **System Variables**.
+1. Select **Scan Variables**.
 
-    <%= image_tag("system-var.png", :alt => "System Variables page") %><%# Images require alt text that describes the image in detail. %>
+    <%= image_tag("system-var.png", :alt => "Scan Variables page") %><%# Images require alt text that describes the image in detail. %>
 
-1. Configure the fields in **System Variables** to provide the expected values for the tests:
+1. Configure the fields in **Scan Variables** to provide the expected values for the tests:
 
     <table class="nice">
         <th>Field</th>
@@ -131,6 +131,15 @@ To configure scans:
                 <td>Includes all the configuration tests of the published DISA STIG
                   for Ubuntu 16.04, amended with stemcell specific changes. Contains tests that would
                   fail due to architectural differences.</td>
+        </tr>
+        <tr><td><strong>TKGI Master Node - Level 1 and Level 2</strong></td>
+                <td>Includes all the configuration tests of the published CIS Kubernetes
+                Benchmark for Control Plane Components, etcd, and Control Plane Configuration.</td>
+        </tr>
+        <tr><td><strong>TKGI Worker Node - Level 1 and Level 2</strong></td>
+                <td>Includes all the configuration tests of the published CIS Kubernetes
+                Benchmark for Worker Nodes.</td>
+        </tr>
     </table>
     <br>
     A scan report is generated for each format and benchmark on each Linux VM running on Xenial stemcells.
@@ -171,6 +180,17 @@ To configure scans:
               exceed the limit set by <strong>CPU limit</strong> if idle CPU cycles are available.</li>
           </ul>
         </tr>
+        <tr><a name="exclude-instance-group"></a>
+        <td><strong>(Optional) List of instance group names that will be excluded from deployment</strong></td>
+        <td>Enter the instance groups that you do not want <%= vars.product_short %> deployed on.
+            Use a comma-separated list.</td>
+      </tr>
+       <tr><a name="include-deployment"></a>
+        <td><strong>(Optional) List of deployments to scan. (Leave empty to scan all deployments)</strong></td>
+        <td>Enter the deployments that you do not want <%= vars.product_short %> to scan.
+            Use a comma-separated list.
+            If empty, <%= vars.product_short %> will scan all deployments.</td>
+      </tr>
       </table>
 
 1. Click **Save**.
