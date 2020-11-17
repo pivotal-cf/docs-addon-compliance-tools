@@ -8,6 +8,35 @@ These are release notes for <%= vars.product_full %>.
 
 <%= partial vars.path_to_partials + "/upgrade-planner" %>
 
+##<a id="1-2-48"></a> v1.2.48
+
+**Release Date: November 25, 2020**
+
+### Features
+New features and changes in this release:
+
+* Benchmarks used with <%= vars.product_short %> have been updated:
+  * The **TKGI Master Node - Level 1 and Level 2** has been added.
+  * The **TKGI Worker Node - Level 1 and Level 2** has been added.
+    <br>For information about these new benchmarks, see [Benchmarks for <%= vars.product_full %>](benchmarks.html).
+
+* You can now use C2S and SC2S S3 regions to store scan results.
+  For information, see [(Optional) Configure External Store Upload](installing.html#s3-bucket).
+
+* Adds the ability to exclude instance groups.
+  This allows the User to exclude instance groups,e.g. errands, from scans
+  For more information, see [(Optional) List of instance group names that will be excluded from deployment](./installing.html#exclude-instance-group).
+
+* Adds the ability to scan specific deploymwnt(s).
+  This allows the User to scan a specific deployment(s), e.g. a TKGi cluster.
+  For more information, see [(Optional) List of deployments to scan. (Leave empty to scan all deployments)](./installing.html#include-deployment).
+
+* Updates golang dependency to v1.14.2
+
+### Known Issues
+This release has no known issues:
+
+
 ##<a id="1-2-32"></a> v1.2.32
 
 **Release Date: May XX, 2020**
