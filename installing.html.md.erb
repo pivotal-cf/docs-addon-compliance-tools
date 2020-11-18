@@ -59,11 +59,7 @@ To configure your scan variables:
 
 1. Select **Scan Variables**.
 
-<<<<<<< HEAD
-    <%= image_tag("scan-var.png", :alt => "Scan Variables page") %><%# Images require alt text that describes the image in detail. %>
-=======
-    <%= image_tag("system-var.png", :alt => "Scan Variables page") %><%# Images require alt text that describes the image in detail. %>
->>>>>>> 533dbb0... docs updat and release notes for 1.2.48
+    <%= image_tag("scan-var.png", :alt => "Screenshot of Scan Variables pane. The four text fields are described in order below") %>
 
 1. Configure the fields in **Scan Variables** to provide the expected values for the tests:
 
@@ -104,7 +100,8 @@ To configure scans:
 
 1. Select **Scan Configuration**.
 
-    <%= image_tag("scan-config.png", :alt => "Scan Configuration page", :width => "300") %><%# Images require alt text that describes the image in detail. %>
+    <%= image_tag("scan-config.png", :alt => "Screenshot of Scan Configuration pane.
+    All fields and settings are described in order below", :width => "450") %>
 
 1. Enable **Scan Report Formats**. You must select at least one format.
    The outputs of a scan can be in CSV, XML, and HTML formats.
@@ -185,15 +182,15 @@ To configure scans:
           </ul>
         </tr>
         <tr><a name="exclude-instance-group"></a>
-        <td><strong>(Optional) List of instance group names that will be excluded from deployment</strong></td>
-        <td>Enter the instance groups that you do not want <%= vars.product_short %> deployed on.
+        <td><strong>List of instance group names that will be excluded from deployment</strong></td>
+        <td>(Optional) Enter the instance groups that you do not want <%= vars.product_short %> deployed on.
             Use a comma-separated list.</td>
       </tr>
        <tr><a name="include-deployment"></a>
-        <td><strong>(Optional) List of deployments to scan. (Leave empty to scan all deployments)</strong></td>
-        <td>Enter the deployments that you do not want <%= vars.product_short %> to scan.
-            Use a comma-separated list.
-            If empty, <%= vars.product_short %> will scan all deployments.</td>
+        <td><strong>List of deployments to scan. (Leave empty to scan all deployments)</strong></td>
+        <td>(Optional) Enter the deployments that you do not want <%= vars.product_short %> to scan.
+            Use a comma-separated list.<br>
+            If empty, <%= vars.product_short %> scans all deployments.</td>
       </tr>
       </table>
 
