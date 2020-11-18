@@ -15,26 +15,30 @@ These are release notes for <%= vars.product_full %>.
 ### Features
 New features and changes in this release:
 
-* Benchmarks used with <%= vars.product_short %> have been updated:
-  * The **TKGI Master Node - Level 1 and Level 2** has been added.
-  * The **TKGI Worker Node - Level 1 and Level 2** has been added.
-    <br>For information about these new benchmarks, see [Benchmarks for <%= vars.product_full %>](benchmarks.html).
+* **TKGI benchmarks:** Additional benchmarks have been added:
+  * The **TKGI Master Node - Level 1 and Level 2**
+  * The **TKGI Worker Node - Level 1 and Level 2**
 
-* You can now use C2S and SC2S S3 regions to store scan results.
-  For information, see [(Optional) Configure External Store Upload](installing.html#s3-bucket).
+    For information about these new benchmarks, see [Benchmarks for <%= vars.product_short %>](benchmarks.html).
 
-* Adds the ability to exclude instance groups.
-  This allows the User to exclude instance groups,e.g. errands, from scans
+* **Store scan results in C2S and SC2S regions:** You can now store scan results in AWS C2S and SC2S regions.
+  For how to select an S3 bucket region, see [Configure to Upload to an S3 Bucket](installing.html#s3-bucket)
+  in _Installing and Configuring Compliance Scanner_.
+
+* **Ability to exclude instance groups:**
+  This allows the user to exclude instance groups, for example, errands, from scans.
   For more information, see [(Optional) List of instance group names that will be excluded from deployment](./installing.html#exclude-instance-group).
 
-* Adds the ability to scan specific deploymwnt(s).
-  This allows the User to scan a specific deployment(s), e.g. a TKGi cluster.
-  For more information, see [(Optional) List of deployments to scan. (Leave empty to scan all deployments)](./installing.html#include-deployment).
+* **Ability to scan specific deployments:**
+  This allows the user to scan a specific deployments, for example, a TKGi cluster.
+  For more information, see [List of deployments to scan](./installing.html#include-deployment)
+  in _Installing and Configuring Compliance Scanner_.
 
 * Updates golang dependency to v1.14.2
 
 ### Known Issues
-This release has no known issues:
+
+This release has no known issues.
 
 
 ##<a id="1-2-32"></a> v1.2.32
@@ -106,7 +110,7 @@ New features and changes in this release:
 
 * Adds a **Custom SSH Banner** field.
   Use this to provide the text expected when verifying the login SSH Banner on VMs during a scan.
-  For more information, see [Configure System Variables](./installing.html#system-variables).
+  For more information, see [Configure Scan Variables](./installing.html#scan-variables).
 
 * Updates golang dependency to v1.13.1
 
