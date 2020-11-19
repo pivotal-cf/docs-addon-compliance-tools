@@ -96,6 +96,7 @@ To configure your scan variables:
 1. Click **Save**.
 
 ## <a id='scans'></a> Configure Scans
+
 To configure scans:
 
 1. Select **Scan Configuration**.
@@ -133,11 +134,11 @@ To configure scans:
                   for Ubuntu 16.04, amended with stemcell specific changes. Contains tests that would
                   fail due to architectural differences.</td>
         </tr>
-        <tr><td><strong>TKGI Master Node - Level 1 and Level 2</strong></td>
+        <tr><td><strong><%= vars.k8s_runtime_abbr %> Master Node - Level 1 and Level 2</strong></td>
                 <td>Includes all the configuration tests of the published CIS Kubernetes
                 Benchmark for Control Plane Components, etcd, and Control Plane Configuration.</td>
         </tr>
-        <tr><td><strong>TKGI Worker Node - Level 1 and Level 2</strong></td>
+        <tr><td><strong><%= vars.k8s_runtime_abbr %> Worker Node - Level 1 and Level 2</strong></td>
                 <td>Includes all the configuration tests of the published CIS Kubernetes
                 Benchmark for Worker Nodes.</td>
         </tr>
