@@ -19,8 +19,8 @@ Benchmarks determine which tests are run by the scanner.
 + [CIS Ubuntu Linux 16.04 LTS - Level 1](#cis-level-1)
 + [CIS Ubuntu Linux 16.04 LTS - Level 2](#cis-level-2)
 + [STIG for Ubuntu Xenial](#stig)
-+ [TKGI Master Node - Level 1 and Level 2](#cis-k8s-master)
-+ [TKGI Worker Node - Level 1 and Level 2](#cis-k8s-worker)
++ [<%= vars.k8s_runtime_abbr %> Master Node - Level 1 and Level 2](#cis-k8s-master)
++ [<%= vars.k8s_runtime_abbr %> Worker Node - Level 1 and Level 2](#cis-k8s-worker)
 
 
 ## <a id="base"></a> Base Xenial
@@ -74,20 +74,20 @@ For more information about the Canonical Ubuntu 16.04 LTS STIG guide,
 use the following link to download a ZIP file of the [Department of Defense's documentation](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_Canonical_Ubuntu_16-04_LTS_V1R2_STIG.zip).
 
 
-## <a id="cis-k8s-master"></a> TKGI Master Node - Level 1 and Level 2
+## <a id="cis-k8s-master"></a> <%= vars.k8s_runtime_abbr %> Master Node - Level 1 and Level 2
 
 This benchmark contains tests of the published CIS Kubernetes Benchmark for
 Control Plane Components, etcd, and Control Plane Configuration.
 
 This benchmark includes the CIS Level 1 and CIS Level 2 profile.
 
-This benchmark targets TKGi clusters.
+This benchmark targets <%= vars.k8s_runtime_abbr %> clusters.
 
-## <a id="cis-k8s-worker"></a> TKGI Worker Node - Level 1 and Level 2
+## <a id="cis-k8s-worker"></a> <%= vars.k8s_runtime_abbr %> Worker Node - Level 1 and Level 2
 
 This benchmark contains tests of the published CIS Kubernetes Benchmark for
 Worker Nodes.
 
 This benchmark includes the CIS Level 1 and CIS Level 2 profile.
 
-This benchmark targets TKGi clusters.
+This benchmark targets <%= vars.k8s_runtime_abbr %> clusters.
