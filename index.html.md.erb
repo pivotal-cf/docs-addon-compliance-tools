@@ -4,9 +4,15 @@ owner: Platform Security & Compliance Team
 ---
 <strong><%= modified_date %></strong>
 
-<p class="note"><%= vars.product_full %> is certified by the Center for Internet Security (CIS).
-For more information about all the versions certified for CIS Benchmarks, see
-the <a href="https://www.cisecurity.org/partner/vmware/"> VMware - Certified Products</a> CIS page.</p>
+<div class="note"><%= vars.product_full %> is certified by the Center for Internet Security (CIS).
+For more information about all the versions certified for CIS Benchmarks:<br><br>
+<ul>
+  <li>For <%= vars.product_short %> v1.2.48 and later, see the
+    <a href="https://www.cisecurity.org/partner/vmware/">VMware - Certified Products</a> CIS page.</li>
+  <li>For <%= vars.product_short %> v1.2.32 and earlier, see the
+    <a href="https://www.cisecurity.org/partner/pivotal/">Pivotal - Certified Products</a> CIS page.</li>
+</ul>
+</div>
 
 <%= vars.product_full %> provides platform operators and auditors an
 assessment of each Linux VM running on Xenial stemcells and,
@@ -15,8 +21,8 @@ if it is compliant, with configuration guidelines.
 The following VM types on an <%= vars.ops_manager_full %> instance are skipped for scanning
 and do not have <%= vars.product_short %> deployed on them:
 
-  * Linux VMs running on Trusty stemcells
-  * Non-Linux VMs
+* Linux VMs running on Trusty stemcells
+* Non-Linux VMs
 
 ## <a id='overview'></a>Overview
 Benchmarks for existing commercial configuration scanners are intended for use against
