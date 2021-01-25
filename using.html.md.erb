@@ -84,31 +84,30 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
 
 1. When the changes have been applied, return to the Installation Dashboard
    and click the <%= vars.product_short %> tile.
-
+<br><br>
     ![Screenshot of the dialog shown when Apply Changes has finished.
     The text in the dialog box reads, 'Changes Applied. Your changes were successfully applied.
     We recommend that you export a backup of this installation from the actions menu.'
     Below the text is a 'Close' button and the 'Return to dashboard' button.](changes-applied.png)
 
 1. Click **Status** and download the `oscap_store` log file.
-
+<br><br>
     This downloads the log file containing scan results from the `oscap_store` VM to <%= vars.ops_manager %>.
     If you select the download icon multiple times, a list of ZIP files is created in <%= vars.ops_manager %>,
     each with a different timestamp.
 
 1. Click **Logs** and click the filename of the ZIP log file.
-
+<br><br>
     This downloads the scan results from the <%= vars.ops_manager %> to your local machine.
+    The timestamp indicates when the scan was initiated.
 
 	  ![Screenshot of the logs tab in the Compliance Scanner tile.
     Under 'Downloaded' there is a link to download a zipped file for a scan log.
     There is a timestamp to the right of the link.](download-logs.png)
     <a href="./images/download-logs.png" target="_blank" aria-hidden="true">Click here to view a larger version of the image above</a>
-    <br><br>
-    The timestamp indicates when the scan was initiated.
 
 1. Decompress the downloaded file.
-
+<br><br>
     The contents of the downloaded file depend on the formats and benchmarks you selected during
     configuration.
     For example, a report in HTML format from the Base Xenial benchmark, might look like this.
@@ -121,7 +120,7 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
     'Benchmark URL', 'Benchmark ID', 'Profile ID', 'Started at', 'Finished at', 'Performed by'.
     To the right of the table there is a list of CPE platforms and a list of IP and MAC addresses.](sample-html-output.png)
 
-    <a href="base_xenial_sample.html" target="_blank">See a larger version of this image.</a>
+    <a href="base_xenial_sample.html" target="_blank" aria-hidden="true">Click here to view a complete example log</a>
 
 ### <a id='scan-output'></a> Find Scan Output
 
