@@ -96,6 +96,10 @@ To configure your scan variables:
                     For more information about <code>os-conf-release</code>, see <a href="https://github.com/cloudfoundry/os-conf-release">os-conf-release</a> in GitHub.
                   </td>
         </tr>
+        <tr><td><strong>CNI directory (TKGI)</strong></td>
+                <td>Directory contining configuration files used by contianer networking interface(CNI). <br><br>
+                    The default value (which comes from the stemcell) is: <code>/var/vcap/jobs/flanneld.</code></td>
+        </tr>
     </table>
 
 1. Click **Save**.
@@ -270,7 +274,7 @@ There are two ways that you can give <%= vars.product_short %> access to an Amaz
       <%= image_tag("bucket-aws.png",
       :alt => "Screenshot of the External Store Upload pane in the Compliance Scanner tile.
       The AWS S3 Bucket radio button is selected, which reveals configuration fields for the AWS S3 Bucket.
-      All fields and settings are described in order in the step below.", :width => "500") %>
+      All fields and settings are described in order in the step below.", :width => "375") %>
 
 3. Configure the fields:
 
@@ -300,6 +304,15 @@ There are two ways that you can give <%= vars.product_short %> access to an Amaz
           If you do not have this key, click <strong>Save</strong>
           and follow the steps in <a href="#instance-profile">To
           use an instance profile to configure the S3 bucket</a> below.</td>
+      </tr>
+      <tr>
+        <td><strong>S3 object prefix</strong></td>
+        <td>Enter the object prefix for scan results. <br>
+          The object prefix is similar to a directory name.
+          It allows you to group scan results together in the bucket.<br>
+          For more information about organizing objects in the Amazon S3 console using folders,
+          see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html">
+          the AWS documentation</a>.</td>
       </tr>
     </table>
 
