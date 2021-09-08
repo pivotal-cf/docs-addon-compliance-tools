@@ -144,12 +144,20 @@ To configure scans:
                   for Ubuntu 16.04, amended with stemcell specific changes. Contains tests that would
                   fail due to architectural differences.</td>
         </tr>
-        <tr><td><strong><%= vars.k8s_runtime_abbr %> Master Node - Level 1 and Level 2</strong></td>
+        <tr><td><strong><%= vars.k8s_runtime_abbr %> CIS Master Node</strong></td>
                 <td>Includes all the configuration tests of the published CIS Kubernetes
                 Benchmark for Control Plane Components, etcd, and Control Plane Configuration.</td>
         </tr>
-        <tr><td><strong><%= vars.k8s_runtime_abbr %> Worker Node - Level 1 and Level 2</strong></td>
+        <tr><td><strong><%= vars.k8s_runtime_abbr %> CIS Worker Node</strong></td>
                 <td>Includes all the configuration tests of the published CIS Kubernetes
+                Benchmark for Worker Nodes.</td>
+        </tr>
+         <tr><td><strong><%= vars.k8s_runtime_abbr %> STIG Master Node</strong></td>
+                <td>Includes all the configuration tests of the published Defense Information Systems Agency (DISA) Kubernetes
+                Benchmark for Control Plane Components, etcd, and Control Plane Configuration.</td>
+        </tr>
+        <tr><td><strong><%= vars.k8s_runtime_abbr %> STIG Worker Node</strong></td>
+                <td>Includes all the configuration tests of the published Defense Information Systems Agency (DISA) Kubernetes
                 Benchmark for Worker Nodes.</td>
         </tr>
     </table>
