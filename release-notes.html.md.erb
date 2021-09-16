@@ -16,17 +16,17 @@ These are release notes for <%= vars.product_full %>.
 
 New features and changes in this release:
 
-* **Kubernetes STIG:** Kunernetes Security Technical Implementation Guide (STIG) V1R2 has been added.
+* **Kubernetes STIG:** Kubernetes Security Technical Implementation Guide (STIG) V1R2 has been added.
 * **Ubuntu STIG version update:** Stemcell Security Technical Implementation Guide (STIG) version has been updated to V2R2.
-* **Object prefix support for S3:** The AWS S3 object prefix can be specified to group scan results
+* **Object prefix support for S3:** You can specify the AWS S3 object prefix to group scan results
   in an S3 bucket.
 This lets you store scan results from multiple foundations in a single S3 bucket.
 For how to set S3 object prefix, see
 [Configure to Upload to an S3 Bucket](installing.html#s3-bucket) in
 _Installing and Configuring <%= vars.product_short %>_.
 * **Logging scanned and skipped VMs:** Scan logs now include IP addresses of scanned and skipped VMs.
-* **Non-default CNI check for TKGI:** User can specify non-default CNI directory got configutation check. For setting CNI directory,
-see [Configure Scan Variables] (installing.html#scan-variables) in
+* **Non-default CNI check for TKGI:** You can specify the non-default container networking interface (CNI) directory for configuration check. 
+For how to set the CNI directory, see [Configure Scan Variables] (installing.html#scan-variables) in
 _Installing and Configuring <%= vars.product_short %>_.
 
 ### Known Issues
