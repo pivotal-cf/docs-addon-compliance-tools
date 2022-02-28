@@ -50,11 +50,7 @@ To begin scanning:
 
 1. Enable the checkboxes for the <%= vars.product_short %> tile and the **Run configured scans** errand.
 
-    ![Screenshot of the Compliance Scanner section on the 'Review Pending Changes' page in Ops Manager.
-    There is a checkbox to the left of the section. The checkbox is selected.
-    Within the section there is a dropdown for errands.
-    At the bottom of the section, under 'Select errands to run during the deploy', the checkbox for
-    'Run configured scans' is selected.](review-pending-changes.png)
+    ![Screenshot of the Compliance Scanner section on the 'Review Pending Changes' page in Ops Manager. There is a checkbox to the left of the section. The checkbox is selected. Within the section there is a dropdown for errands. At the bottom of the section, under 'Select errands to run during the deploy', the checkbox for 'Run configured scans' is selected.](images/review-pending-changes.png)
 
     A scan is triggered at the end.
 
@@ -85,10 +81,7 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
 1. When the changes have been applied, return to the Installation Dashboard
    and click the <%= vars.product_short %> tile.
 <br><br>
-    ![Screenshot of the dialog shown when Apply Changes has finished.
-    The text in the dialog box reads, 'Changes Applied. Your changes were successfully applied.
-    We recommend that you export a backup of this installation from the actions menu.'
-    Below the text is a 'Close' button and the 'Return to dashboard' button.](changes-applied.png)
+    ![Screenshot of the dialog shown when Apply Changes has finished. The text in the dialog box reads, 'Changes Applied. Your changes were successfully applied. We recommend that you export a backup of this installation from the actions menu.' Below the text is a 'Close' button and the 'Return to dashboard' button.](images/changes-applied.png)
 
 1. Click **Status** and download the `oscap_store` log file.
 <br><br>
@@ -101,9 +94,7 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
     This downloads the scan results from the <%= vars.ops_manager %> to your local machine.
     The timestamp indicates when the scan was initiated.
 
-	  ![Screenshot of the logs tab in the Compliance Scanner tile.
-    Under 'Downloaded' there is a link to download a zipped file for a scan log.
-    There is a timestamp to the right of the link.](download-logs.png)
+	  ![Screenshot of the logs tab in the Compliance Scanner tile. Under 'Downloaded' there is a link to download a zipped file for a scan log. There is a timestamp to the right of the link.](images/download-logs.png)
     <a href="./images/download-logs.png" target="_blank" aria-hidden="true">Click here to view a larger version of the image above</a>
 
 1. Decompress the downloaded file.
@@ -112,13 +103,7 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
     configuration.
     For example, a report in HTML format from the Base Xenial benchmark, might look like this.
 
-    ![Screenshot of an example scan log.
-    At the top is the heading 'Guide to the Secure Configuration of Ubuntu stemcell'.
-    Below is a table titled Evaluation Characteristics.
-    The table has two columns, one for the item name and one for the value.
-    The items listed are: 'Tile version', 'Deployment name', 'Evaluation target',
-    'Benchmark URL', 'Benchmark ID', 'Profile ID', 'Started at', 'Finished at', 'Performed by'.
-    To the right of the table there is a list of CPE platforms and a list of IP and MAC addresses.](sample-html-output.png)
+    ![Screenshot of an example scan log. At the top is the heading 'Guide to the Secure Configuration of Ubuntu stemcell'. Below is a table titled Evaluation Characteristics. The table has two columns, one for the item name and one for the value. The items listed are: 'Tile version', 'Deployment name', 'Evaluation target', 'Benchmark URL', 'Benchmark ID', 'Profile ID', 'Started at', 'Finished at', 'Performed by'. To the right of the table there is a list of CPE platforms and a list of IP and MAC addresses.](images/sample-html-output.png)
 
     <a href="base_xenial_sample.html" target="_blank" aria-hidden="true">Click here to view a complete example log</a>
 
@@ -155,10 +140,7 @@ For instructions on configuring an external store, see <a href="./installing.htm
 
   For example, the `oscap_store` directory looks similar to the following image:
 
-  ![Diagram of an example oscap_store file structure.
-  The output directory contains two scan log files.
-  The output directory is within the scan results directory,
-  which is within the oscap_store directory.](oscap_store.png)
+  ![Diagram of an example oscap_store file structure. The output directory contains two scan log files. The output directory is within the scan results directory, which is within the oscap_store directory.](images/oscap_store.png)
 
 <!-- If you need to edit the above image you need to edit the corresponding
 oscap_store.html file in draw.io and then export the image to a png file. -->
@@ -284,8 +266,7 @@ The naming syntax for each log file is below:
 
   For example, the `output` directory looks similar to the following image:
 
-  ![Diagram of an example output directory structure.
-  Two scan log files are within the output directory.](command_line_output.png)
+  ![Diagram of an example output directory structure. Two scan log files are within the output directory.](images/command_line_output.png)
 
 
 <!-- Put below "View Tests on VMs" section in a "Reporting" page in the future -->
