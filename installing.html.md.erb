@@ -306,12 +306,12 @@ see [<%= vars.ops_manager %> CLI (om)](https://docs.pivotal.io/platform/customiz
 1. On the command line, run:
 
     ```
- om configure-director --config <(echo "
- vmextensions-configuration:
- - name: s3_instance_profile
-      cloud_properties:
-        iam_instance_profile: INSTANCE-PROFILE
-")
+     om configure-director --config <(echo "
+     vmextensions-configuration:
+     - name: s3_instance_profile
+          cloud_properties:
+            iam_instance_profile: INSTANCE-PROFILE
+    ")
     ```
 
     Where is `INSTANCE-PROFILE` is the name of the instance profile for the S3 bucket.
@@ -324,36 +324,36 @@ see [<%= vars.ops_manager %> CLI (om)](https://docs.pivotal.io/platform/customiz
     &#8208; name: s3_instance_profile
       cloud_properties:
         iam_instance_profile: scan_store_bucket
-")<br>
-started configuring vm extensions
-applying vmextensions configuration for the following:
-	s3_instance_profile
-finished configuring vm extensions
+")
+    started configuring vm extensions
+    applying vmextensions configuration for the following:
+      s3_instance_profile
+    finished configuring vm extensions
 
-    </pre>
+      </pre>
 
 1. Run:
 
     ```
- om configure-product --config <( echo "
- product-name: p-compliance-scanner
- resource-config:
-      oscap_store:
-        additional_vm_extensions:
-        - s3_instance_profile
-")
+     om configure-product --config <( echo "
+     product-name: p-compliance-scanner
+     resource-config:
+          oscap_store:
+            additional_vm_extensions:
+            - s3_instance_profile
+    ")
     ```
 
     Example output:
 
     <pre class="terminal">
-configuring product...
-network properties are not provided, nothing to do here
-product properties are not provided, nothing to do here
-applying resource configuration for the following jobs:
-	oscap_store
-errands are not provided, nothing to do here
-finished configuring product
+    configuring product...
+    network properties are not provided, nothing to do here
+    product properties are not provided, nothing to do here
+    applying resource configuration for the following jobs:
+      oscap_store
+    errands are not provided, nothing to do here
+    finished configuring product
      </pre>
 
 ### <a id="minio-bucket"></a>Configure to Upload to a Minio Bucket
