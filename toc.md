@@ -1,0 +1,7 @@
+* [Version 1.1](index.html.md.erb)
+    * [Release Notes](release-notes.html.md.erb)
+    * [Installing and Configuring Compliance Scanner for VMware Tanzu](installing.html.md.erb)
+    * [Using Compliance Scanner for VMware Tanzu](using.html.md.erb)
+    * [Upgrading](upgrading.html.md.erb)
+    * [Troubleshooting](troubleshooting.html.md.erb)
+    * [Benchmarks](benchmarks.html.md.erb)
