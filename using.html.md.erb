@@ -20,7 +20,7 @@ The scan errand on each VM does generate the Security Content Automation Protoco
 tests each time by running XGen on XFiles.
 
 
-##<a id='scan-methods'></a> Ways to Scan VMs
+## <a id='scan-methods'></a> Ways to Scan VMs
 
 You can scan VMs using the tile UI or the command line:
 
@@ -28,14 +28,14 @@ You can scan VMs using the tile UI or the command line:
 * When setting up automated scans of your VMs, see [Scan Using the Command Line](#terminal-scan).
 
 
-##<a id='tile-scan'></a> Scan Using the <%= vars.product_short %> Tile
+## <a id='tile-scan'></a> Scan Using the <%= vars.product_short %> Tile
 Scanning VMs involves three procedures:
 
 1. [Scan the VMs](#scan-vms)
 1. [Retrieve Log Files](#review-tile)
 1. [Find Scan Output](#scan-output)
 
-###<a id='scan-vms'></a> Scan the VMs
+### <a id='scan-vms'></a> Scan the VMs
 
 To begin scanning, do the following:
 
@@ -68,7 +68,7 @@ To begin scanning, do the following:
     On each VM, there is only one log file per format and one ZIP log file at a time.
     If you run any subsequent scans these files are overwritten.
 
-###<a id='review-tile'></a>Retrieve Log Files
+### <a id='review-tile'></a>Retrieve Log Files
 
 To review the logs for a completed scan using the <%= vars.product_short %> tile, do the following:
 
@@ -102,7 +102,7 @@ To review the logs for a completed scan using the <%= vars.product_short %> tile
 
     <a href="base_xenial_sample.html" target="_blank">See a larger version of this image.</a>
 
-###<a id='scan-output'></a> Find Scan Output
+### <a id='scan-output'></a> Find Scan Output
 
 The `oscap_store` ZIP file contains scan results from the `oscap_store` VM.
 <br>
@@ -145,7 +145,7 @@ The number of log files in the `output` directory can be calculated as follows:
   + `b` is the number of benchmarks you configured in [Configure Scans](./installing.html#scan).
 
 
-##<a id='terminal-scan'></a>Scan Using the Command Line
+## <a id='terminal-scan'></a>Scan Using the Command Line
 
 You also have the option of scanning VMs using the command line.
 There are two ways to do this:
@@ -154,7 +154,7 @@ There are two ways to do this:
 * [Retrieve Existing Log Files](#retrieve-only-logs)
 
 
-###<a id='scan-retrieve-logs'></a>Scan and Retrieve Log Files
+### <a id='scan-retrieve-logs'></a>Scan and Retrieve Log Files
 
 To start a new scan and retrieve the logs for the completed scan using the command line, do the following:
 
@@ -213,7 +213,7 @@ To start a new scan and retrieve the logs for the completed scan using the comma
   To see what the current settings are, see <a href="./installing.html#scan">Configure Scans</a>.</p>
 
 
-###<a id='retrieve-only-logs'></a>Retrieve Existing Log Files
+### <a id='retrieve-only-logs'></a>Retrieve Existing Log Files
 
 To retrieve existing logs for the most recent completed scan using the command line,
 use the following command:
@@ -231,7 +231,7 @@ use the following command:
   <pre class="terminal">bosh -e my-env -d scanner-f9822a33c2e0d04cb logs --only=scan_results --dir scanner/logs/20190131</pre>
 
 
-###<a id='access-logs'></a>Access Log Files
+### <a id='access-logs'></a>Access Log Files
 To access your saved logs, unzip the output ZIP file.
 
 The naming syntax for each log file is the following:
@@ -253,7 +253,7 @@ The naming syntax for each log file is the following:
 
 
 <!-- Put below "View Tests on VMs" section in a "Reporting" page in the future -->
-##<a id='tests'></a> View Tests on VMs
+## <a id='tests'></a> View Tests on VMs
 
 For every configuration rule that is checked, there is a corresponding test written in YAML test
 files residing on each VM.
