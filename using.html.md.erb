@@ -178,13 +178,11 @@ There are two ways to do this:
 To start a new scan and retrieve the logs for the completed scan using the CLI:
 
 1. Log in to the BOSH Director.
-    1. On the <%= vars.ops_manager %> VM, create an alias in the BOSH CLI for your BOSH Director IP address. For example:
-    <pre class="terminal">$ bosh alias-env my-env -e 10.0.0.3</pre>
-    1. Log in to the BOSH Director, specifying the newly created alias.  For example:
-    <pre class="terminal">$ bosh -e my-env log-in</pre>
-
+   1. On the <%= vars.ops_manager %> VM, create an alias in the BOSH CLI for your BOSH Director IP address. For example:
+   <pre class="terminal">$ bosh alias-env my-env -e 10.0.0.3</pre>
+   1. Log in to the BOSH Director, specifying the newly created alias.  For example:
+   <pre class="terminal">$ bosh -e my-env log-in</pre>
 1. Run `bosh deployments` to list all the deployment names. For example:
-
     <pre class="terminal">
     Name                      Releases                    Stemcells
     container-service backup-and-restore-sdk/1.8.0  bosh-google-kvm-ubuntu-xenial-go\_agent/97.47   -
