@@ -1,6 +1,6 @@
 # docs-addon-compliance-tools
 
-This repo contains the Compliance Scanner documentation.
+This repo contains the Compliance Scanner for VMware Tanzu documentation.
 
 In this README: 
 
@@ -22,9 +22,12 @@ The master branch is the tree-trunk, so **always** make changes you want carried
 
 Then, if necessary, immediately cherry-pick/copy any changes that you want to push immediately to production into the appropriate branches listed below:
 
-| Branch Name| Use for… |
-|------------| ---------|
-| 1.2        | Use for doc for the 1.2 release. (staged here: https://docs-staging.vmware.com/en/Compliance-Scanner-for-VMware-Tanzu/1.2/addon-compliance-tools/GUID-index.html)
+| Branch name | Use for… |
+|-------------| ------|
+| master      | "edge" branch for 1.3.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-n/
+| 1.2 | v1.2.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-2/ and https://docs.pivotal.io/addon-compliance-tools/1-2/ |
+| 1.1 | Don't use |
+| 1.0 | Don't use |            
 
 ## Releasing a New Minor Version
 
@@ -33,11 +36,9 @@ for the version that **master** was targeting during that time.
 
 After this point, **master** will then be the target for the next version of the Compliance Scanner product.
 
-
 ## Partials
 
 Cross-product partials (if any) for Compliance Scanner are single sourced from the [Docs Partials](https://github.com/pivotal-cf/docs-partials) repository.
-
 
 ## Contributing to Documentation
 
@@ -120,4 +121,4 @@ replacing the publication with the same version.
 
 ## Style Guide
 
-This is a word list for terminology and word usage specific to the Compliance Scanner for docs.
+This is a word list for terminology and word usage specific to the Compliance Scanner for VMware Tanzu docs.
