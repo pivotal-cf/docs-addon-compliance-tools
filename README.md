@@ -24,8 +24,8 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 
 | Branch name | Use for… |
 |-------------| ------|
-| master      | "edge" branch for 1.3.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-n/
-| 1.2 | v1.2.x, publishes to https://docs-pcf-staging.cfapps.io/addon-compliance-tools/1-2/ and https://docs.pivotal.io/addon-compliance-tools/1-2/ |
+| master      | "edge" branch for 1.3.x
+| 1.2 | v1.2.x, publishes to https://docs-staging.vmware.com/en/Compliance-Scanner-for-VMware-Tanzu/1.2/addon-compliance-tools/GUID-index.html |
 | 1.1 | Don't use |
 | 1.0 | Don't use |            
 
