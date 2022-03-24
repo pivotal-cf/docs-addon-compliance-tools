@@ -64,33 +64,44 @@ To configure your scan variables:
 1. Configure the fields in **Scan Variables** to provide the expected values for the tests:
 
     <table class="nice">
-        <th>Field</th>
-        <th>Description</th>
-        <tr><td><strong>NTP Server IP</strong></td>
-                <td>The IP address of your NTP server.<br> <br>You can find this IP address in
-                  <strong>Bosh Director</strong> > <strong>Director Config</strong> >
-                  <strong>NTP Server</strong>. You can only enter one server IP address. It does not
-                  matter which NTP server you enter.
-                </td>
-        </tr>
-        <tr><td><strong>Syslog Host IP</strong></td>
-                <td>The IP address of your syslog host.<br><br>
-                    You can find this in your <%= vars.app_runtime_abbr %> tile under
-                    <strong>Settings > System Logging > Address</strong>.</td>
-        </tr>
-        <tr><td><strong>Syslog Port</strong></td>
-                <td>The port number of the syslog port.<br><br>
-                    You can find this in your <%= vars.app_runtime_abbr %> tile under
-                    <strong>Settings > System Logging > Port</strong>.</td>
-        </tr>
-        <tr><td><strong>Custom SSH Banner</strong></td>
-                <td>The text expected when verifying the login SSH Banner on VMs during a scan.<br><br>
-                    The default value (which comes from the stemcell) is:<br>
-                    <code>Unauthorized use is strictly prohibited. All access and activity is subject to logging and monitoring.</code><br><br>
-                    If you modified the text in the <code>login_banner</code> field of <code>os-conf-release</code>, then enter the modified text in this field.<br>
-                    For more information about <code>os-conf-release</code>, see <a href="https://github.com/cloudfoundry/os-conf-release">os-conf-release</a> in GitHub.
-                  </td>
-        </tr>
+      <th>Field</th>
+      <th>Description</th>
+      <tr>
+        <td><strong>NTP Server IP</strong></td>
+        <td>
+          The IP address of your NTP server.<br> <br>You can find this IP address in
+          <strong>Bosh Director</strong> > <strong>Director Config</strong> >
+          <strong>NTP Server</strong>. You can only enter one server IP address. It does not
+          matter which NTP server you enter.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Syslog Host IP</strong></td>
+        <td>
+          The IP address of your syslog host.<br><br>
+          You can find this in your <%= vars.app_runtime_abbr %> tile under
+          <strong>Settings > System Logging > Address</strong>.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Syslog Port</strong></td>
+        <td>
+          The port number of the syslog port.<br><br>
+          You can find this in your <%= vars.app_runtime_abbr %> tile under
+          <strong>Settings > System Logging > Port</strong>.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Custom SSH Banner</strong></td>
+        <td>
+          The text expected when verifying the login SSH Banner on VMs during a scan.
+          <br><br>
+          The default value (which comes from the stemcell) is:<br>
+          <code>Unauthorized use is strictly prohibited. All access and activity is subject to logging and monitoring.</code><br><br>
+          If you modified the text in the <code>login_banner</code> field of <code>os-conf-release</code>, then enter the modified text in this field.<br>
+          For more information about <code>os-conf-release</code>, see <a href="https://github.com/cloudfoundry/os-conf-release">os-conf-release</a> in GitHub.
+        </td>
+      </tr>
     </table>
 
 1. Click **Save**.
