@@ -109,40 +109,50 @@ To configure scans:
 1. Enable **Benchmarks** for the scanner to run:
 
     <table class="nice">
-        <th>Benchmark</th>
-        <th>Description</th>
-        <tr><td><strong>Base Xenial</strong></td>
-                <td>Includes a subset of the amended tests in the STIG benchmark,
-                    where failing tests due to architectural differences are removed.<br>
-                This is meant to be used as a measure to see if configurations have been altered.<br></td>
-        </tr>
-    	<tr><td><strong> CIS Ubuntu Linux 16.04 LTS - Level 1</strong></td>
-                <td>Includes a configuration profile that
-                  can be used as a measure to lower the attack surface of your
-                  organization while not hindering business functionality.
-
-            </td>
-        </tr>
-        <tr><td><strong> CIS Ubuntu Linux 16.04 LTS - Level 2</strong></td>
-                <td>Includes a configuration profile that
-                  provides "defense in depth" for use in environments where security is
-                  very important.</td>
-        </tr>
-        <tr><td><strong>STIG for Ubuntu Xenial</strong></td>
-                <td>Includes all the configuration tests of the published DISA STIG
-                  for Ubuntu 16.04, amended with stemcell specific changes. Contains tests that would
-                  fail due to architectural differences.</td>
-        </tr>
-        <tr><td><strong><%= vars.k8s_runtime_abbr %> Master Node - Level 1 and Level 2</strong></td>
-                <td>Includes all the configuration tests of the published CIS Kubernetes
-                Benchmark for Control Plane Components, etcd, and Control Plane Configuration.</td>
-        </tr>
-        <tr><td><strong><%= vars.k8s_runtime_abbr %> Worker Node - Level 1 and Level 2</strong></td>
-                <td>Includes all the configuration tests of the published CIS Kubernetes
-                Benchmark for Worker Nodes.</td>
-        </tr>
+      <th>Benchmark</th>
+      <th>Description</th>
+      <tr>
+        <td><strong>Base Xenial</strong></td>
+        <td>
+          Includes a subset of the amended tests in the STIG benchmark,
+          where failing tests due to architectural differences are removed.<br>
+          This is meant to be used as a measure to see if configurations have been altered.
+        </td>
+      </tr>
+      <tr>
+        <td><strong> CIS Ubuntu Linux 16.04 LTS - Level 1</strong></td>
+        <td>
+          Includes a configuration profile that can be used as a measure to lower
+          the attack surface of your organization while not hindering business functionality.
+        </td>
+      </tr>
+      <tr>
+        <td><strong> CIS Ubuntu Linux 16.04 LTS - Level 2</strong></td>
+        <td>
+          Includes a configuration profile that provides "defense in depth"
+          for use in environments where security is very important.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>STIG for Ubuntu Xenial</strong></td>
+        <td>Includes all the configuration tests of the published DISA STIG for
+          Ubuntu 16.04, amended with stemcell specific changes.
+          Contains tests that would fail due to architectural differences.
+        </td>
+      </tr>
+      <tr>
+        <td><strong><%= vars.k8s_runtime_abbr %> Master Node - Level 1 and Level 2</strong></td>
+        <td>
+          Includes all the configuration tests of the published CIS Kubernetes
+          Benchmark for Control Plane Components, etcd, and Control Plane Configuration.
+        </td>
+      </tr>
+      <tr>
+        <td><strong><%= vars.k8s_runtime_abbr %> Worker Node - Level 1 and Level 2</strong></td>
+        <td>Includes all the configuration tests of the published CIS Kubernetes Benchmark for Worker Nodes.</td>
+      </tr>
     </table>
-    <br>
+
     A scan report is generated for each format and benchmark on each Linux VM running on Xenial stemcells.
     For example, if you select **.xml** and **.csv** formats,
     and **Base Xenial** and **STIG** benchmarks, four CSV files are created for each VM tested.
@@ -152,53 +162,66 @@ To configure scans:
 1. Configure the remaining fields:<a name='configure-remaining-fields'></a>
 
     <table class="nice">
-        <th>Field</th>
-        <th>Description</th>
-
-        <tr><a name="scanner-timeout"></a><td><strong>Scanner Timeout</strong></td>
-            <td>Set to the maximum time in seconds permitted for a scan.
-                The default value is <code>1200</code>.</td>
-        </tr>
-
-        <tr><a name="detection-timeout"></a><td><strong>Detection Timeout</strong></td>
-            <td>Set to the maximum time in seconds that <%= vars.product_short %> looks for
-                a deployment of <%= vars.product_short %> on a VM before skipping that VM.
-                The default is 1 second.</td>
-        </tr>
-
-        <tr><td><strong>CPU Limit</strong></td>
-            <td>Set the percentage of CPU that the <%= vars.product_short %> processes can use.
-                Integers from <code>1</code> to <code>100</code> are valid.<br>
-                Setting this field to <code>100</code> permits the use of one full core.
-
-                <p class="note"><strong>Note:</strong>
-                <strong>CPU Limit</strong> affects only one core.
-                 For example, in a system with four cores, if you set the CPU limit to <code>100</code>,
-                 <%= vars.product_short %> uses only one of the four cores.
-                 </p>
-             </td>
-        </tr>
-
-        <tr><td><strong>Enforce CPU Limit</strong></td>
-            <td>Set the enforcement policy for the <strong>CPU Limit</strong>:<br>
+      <th>Field</th>
+      <th>Description</th>
+      <tr>
+        <td><a name="scanner-timeout"></a><strong>Scanner Timeout</strong></td>
+        <td>
+          Set to the maximum time in seconds permitted for a scan.
+          The default value is <code>1200</code>.
+        </td>
+      </tr>
+      <tr>
+        <td><a name="detection-timeout"></a><strong>Detection Timeout</strong></td>
+        <td>
+          Set to the maximum time in seconds that <%= vars.product_short %> looks for
+          a deployment of <%= vars.product_short %> on a VM before skipping that VM.
+          The default is 1 second.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>CPU Limit</strong></td>
+        <td>
+          Set the percentage of CPU that the <%= vars.product_short %> processes can use.
+          Integers from <code>1</code> to <code>100</code> are valid.<br>
+          Setting this field to <code>100</code> permits the use of one full core.
+          <p class="note">
+            <strong>Note:</strong> <strong>CPU Limit</strong> affects only one core.
+            For example, in a system with four cores, if you set the CPU limit to <code>100</code>,
+            <%= vars.product_short %> uses only one of the four cores.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Enforce CPU Limit</strong></td>
+        <td>
+          Set the enforcement policy for the <strong>CPU Limit</strong>:
           <ul>
             <li><strong>Always</strong>: Ensures the <strong>CPU limit</strong> is always enforced.</li>
             <li><strong>When other processes are using CPU resources</strong>: Permits the CPU usage to
               exceed the limit set by <strong>CPU limit</strong> if idle CPU cycles are available.</li>
           </ul>
-        </tr>
-        <tr><a name="exclude-instance-group"></a>
-        <td><strong>List of instance group names that will be excluded from deployment</strong></td>
-        <td>(Optional) Enter the instance groups that you do not want <%= vars.product_short %> deployed on.
-            Use a comma-separated list.</td>
+        </td>
       </tr>
-       <tr><a name="include-deployment"></a>
-        <td><strong>List of deployments to scan. (Leave empty to scan all deployments)</strong></td>
-        <td>(Optional) Enter the deployments that you want <%= vars.product_short %> to scan.
-            Use a comma-separated list.<br>
-            If empty, <%= vars.product_short %> scans all deployments.</td>
+      <tr>
+        <td><a name="exclude-instance-group"></a><strong>List of instance group names that will be excluded from deployment</strong></td>
+        <td>
+          (Optional) Enter the instance groups that you do not want <%= vars.product_short %> deployed on.
+          Use a comma-separated list.
+        </td>
       </tr>
-      </table>
+      <tr>
+        <td>
+          <a name="include-deployment"></a><strong>List of deployments to scan.
+          (Leave empty to scan all deployments)</strong>
+        </td>
+        <td>
+          (Optional) Enter the deployments that you want <%= vars.product_short %> to scan.
+          Use a comma-separated list.<br>
+          If empty, <%= vars.product_short %> scans all deployments.
+        </td>
+      </tr>
+    </table>
 
 1. Click **Save**.
 
@@ -466,59 +489,49 @@ To configure syslog forwarding:
         <th>Field</th>
         <th>Instructions</th>
       </tr>
-
       <tr>
         <td><strong>Address</strong></td>
         <td>Enter the address or host of the syslog server for sending logs, for example,
         <code>logmanager.example.com</code>.</td>
       </tr>
-
       <tr>
         <td><strong>Port</strong></td>
         <td>Enter the port of the syslog server for sending logs, for example, <code>29279</code>.</td>
       </tr>
-
       <tr>
         <td><strong>Transport Protocol</strong></td>
         <td>Select the transport protocol used to send system logs to the server.
         VMware recommends TCP.</td>
       </tr>
-
       <tr>
         <td><strong>Enable TLS</strong></td>
         <td>If you select TCP, you can also select to send logs encrypted over TLS.</td>
       </tr>
-
       <tr>
         <td><strong>Permitted Peer</strong></td>
         <td>Enter either the accepted fingerprint, in SHA1, or the name of the remote peer,
         for example, <code>*.example.com</code>.</td>
       </tr>
-
       <tr>
         <td><strong>SSL Certificate</strong></td>
         <td>Enter the SSL or TLS Certificate(s) for the syslog server.
         This ensures the logs are transported securely.</td>
       </tr>
-
       <tr>
         <td><strong>Queue Size</strong></td>
         <td>Enter an integer. This value specifies the number of log messages held in the buffer.
         The default value is <code>100000</code>.</td>
       </tr>
-
       <tr>
         <td><strong>Forward Debug Logs</strong></td>
         <td>Select this box to forward debug logs to external source.
         This option is deselected by default.
         If you select it, you might generate a large amount of log data.</td>
       </tr>
-
       <tr>
         <td><strong>Custom rsyslog Configuration</strong></td>
         <td>Enter configuration details for rsyslog. This field requires RainerScript syntax.</td>
       </tr>
-
     </table>
 
 1. Click **Save Syslog Settings**.
