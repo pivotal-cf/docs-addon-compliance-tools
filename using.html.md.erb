@@ -190,7 +190,7 @@ To start a new scan and retrieve the logs for the completed scan using the CLI:
         ```
 1. Run `bosh deployments` to list all the deployment names. For example:
 
-    <pre class ="terminal">
+    <pre class="terminal">
     $ bosh deployments
 
     Name                      Releases                    Stemcells
@@ -226,13 +226,14 @@ To start a new scan and retrieve the logs for the completed scan using the CLI:
     ```
 
     Where:
+
     * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
     * `PATH-TO-SAVE-SCAN-RESULTS` is the directory where you want to save the logs.
     You can omit `--logs-dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
 
     For example:
 
-    <pre class ="terminal">
+    <pre class="terminal">
     $ bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir scanner/logs/20190131
     </pre>
 
@@ -256,7 +257,7 @@ Omit `--dir PATH-TO-SAVE-SCAN-RESULTS` to save the logs to your current director
 
 For example:
 
-<pre class ="terminal">
+<pre class="terminal">
 $ bosh -e my-env -d scanner-f9822a33c2e0d04cb logs --only=scan_results --dir scanner/logs/20190131
 </pre>
 
@@ -321,7 +322,7 @@ To cancel a running scan:
 
         For example:
 
-        <pre class ="terminal">
+        <pre class="terminal">
         $ bosh alias-env my-env -e 10.0.0.3
         </pre>
 
@@ -333,7 +334,7 @@ To cancel a running scan:
 
         For example:
 
-        <pre class ="terminal">
+        <pre class="terminal">
         $ bosh -e my-env log-in
         </pre>
 
@@ -345,7 +346,7 @@ To cancel a running scan:
 
     For example:
 
-    <pre class ="terminal">
+    <pre class="terminal">
     $ bosh -e my-env tasks
 
     ID  State       Started At                    Last Activity At              User   Deployment    Description                                            Result
@@ -370,7 +371,7 @@ To cancel a running scan:
 
     For example:
 
-    <pre class ="terminal">
+    <pre class="terminal">
     $ bosh -e my-env cancel-task 65
     Using environment '10.0.0.5' as client 'ops_manager'
 
@@ -408,10 +409,11 @@ look similar to the example below:
 
 To retrieve the errand log, see [Retrieve Existing Log Files](#retrieve-only-logs).
 
-<p class="note"><strong>Note: </strong> The errand log can also be found at the path
-  <code>/var/vcap/sys/log/scan_results/store.log</code> on the store VM.</p>
+<p class="note">
+  <strong>Note:</strong> The errand log can also be found at the path
+  <code>/var/vcap/sys/log/scan_results/store.log</code> on the store VM.
+</p>
 
-<br>
 If you started the scan using <%= vars.ops_manager %>, you can view the log output for the
 `scan_results` errand in <%= vars.ops_manager %>. <%# is this correct? %>
 
