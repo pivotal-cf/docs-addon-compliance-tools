@@ -215,12 +215,15 @@ There are a few situations to consider:
 
 * **If the hosts that provide the errors are Windows VMs:**<br>
   This is the expected behavior. <%= vars.product_short %> does not currently support Windows.
+
 * **If the hosts that provide the errors are VMs that you expect to have <%= vars.product_short %> installed and running:**<br>
   Perform an "Apply Changes" on the deployment and the <%= vars.product_full %>
-  tile to ensure that the VMs have the <%= vars.product_short %> installed and running.<br><br>
-  To verify that <%= vars.product_short %> is installed and running, you can run `bosh instances --ps`.
-  Ensure that each VM shows that the `scanner_daemon` and `scanner_web` processes are in a `running` state.<br><br>
-  For example:
+  tile to ensure that the VMs have the <%= vars.product_short %> installed and running.
+
+    To verify that <%= vars.product_short %> is installed and running, you can run `bosh instances --ps`.
+    Ensure that each VM shows that the `scanner_daemon` and `scanner_web` processes are in a `running` state.
+
+    For example:
 
     <pre class="terminal">
     $ bosh instances --ps<br>

@@ -179,17 +179,17 @@ To start a new scan and retrieve the logs for the completed scan using the CLI:
 
 1. Log in to the BOSH Director.
     1. On the <%= vars.ops_manager %> VM, create an alias in the BOSH CLI for your BOSH Director IP address. For example:
-        
+
         ```
         $ bosh alias-env my-env -e 10.0.0.3
         ```
    1. Log in to the BOSH Director, specifying the newly created alias.  For example:
-        
+
         ```
         $ bosh -e my-env log-in
         ```
 1. Run `bosh deployments` to list all the deployment names. For example:
-    
+
     ```
     Name                      Releases                    Stemcells
     container-service backup-and-restore-sdk/1.8.0  bosh-google-kvm-ubuntu-xenial-go\_agent/97.47   -
@@ -229,10 +229,10 @@ To start a new scan and retrieve the logs for the completed scan using the CLI:
     You can omit `--logs-dir PATH-TO-SAVE-SCAN-RESULTS` if you want the logs to be saved to your current directory.
 
     For example:
-    
-    ```
+
+    <pre class ="terminal">
     $ bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir scanner/logs/20190131
-    ```
+    </pre>
 
     <p class="note"><strong>Note:</strong>
     The files generated use the most recent configuration of your tile.
@@ -243,20 +243,20 @@ To start a new scan and retrieve the logs for the completed scan using the CLI:
 
 To retrieve existing logs for the most recent completed scan using the CLI, run:
 
-  ```
-  bosh -e my-env -d scanner-DEPLOYMENT-UUID logs --only=scan_results --dir PATH-TO-SAVE-SCAN-RESULTS
-  ```
-  Where:
+```
+bosh -e my-env -d scanner-DEPLOYMENT-UUID logs --only=scan_results --dir PATH-TO-SAVE-SCAN-RESULTS
+```
+Where:
 
-  * `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
-  * `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you save your logs.
-  Omit `--dir PATH-TO-SAVE-SCAN-RESULTS` to save the logs to your current directory.
+* `scanner-DEPLOYMENT-UUID` is the name of your scanner deployment.
+* `PATH-TO-SAVE-SCAN-RESULTS` is the directory in which you save your logs.
+Omit `--dir PATH-TO-SAVE-SCAN-RESULTS` to save the logs to your current directory.
 
-  For example:
-  
-  ```
-  bosh -e my-env -d scanner-f9822a33c2e0d04cb logs --only=scan_results --dir scanner/logs/20190131
-  ```
+For example:
+
+<pre class ="terminal">
+$ bosh -e my-env -d scanner-f9822a33c2e0d04cb logs --only=scan_results --dir scanner/logs/20190131
+</pre>
 
 
 ### <a id='access-logs'></a>Access Log Files
@@ -281,6 +281,7 @@ The naming syntax for each log file is below:
 
 
 <!-- Put below "View Tests on VMs" section in a "Reporting" page in the future -->
+
 ## <a id='tests'></a> View Tests on VMs
 
 For every configuration rule that is checked, there is a corresponding test written in YAML test
@@ -309,28 +310,30 @@ To cancel a running scan:
 
 1. Log in to the BOSH Director.
     1. On the <%= vars.ops_manager %> VM, create an alias in the BOSH CLI for your BOSH Director IP address:
-        
+
         ```
-        $ bosh alias-env ENVIRONMENT-ALIAS -e IP-ADDRESS
-        ``` <%# do you have to create an alias every time you log in to the bosh director %>
-        
+        bosh alias-env ENVIRONMENT-ALIAS -e IP-ADDRESS
+        ```
+
+        <%# do you have to create an alias every time you log in to the bosh director %>
+
         For example:
-    
-        ```
+
+        <pre class ="terminal">
         $ bosh alias-env my-env -e 10.0.0.3
-        ```
-        
+        </pre>
+
     1. Log in to the BOSH Director, specifying the newly created alias:
-        
+
         ```
-        $ bosh -e ENVIRONMENT-ALIAS log-in
+        bosh -e ENVIRONMENT-ALIAS log-in
         ```
-        
+
         For example:
-        
-        ```
+
+        <pre class ="terminal">
         $ bosh -e my-env log-in
-        ```
+        </pre>
 
 1. Get the task ID of the `scan_results` errand by running:
 
@@ -340,14 +343,14 @@ To cancel a running scan:
 
     For example:
 
-    ```
+    <pre class ="terminal">
     $ bosh -e my-env tasks
 
     ID  State       Started At                    Last Activity At              User   Deployment    Description                                            Result
     65  processing  Fri Sep  6 19:06:53 UTC 2019  Thu Jan  1 00:00:00 UTC 1970  admin  my-deployment run errand scan_results from deployment my-deployment  -
 
     1 tasks
-    ```
+    </pre>
 
     In this example, the task ID is `65`.
 
@@ -364,12 +367,13 @@ To cancel a running scan:
     ```
 
     For example:
-    ```
+
+    <pre class ="terminal">
     $ bosh -e my-env cancel-task 65
     Using environment '10.0.0.5' as client 'ops_manager'
 
     Succeeded
-    ```
+    </pre>
 
 
 ### <a id="interpret-scan"></a> Errand Logs After Cancelling a Scan
