@@ -102,6 +102,13 @@ To configure your scan variables:
           For more information about <code>os-conf-release</code>, see <a href="https://github.com/cloudfoundry/os-conf-release">os-conf-release</a> in GitHub.
         </td>
       </tr>
+      <tr>
+        <td><strong>CNI directory (TKGI)</strong></td>
+        <td>
+          Directory contining configuration files used by contianer networking interface(CNI). <br><br>
+          The default value (which comes from the stemcell) is: <code>/var/vcap/jobs/flanneld.</code>
+        </td>
+      </tr>
     </table>
 
 1. Click **Save**.
@@ -145,21 +152,39 @@ To configure scans:
       </tr>
       <tr>
         <td><strong>STIG for Ubuntu Xenial</strong></td>
-        <td>Includes all the configuration tests of the published DISA STIG for
+        <td>
+          Includes all the configuration tests of the published DISA STIG for
           Ubuntu 16.04, amended with stemcell specific changes.
           Contains tests that would fail due to architectural differences.
         </td>
       </tr>
       <tr>
-        <td><strong><%= vars.k8s_runtime_abbr %> Master Node - Level 1 and Level 2</strong></td>
+        <td><strong><%= vars.k8s_runtime_abbr %> CIS Master Node</strong></td>
         <td>
           Includes all the configuration tests of the published CIS Kubernetes
           Benchmark for Control Plane Components, etcd, and Control Plane Configuration.
         </td>
       </tr>
       <tr>
-        <td><strong><%= vars.k8s_runtime_abbr %> Worker Node - Level 1 and Level 2</strong></td>
-        <td>Includes all the configuration tests of the published CIS Kubernetes Benchmark for Worker Nodes.</td>
+        <td><strong><%= vars.k8s_runtime_abbr %> CIS Worker Node</strong></td>
+        <td>
+          Includes all the configuration tests of the published CIS Kubernetes
+          Benchmark for Worker Nodes.
+        </td>
+      </tr>
+      <tr>
+        <td><strong><%= vars.k8s_runtime_abbr %> STIG Master Node</strong></td>
+        <td>
+          Includes all the configuration tests of the published Defense Information Systems Agency (DISA) Kubernetes
+          Benchmark for Control Plane Components, etcd, and Control Plane Configuration.
+        </td>
+      </tr>
+      <tr>
+        <td><strong><%= vars.k8s_runtime_abbr %> STIG Worker Node</strong></td>
+        <td>
+          Includes all the configuration tests of the published Defense Information Systems Agency (DISA) Kubernetes
+          Benchmark for Worker Nodes.
+        </td>
       </tr>
     </table>
 
@@ -290,7 +315,9 @@ There are two ways that you can give <%= vars.product_short %> access to an Amaz
 1. Select **External Store Upload**.
 1. Select **AWS S3 Bucket**.
 
-      ![Screenshot of the External Store Upload pane in the Compliance Scanner tile. The AWS S3 Bucket radio button is selected, which reveals configuration fields for the AWS S3 Bucket. All fields and settings are described in order in the step below.](images/bucket-aws.png)
+      ![Screenshot of the External Store Upload pane in the Compliance Scanner tile.
+      The AWS S3 Bucket radio button is selected, which reveals configuration fields for the AWS S3 Bucket.
+      All fields and settings are described in order in the step below.](images/bucket-aws.png)
 
 3. Configure the fields:
     <table class="nice">
@@ -319,6 +346,15 @@ There are two ways that you can give <%= vars.product_short %> access to an Amaz
           If you do not have this key, click <strong>Save</strong>
           and follow the steps in <a href="#instance-profile">To
           use an instance profile to configure the S3 bucket</a> below.</td>
+      </tr>
+      <tr>
+        <td><strong>S3 object prefix</strong></td>
+        <td>Enter the object prefix for scan results. <br>
+          The object prefix is similar to a directory name.
+          It allows you to group scan results together in the bucket.<br>
+          For more information about organizing objects in the Amazon S3 console using folders,
+          see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-folders.html">
+          the AWS documentation</a>.</td>
       </tr>
     </table>
 
