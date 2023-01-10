@@ -174,8 +174,12 @@ Increase the scan timeout for all VMs. For more information, see
 
 ### <a id='post-errors'></a> Scan Successful with POST Errors
 
+This problem with POST errors only applies to <%= vars.product_short %> v1.2.32 and earlier.
+<%= vars.product_short %> v1.2.48 and later does not try to scan Windows VMs and
+any Linux VMs where <%= vars.product_short %> is not deployed.
+
 #### Symptom
-Linux VMs without <%= vars.product_short %> installed and all Windows VMs show `POST` errors during a successful scan.
+Linux VMs without <%= vars.product_short %> and all Windows VMs show `POST` errors during a successful scan.
 
 For example:
 
