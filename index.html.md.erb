@@ -4,17 +4,8 @@ owner: Platform Security & Compliance Team
 ---
 <strong><%= modified_date %></strong>
 
-<div class="note"><%= vars.product_full %> is certified by the Center for Internet Security (CIS).
-For more information about all the versions certified for CIS Benchmarks:<br><br>
-<ul>
-  <li>For <%= vars.product_short %> v1.2.48 and later, see the
-    <a href="https://www.cisecurity.org/partner/vmware/">VMware - Certified Products</a> CIS page.</li>
-  <li>For <%= vars.product_short %> v1.2.32 and earlier, see the
-    <a href="https://www.cisecurity.org/partner/pivotal/">Pivotal - Certified Products</a> CIS page.</li>
-</ul>
-</div>
-
-<%= vars.product_full %> provides platform operators and auditors an
+This topic gives you an overview of <%= vars.product_full %>.
+This product provides platform operators and auditors an
 assessment of each Linux VM running on Xenial stemcells and,
 if it is compliant, with configuration guidelines.
 
@@ -24,7 +15,14 @@ and do not have <%= vars.product_short %> deployed on them:
 * Linux VMs running on Trusty stemcells
 * Non-Linux VMs
 
+<%= vars.product_full %> is certified by the Center for Internet Security (CIS).
+For more information about all the versions certified for CIS Benchmarks:
+
+* For <%= vars.product_short %> v1.2.48 and later, see the [VMware - Certified Products](https://www.cisecurity.org/partner/vmware/) CIS page.
+* For <%= vars.product_short %> v1.2.32 and earlier, see the [Pivotal - Certified Products](https://www.cisecurity.org/partner/pivotal/) CIS page.
+
 ## <a id='overview'></a>Overview
+
 Benchmarks for existing commercial configuration scanners are intended for use against
 traditional Ubuntu servers. This means that running these benchmark scans against
 a stemcell results in numerous false positives.
