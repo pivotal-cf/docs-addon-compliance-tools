@@ -1,4 +1,5 @@
 ---
+
 title: Installing and Configuring Compliance Scanner for VMware Tanzu
 owner: Platform Security & Compliance Team
 ---
@@ -12,6 +13,7 @@ This topic tells you how to install and configure <%= vars.product_full %>.
 Before you install <%= vars.product_full %>, you might need to resize your VMs accordingly.
 
 ## <a id='install'></a> Install <%= vars.product_short %>
+
 To install the <%= vars.product_short %> file on the <%= vars.ops_manager %> Installation Dashboard:
 
 1. Download the product file from [<%= vars.product_network %>](https://network.tanzu.vmware.com/products/p-compliance-scanner/).
@@ -23,8 +25,9 @@ This adds the tile to your staging area.
 
 1. Click the newly added **<%= vars.product_short %>** tile.
 
-## <a id='azs-networks'></a> Configure AZs and Networks
-To configure your AZs and Networks:
+## <a id='azs-networks'></a> Configure AZs and networks
+
+To configure your AZs and networks:
 
 1. Select **Assign AZs and Networks**.
 
@@ -53,13 +56,14 @@ To configure your AZs and Networks:
 
 1. Click **Save**.
 
-## <a id='scan-variables'></a> Configure Scan Variables
+## <a id='scan-variables'></a> Configure scan variables
+
 This section is where you configure expected values for tests and select which set of benchmarks to run.
 To configure your scan variables:
 
 1. Select **Scan Variables**.
 
-    ![Screenshot of the Scan Variables pane in the Compliance Scanner tile. The four text fields are described in order in the following step.](images/scan-var.png)
+    ![The Scan Variables pane in the Compliance Scanner tile has four text fields that are described in order in the following step.](images/scan-var.png)
 
 1. Configure the fields in **Scan Variables** to provide the expected values for the tests:
 
@@ -112,7 +116,7 @@ To configure your scan variables:
 
 1. Click **Save**.
 
-## <a id='scans'></a> Configure Scans
+## <a id='scans'></a> Configure scans
 
 To configure scans:
 
@@ -255,11 +259,21 @@ To configure scans:
           If empty, <%= vars.product_short %> scans all deployments.
         </td>
       </tr>
+      <tr>
+        <td>
+          <a name="ignore-directories"></a><strong>List of directories to ignore during a scan.</strong>
+        </td>
+        <td>
+          (Optional) Enter list of directories that you want <%= vars.product_short %> to ignore during a scan. <br/>
+          For example, large NSF and SMB drives that cause scan timeouts can be ignored to allow the scan to complete.
+        </td>
+      </tr>
     </table>
 
 1. Click **Save**.
 
-## <a id='scheduled-scan'></a> Configure Scheduled Scan
+## <a id='scheduled-scan'></a> Configure scheduled scan
+
 <%= vars.product_short %> can be configured to run a scan at a scheduled time and day of the week.
 <br>The default values are `"00:00"` and `Sunday`.
 
@@ -283,7 +297,8 @@ To change the scheduled scan values:
   Only one value may be selected.
 1. Click **Save**.
 
-## <a id="external-store"></a> (Optional) Configure External Store Upload
+## <a id="external-store"></a> (Optional) Configure external store upload
+
 To store scan results in an Amazon S3 bucket, a Minio S3-compatible bucket, or an Azure Blob Storage Container,
 configure an external store upload.
 
@@ -298,7 +313,7 @@ access to the <%= vars.ops_manager %> API.
 If you do not use an external store for scan results, then the scan results are stored in the `oscap_store` VM.
 For more information, see [Retrieve Log Files](./using.html#review-tile).
 
-### <a id="s3-bucket"></a>Configure to Upload to an S3 Bucket
+### <a id="s3-bucket"></a>Configure to upload to an S3 bucket
 
 There are two ways that you can give <%= vars.product_short %> access to an Amazon S3 bucket:
 
@@ -420,7 +435,8 @@ see [<%= vars.ops_manager %> CLI (om)](https://docs.pivotal.io/platform/customiz
     finished configuring product
      </pre>
 
-### <a id="minio-bucket"></a>Configure to Upload to a Minio Bucket
+### <a id="minio-bucket"></a>Configure to upload to a Minio bucket
+
 To configure an external store upload using a Minio bucket:
 
 1. Select **External Store Upload**
@@ -466,7 +482,8 @@ To configure an external store upload using a Minio bucket:
 
 1. Click **Save**.
 
-### <a id="azure-blob"></a> Configure to Upload to a Azure Blob Storage Container
+### <a id="azure-blob"></a> Configure to upload to a Azure blob storage container
+
 To configure an external store upload using an Azure Blob:
 
 1. Select **External Store Upload**
@@ -496,7 +513,8 @@ To configure an external store upload using an Azure Blob:
 
 1. Click **Save**.
 
-## <a id="errands"></a> Configure Errands
+## <a id="errands"></a> Configure errands
+
 <%= vars.product_short %> performs one errand that initiates scanning.
 This errand is deactivated by default.
 This is so that a scan is not run every time changes are applied.
@@ -514,7 +532,7 @@ When configuring the <%= vars.product_short %> tile for the first time:
 
 1. Click **Save**.
 
-## <a id="syslog"></a> Configure Syslog Forwarding
+## <a id="syslog"></a> Configure syslog forwarding
 
 To configure syslog forwarding:
 
@@ -577,7 +595,8 @@ To configure syslog forwarding:
 1. Click **Save Syslog Settings**.
 
 
-## <a id="resources"></a> Configure Resources
+## <a id="resources"></a> Configure resources
+
 The tile creates a new VM called `oscap_store` to store the logs retrieved from all the other VMs
 that have been scanned.
 
@@ -591,7 +610,8 @@ To configure resources:
 
 1. Click **Save**.
 
-## <a id="apply-changes"></a> Apply Changes from Your Configuration
+## <a id="apply-changes"></a> Apply changes from your configuration
+
 Your installation is not complete until you apply your configuration changes:
 
 1. Return to the <%= vars.ops_manager %> Installation Dashboard.
