@@ -223,11 +223,9 @@ To configure scans:
           Set the percentage of CPU that the <%= vars.product_short %> processes can use.
           Integers from <code>1</code> to <code>100</code> are valid.<br>
           Setting this field to <code>100</code> permits the use of one full core.
-          <p class="note">
-            <strong>Note:</strong> <strong>CPU Limit</strong> affects only one core.
+          <strong>CPU Limit</strong> affects only one core.
             For example, in a system with four cores, if you set the CPU limit to <code>100</code>,
             <%= vars.product_short %> uses only one of the four cores.
-          </p>
         </td>
       </tr>
       <tr>
@@ -270,16 +268,16 @@ To configure scans:
       </tr>
     </table>
 
-1. Click **Save**.
+2. Click **Save**.
 
 ## <a id='scheduled-scan'></a> Configure scheduled scan
 
 <%= vars.product_short %> can be configured to run a scan at a scheduled time and day of the week.
 <br>The default values are `"00:00"` and `Sunday`.
 
-<p class="note"><strong>Note:</strong>
+<p class="note"><span class="note__title">Note</span>
 VMware recommends setting up external storage to store the scan result reports.
-If you do not do this, <%= vars.product_short %> will overwrite your previous local reports.
+If you do not do this, <%= vars.product_short %> overwrites your previous local reports.
 For more information on setting up external storage, see
 <a href="#external-store">(Optional) Configure External Store Upload</a> below.
 </p>
@@ -290,8 +288,8 @@ To change the scheduled scan values:
 
     ![Screenshot of the Scheduled Scans Configuration pane in the Compliance Scanner tile. All fields and settings are described in order in the steps below.](images/scheduled-scans.png)
 
-1. Select **Enable**.
-1. Set the **Scheduled scan start time** value.
+2. Select **Enable**.
+3. Set the **Scheduled scan start time** value.
   The **Scheduled scan start time** must be in 24-hour format `HH:MM`.
 1. Select a **Scheduled scan day**.
   Only one value may be selected.
@@ -600,7 +598,7 @@ To configure syslog forwarding:
 The tile creates a new VM called `oscap_store` to store the logs retrieved from all the other VMs
 that have been scanned.
 
-<p class="note"><strong>Note:</strong>
+<p class="note"><span class="note__title">Note</span>
 The <code>oscap_store</code> VM does not do anything computationally extensive.
 VMware recommends using the default configurations.</p>
 
