@@ -54,7 +54,7 @@ To begin scanning:
 
     A scan is triggered at the end.
 
-    <p class="note"><strong>Note: </strong> If there are configuration changes
+    <p class="note"><span class="note__title">Note</span> If there are configuration changes
       from add-ons or tiles other than <%= vars.product_short %>, leave those
       products' and errands' checkboxes enabled if you want those changes to be applied.
      If there are no changes from other sources, only the <%= vars.product_short %>
@@ -71,9 +71,9 @@ To begin scanning:
 
 ### <a id='review-tile'></a>Retrieve Log Files
 
-<p class="note"><strong>Note:</strong>  When an external store is configured, the log files do not contain
+<p class="note"><span class="note__title">Note</span>  When an external store is configured, the log files do not contain
   the scan output. For instructions on accessing the scan output when an external store is configured,
-  see <a href="#scan-output">Find Scan Output</a> below.
+  see the following section, <a href="#scan-output">Find Scan Output</a>.
   For instructions on configuring an external store, see <a href="./installing.html#external-store">Installing and Configuring</a>.</p>
 
 To review the logs for a completed scan using the <%= vars.product_short %> tile:
@@ -161,9 +161,9 @@ The number of log files in the `output` directory can be calculated as follows:
 
 ## <a id='terminal-scan'></a>Scan Using the Command Line
 
-<p class="note"><strong>Note:</strong>  When an external store is configured, the log files do not contain
+<p class="note"><span class="note__title">Note</span>  When an external store is configured, the log files do not contain
   the scan output. For instructions on accessing the scan output when an external store is configured,
-  see <a href="#scan-output">Find Scan Output</a> above.
+  see the preceding section, <a href="#scan-output">Find Scan Output</a>.
   For instructions on configuring an external store, see <a href="./installing.html#external-store">Installing and Configuring</a>.</p>
 
 You also have the option of scanning VMs through the CLI.
@@ -237,7 +237,7 @@ To start a new scan and retrieve the logs for the completed scan using the CLI:
     $ bosh -e my-env -d scanner-f9822a33c2e0d04cb run-errand scan_results --download-logs --logs-dir scanner/logs/20190131
     </pre>
 
-    <p class="note"><strong>Note:</strong>
+    <p class="note"><span class="note__title">Note</span>
     The files generated use the most recent configuration of your tile.
     To see what the current settings are, see <a href="./installing.html#scans">Configure Scans</a>.</p>
 
@@ -357,7 +357,7 @@ To cancel a running scan:
 
     In this example, the task ID is `65`.
 
-    <p class="note"><strong>Note: </strong> If you started the scan using the command line as described in
+    <p class="note"><span class="note__title">Note</span> If you started the scan using the command line as described in
       <a href="#terminal-scan">Scan Using the Command Line</a>, you can press <code>CTRL + C</code>
       while the scan is running to stop waiting for the scan to complete.
       This does not cancel the scan, but allows you to issue new commands through the CLI.
@@ -410,7 +410,7 @@ look similar to the example below:
 To retrieve the errand log, see [Retrieve Existing Log Files](#retrieve-only-logs).
 
 <p class="note">
-  <strong>Note:</strong> The errand log can also be found at the path
+  <span class="note__title">Note</span> The errand log can also be found at the path
   <code>/var/vcap/sys/log/scan_results/store.log</code> on the store VM.
 </p>
 
