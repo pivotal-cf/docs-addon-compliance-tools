@@ -34,7 +34,8 @@ To configure your AZs and networks:
 
 1. Configure the fields:
 
-    <table class="nice">
+      <table class=“table”>
+      <thead>
       <th>Field</th>
       <th>Description</th>
       <tr>
@@ -42,6 +43,7 @@ To configure your AZs and networks:
         <td>Select the AZ that you want the <code>oscap_store</code> VM to run in.<br>
           The tile runs as a singleton job.</td>
       </tr>
+      </thead>
       <tr>
         <td><strong>Balance other jobs in</strong></td>
         <td>Select the same AZ as above.</td>
@@ -66,7 +68,8 @@ To configure your scan variables:
 
 1. Configure the fields in **Scan Variables** to provide the expected values for the tests:
 
-    <table class="nice">
+    <table class=“table”>
+    <thead>
       <th>Field</th>
       <th>Description</th>
       <tr>
@@ -78,6 +81,7 @@ To configure your scan variables:
           matter which NTP server you enter.
         </td>
       </tr>
+      </thead>
       <tr>
         <td><strong>Syslog Host IP</strong></td>
         <td>
@@ -127,7 +131,8 @@ To configure scans:
    The outputs of a scan can be in CSV, XML, and HTML formats.
 
 1. Enable **Benchmarks** for the scanner to run:
-    <table class="nice">
+    <table class=“table”>
+    <thead>
       <th>Benchmark</th>
       <th>Description</th>
       <tr>
@@ -138,6 +143,7 @@ To configure scans:
           This is meant to be used as a measure to see if configurations have been altered.
         </td>
       </tr>
+      </thead>
       <tr>
         <td><strong> CIS Ubuntu Linux 16.04 LTS - Level 1</strong></td>
         <td>
@@ -198,7 +204,8 @@ To configure scans:
     For more information about <%= vars.product_short %> benchmarks, see [Benchmarks](./benchmarks.html).
 
 1. Configure the remaining fields:<a name='configure-remaining-fields'></a>
-    <table class="nice">
+    <table class=“table”>
+    <thead>
       <th>Field</th>
       <th>Description</th>
       <tr>
@@ -208,6 +215,7 @@ To configure scans:
           The default value is <code>1200</code>.
         </td>
       </tr>
+      </thead>
       <tr>
         <td><a name="detection-timeout"></a><strong>Detection Timeout</strong></td>
         <td>
@@ -377,7 +385,7 @@ For security reasons, you might not have the keys for the S3 bucket.
 However, if you have the instance profile name for the S3 bucket, you can use the following steps.
 You need the `om` CLI to do these steps.
 For introductory information about the `om` CLI,
-see [<%= vars.ops_manager %> CLI (om)](https://docs.pivotal.io/platform/customizing/ops-man-api-cli.html).
+see [<%= vars.ops_manager %> CLI (om)](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-cli.html).
 
 
 1. On the command line, run:
@@ -442,13 +450,15 @@ To configure an external store upload using a Minio bucket:
       ![Screenshot of the External Store Upload pane in the Compliance Scanner tile. The Minio Bucket radio button is selected, which reveals configuration fields for the Minio Bucket. All fields and settings are described in order in the step below.](images/bucket-minio.png)
 
 1. Configure the fields:
-      <table class="nice">
+      <table class=“table”>
+      <thead>
         <th>Field</th>
         <th>Description</th>
         <tr>
           <td><strong>Bucket Name</strong></td>
           <td>Enter the name of the bucket.</td>
         </tr>
+        </thead>
         <tr>
           <td><strong>Minio Host</strong></td>
           <td>Enter the fully qualified domain name of the Minio server.
@@ -489,7 +499,8 @@ To configure an external store upload using an Azure Blob:
       ![Screenshot of the External Store Upload pane in the Compliance Scanner tile. The Azure Blob Storage Container radio button is selected, which reveals configuration fields for the Azure Blob Storage Container. All fields and settings are described in order in the step below.](images/bucket-azure-blob.png)
 
 1. Configure the fields:
-      <table class="nice">
+    <table class=“table”>
+    <thead>
         <th>Field</th>
         <th>Description</th>
         <tr>
@@ -498,6 +509,7 @@ To configure an external store upload using an Azure Blob:
           Get this URL from the container properties in the Azure portal.
           For example: <code>https<span>:</span>//mystorageaccount.blob.core.windows.net/mycontainername</code></td>
         </tr>
+        </thead>
         <tr>
           <td><strong>Storage Account Name</strong></td>
           <td>Enter the storage account name for the Azure Blob Storage Container.</td>
@@ -539,11 +551,13 @@ To configure syslog forwarding:
 
 1. Select **Yes** for **Do you want to configure Syslog forwarding?**.
 1. Configure the fields as follows:
-    <table>
+      <table class=“table”>
+      <thead>
       <tr>
         <th>Field</th>
         <th>Instructions</th>
       </tr>
+      </thead>
       <tr>
         <td><strong>Address</strong></td>
         <td>Enter the address or host of the syslog server for sending logs, for example,

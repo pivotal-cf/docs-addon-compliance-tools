@@ -44,13 +44,13 @@ To begin scanning:
     For more information about configuring your scan,
     see [Configure Scans](./installing.html#scans).
 
-1. Navigate to the <%= vars.ops_manager %> Installation Dashboard.
+1. Go to the <%= vars.ops_manager %> Installation Dashboard.
 
 1. Click **REVIEW PENDING CHANGES**.
 
 1. Enable the checkboxes for the <%= vars.product_short %> tile and the **Run configured scans** errand.
 
-    ![Screenshot of the Compliance Scanner section on the 'Review Pending Changes' page in Ops Manager. There is a checkbox to the left of the section. The checkbox is selected. Within the section there is a dropdown for errands. At the bottom of the section, under 'Select errands to run during the deploy', the checkbox for 'Run configured scans' is selected.](images/review-pending-changes.png)
+    ![Screenshot of the Compliance Scanner section on the 'Review Pending Changes' page in Tanzu Operations Manager. There is a checkbox to the left of the section. The checkbox is selected. Within the section there is a dropdown for errands. At the bottom of the section, under 'Select errands to run during the deploy', the checkbox for 'Run configured scans' is selected.](images/review-pending-changes.png)
 
     A scan is triggered at the end.
 
@@ -298,7 +298,7 @@ you cannot write your own YAML tests or convert these tests to the SCAP format.
 To view tests on VMs:
 
 1. Use the BOSH CLI to SSH into a component VM. For more information,
-see [BOSH SSH](https://docs.pivotal.io/pivotalcf/customizing/trouble-advanced.html#bosh-ssh).
+see [BOSH SSH](https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/install-trouble-advanced.html).
 1. Navigate to the following path:
 
     ```
@@ -385,8 +385,7 @@ After running the BOSH `cancel-task` command, the `scan_results` errand outputs
 `Received signal terminated`, and attempts to cancel the scan on every VM. When a VM
 receives the cancel message, it terminates the running scan process.
 
-After the scan has cancelled, the `store.log` file in the output directory will
-look similar to the example below:
+After the scan has cancelled, the `store.log` file in the output directory looks similar to the following example:
 
 ```
 2019/09/06 19:06:54 Starting store on port 28894
@@ -417,8 +416,8 @@ To retrieve the errand log, see [Retrieve Existing Log Files](#retrieve-only-log
 If you started the scan using <%= vars.ops_manager %>, you can view the log output for the
 `scan_results` errand in <%= vars.ops_manager %>. <%# is this correct? %>
 
-After the scan has cancelled, the <%= vars.ops_manager %> log output for the errand will look
-similar to the example below:
+After the scan has cancelled, the <%= vars.ops_manager %> log output for the errand looks
+similar to the following example:
 
 ```
 Task 65 | 19:06:53 | Preparing deployment: Preparing deployment (00:00:01)

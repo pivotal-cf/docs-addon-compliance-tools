@@ -19,7 +19,6 @@ and do not have <%= vars.product_short %> deployed on them:
 For more information about all the versions certified for CIS Benchmarks:
 
 * For <%= vars.product_short %> v1.2.48 and later, see the [VMware - Certified Products](https://www.cisecurity.org/partner/vmware/) CIS page.
-* For <%= vars.product_short %> v1.2.32 and earlier, see the [Pivotal - Certified Products](https://www.cisecurity.org/partner/pivotal/) CIS page.
 
 ## <a id='overview'></a>Overview
 
@@ -65,13 +64,15 @@ release page on <%= vars.product_network %>.
 The following table provides version and version-support information about
 <%= vars.product_short %>.
 
-<table class="nice">
+<table class=“table”>
+<thead>
     <th>Element</th>
     <th>Details</th>
     <tr>
         <td>Tile version</td>
         <td>1.2.54</td>
     </tr>
+    </thead>
     <tr>
         <td>Release date</td>
         <td>June 29, 2023</td>
@@ -102,12 +103,14 @@ The following table provides version and version-support information about
 
 <%= vars.product_short %> uses the following ports:
 
-<table>
+<table class=“table”>
+<thead>
   <tr>
     <th width="15%">VM Type</th>
     <th width="70%">Description</th>
     <th width="15%">Port</th>
   </tr>
+  </thead>
   <tr>
     <td>oscap_store</td>
     <td>The port used by <code>oscap_store</code> to receive the scan results from VMs with <%= vars.product_short %>.
