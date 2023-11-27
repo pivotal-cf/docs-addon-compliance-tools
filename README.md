@@ -4,13 +4,17 @@ This repo contains the Compliance Scanner for VMware Tanzu documentation.
 
 In this README: 
 
-- [Branches in this Content Repo](#branches-in-this-content-repo)
-- [Releasing a New Minor Version](#releasing-a-new-minor-version)
-- [Partials](#partials)
-- [Contributing to Documentation](#contributing-to-documentation)
-- [Publishing Docs](#publishing-docs)
-- [Troubleshooting Markdown](#troubleshooting-markdown)
-- [Style Guide](#style-guide)
+- [docs-addon-compliance-tools](#docs-addon-compliance-tools)
+  - [Branches in this Content Repo](#branches-in-this-content-repo)
+  - [Releasing a New Minor Version](#releasing-a-new-minor-version)
+  - [Partials](#partials)
+  - [Contributing to Documentation](#contributing-to-documentation)
+  - [Publishing Docs](#publishing-docs)
+    - [Prepare Markdown Files](#prepare-markdown-files)
+    - [In Docsdash](#in-docsdash)
+    - [Promoting to Pre-Prod and Prod](#promoting-to-pre-prod-and-prod)
+  - [Troubleshooting Markdown](#troubleshooting-markdown)
+  - [Style Guide](#style-guide)
 
 ## Branches in this Content Repo
 
@@ -24,7 +28,7 @@ Then, if necessary, immediately cherry-pick/copy any changes that you want to pu
 
 | Branch name | Use for… |
 |-------------| ------|
-| master      | "edge" branch for 1.3.x
+| 1.3 | v1.3.x, publishes to https://docs-staging.vmware.com/en/Compliance-Scanner-for-VMware-Tanzu/1.3/addon-compliance-tools/GUID-index.html and on prod at https://docs.vmware.com/en/Compliance-Scanner-for-VMware-Tanzu/1.3/addon-compliance-tools/GUID-index.html|
 | 1.2 | v1.2.x, publishes to https://docs-staging.vmware.com/en/Compliance-Scanner-for-VMware-Tanzu/1.2/addon-compliance-tools/GUID-index.html |
 | 1.1 | Don't use |
 | 1.0 | Don't use |            
