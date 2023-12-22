@@ -35,15 +35,15 @@ To configure your AZs and networks:
 1. Configure the fields:
 
       <table class=“table”>
-      <thead>
+      <thead><tr>
       <th>Field</th>
       <th>Description</th>
+      </tr></thead>
       <tr>
         <td><strong>Place singleton jobs in</strong></td>
         <td>Select the AZ that you want the <code>oscap_store</code> VM to run in.<br>
           The tile runs as a singleton job.</td>
       </tr>
-      </thead>
       <tr>
         <td><strong>Balance other jobs in</strong></td>
         <td>Select the same AZ as above.</td>
@@ -55,7 +55,7 @@ To configure your AZs and networks:
       </tr>
     </table>
 
-1. Click **Save**.
+2. Click **Save**.
 
 ## <a id='scan-variables'></a> Configure scan variables
 
@@ -69,9 +69,10 @@ To configure your scan variables:
 1. Configure the fields in **Scan Variables** to provide the expected values for the tests:
 
     <table class=“table”>
-    <thead>
+    <thead><tr>
       <th>Field</th>
       <th>Description</th>
+      </tr></thead>
       <tr>
         <td><strong>NTP Server IP</strong></td>
         <td>
@@ -81,7 +82,6 @@ To configure your scan variables:
           matter which NTP server you enter.
         </td>
       </tr>
-      </thead>
       <tr>
         <td><strong>Syslog Host IP</strong></td>
         <td>
@@ -117,7 +117,7 @@ To configure your scan variables:
       </tr>
     </table>
 
-1. Click **Save**.
+2. Click **Save**.
 
 ## <a id='scans'></a> Configure scans
 
@@ -132,9 +132,10 @@ To configure scans:
 
 1. Enable **Benchmarks** for the scanner to run:
     <table class=“table”>
-    <thead>
+    <thead><tr>
       <th>Benchmark</th>
       <th>Description</th>
+      </tr></thead>
       <tr>
         <td><strong>Base Xenial</strong></td>
         <td>
@@ -143,7 +144,6 @@ To configure scans:
           This is meant to be used as a measure to see if configurations have been altered.
         </td>
       </tr>
-      </thead>
       <tr>
         <td><strong> CIS Ubuntu Linux 16.04 LTS - Level 1</strong></td>
         <td>
@@ -203,11 +203,12 @@ To configure scans:
     <br><br>
     For more information about <%= vars.product_short %> benchmarks, see [Benchmarks](./benchmarks.html).
 
-1. Configure the remaining fields:<a name='configure-remaining-fields'></a>
+2. Configure the remaining fields:<a name='configure-remaining-fields'></a>
     <table class=“table”>
-    <thead>
+    <thead><tr>
       <th>Field</th>
       <th>Description</th>
+      </tr></thead>
       <tr>
         <td><a name="scanner-timeout"></a><strong>Scanner Timeout</strong></td>
         <td>
@@ -215,7 +216,6 @@ To configure scans:
           The default value is <code>1200</code>.
         </td>
       </tr>
-      </thead>
       <tr>
         <td><a name="detection-timeout"></a><strong>Detection Timeout</strong></td>
         <td>
@@ -340,9 +340,11 @@ There are two ways that you can give <%= vars.product_short %> access to an Amaz
       ![Screenshot of the External Store Upload pane in the Compliance Scanner tile. The AWS S3 Bucket radio button is selected, which reveals configuration fields for the AWS S3 Bucket. All fields and settings are described in order in the step below.](images/bucket-aws.png)
 
 1. Configure the fields:
-    <table class="nice">
+    <table class="table">
+      <tr><thead>
       <th>Field</th>
       <th>Description</th>
+      </tr></thead>
       <tr>
         <td><strong>Bucket Name</strong></td>
         <td>Enter the name of the S3 bucket.</td>
@@ -453,14 +455,14 @@ To configure an external store upload using a Minio bucket:
 
 1. Configure the fields:
       <table class=“table”>
-      <thead>
+      <tr><thead>
         <th>Field</th>
         <th>Description</th>
+        </tr></thead>
         <tr>
           <td><strong>Bucket Name</strong></td>
           <td>Enter the name of the bucket.</td>
         </tr>
-        </thead>
         <tr>
           <td><strong>Minio Host</strong></td>
           <td>Enter the fully qualified domain name of the Minio server.
@@ -489,7 +491,7 @@ To configure an external store upload using a Minio bucket:
         </tr>
       </table>
 
-1. Click **Save**.
+2. Click **Save**.
 
 ### <a id="azure-blob"></a> Configure to upload to a Azure blob storage container
 
@@ -502,16 +504,16 @@ To configure an external store upload using an Azure Blob:
 
 1. Configure the fields:
     <table class=“table”>
-    <thead>
+    <thead><tr>
         <th>Field</th>
         <th>Description</th>
+    </tr></thead>
         <tr>
           <td><strong>Container URL</strong></td>
           <td>Enter the container URL for an existing Azure Blob Storage Container.
           Get this URL from the container properties in the Azure portal.
           For example: <code>https<span>:</span>//mystorageaccount.blob.core.windows.net/mycontainername</code></td>
         </tr>
-        </thead>
         <tr>
           <td><strong>Storage Account Name</strong></td>
           <td>Enter the storage account name for the Azure Blob Storage Container.</td>
@@ -522,7 +524,7 @@ To configure an external store upload using an Azure Blob:
         </tr>
       </table>
 
-1. Click **Save**.
+2. Click **Save**.
 
 ## <a id="errands"></a> Configure errands
 
