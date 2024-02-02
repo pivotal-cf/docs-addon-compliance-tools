@@ -1,3 +1,5 @@
+# Table of contents
+
 * [Overview](../index.html.md.erb)
     * [Release Notes](../release-notes.html.md.erb)
     * [Installing and Configuring Compliance Scanner](../installing.html.md.erb)
