@@ -10,7 +10,7 @@ This topic describes the changes in this minor release of <%= vars.product_full 
 
 ## <a id="1-3-1"></a> v1.3.1
 
-**Release date: March 20, 2024**
+**Release Date: March 20, 2024**
 
 ### Features
 
@@ -21,14 +21,15 @@ New features and changes in this release:
 * **Kubernetes STIG version update:** Kubernetes STIG version has been updated to v1R11.
 
 * **golang update:** Updated golang to v1.22.
-### Known issues
+
+### Known Issues
 
 * Post-deploy errand "Run configured scans" should be turned off when upgrading Compliance Scanner from version 1.2.x.
   For how to turn off post-deploy errand, see [Configure errands](installing.html#configure-errands-10).
 
 ## <a id="1-3-0"></a> v1.3.0
 
-**Release date: October 18, 2023**
+**Release Date: October 18, 2023**
 
 ### Features
 
@@ -46,14 +47,15 @@ New features and changes in this release:
 * **Xenial CIS version update:** Xenial CIS version has been updated to v2.0.0.
 
 * **golang v1.21.3:** Updated golang to v1.21.3.
-### Known issues
+
+### Known Issues
 
 * Post-deploy errand "Run configured scans" should be turned off when upgrading Compliance Scanner from version 1.2.x.
   For how to turn off post-deploy errand, see [Configure errands](installing.html#configure-errands-10).
 
 ## <a id="1-2-54"></a> v1.2.54
 
-**Release date: June 29, 2023**
+**Release Date: June 29, 2023**
 
 ### Features
 
@@ -65,13 +67,13 @@ New features and changes in this release:
 * **golang v1.20.4:** Updated golang to v1.20.4.
 * **STIG Viewer 2.17:** This release adds support for STIG Viewer 2.17.
 
-### Resolved issues
+### Resolved Issues
 
 This release has the following fix:
 
 CIS Kubernetes scan results display correct version.
 
-### Known issues
+### Known Issues
 
 No known issues.
 
@@ -87,7 +89,7 @@ New features and changes in this release:
 * **Kubernetes STIG version update:** Kubernetes Security Technical Implementation Guide (STIG) version has been updated to V1R7.
 * **CIS Kubernetes version update:** CIS Kubernetes benchmark has been updated to v1.6.1.
 
-### Known issues
+### Known Issues
 
 CIS Kubernetes scan results wrongly display benchmark v1.5.0 instead of v1.6.1.
 
@@ -112,29 +114,29 @@ _Installing and Configuring <%= vars.product_short %>_.
 For how to set the CNI directory, see [Configure Scan Variables](installing.html#scan-variables) in
 _Installing and Configuring <%= vars.product_short %>_.
 
-### Known issues
+### Known Issues
 
 There are no known issues for this release.
 
 
 ## <a id="1-2-49"></a> v1.2.49
 
-**Release date: January 4, 2021**
+**Release Date: January 4, 2021**
 
-### Resolved issues
+### Resolved Issues
 
 This release has the following fix:
 
 * The <%= vars.product_short %> deployment no longer fails in air-gapped environments.
 
-### Known issues
+### Known Issues
 
 There are no known issues for this release.
 
 
 ## <a id="1-2-48"></a> v1.2.48
 
-**Release date: December 3, 2020**
+**Release Date: December 3, 2020**
 
 ### Features
 
@@ -172,7 +174,7 @@ For more information, see [**Detection Timeout**](installing.html#configure-rema
 
 * **golang v1.14.2:** Updated golang to v1.14.2.
 
-### Known issues
+### Known Issues
 
 This release has the following issue:
 
@@ -181,7 +183,7 @@ This release has the following issue:
 
 ## <a id="1-2-32"></a> v1.2.32
 
-**Release date: May 11, 2020**
+**Release Date: May 11, 2020**
 
 ### Features
 
@@ -223,21 +225,21 @@ For more information, see [Using AWS Instance Profile](./installing.html#instanc
     * **Fixes CIS Level 2 rule:**
         * **4.1.10** - Fix failing test due to stemcell changes
 
-### Resolved issues
+### Resolved Issues
 
 This release has the following fixes:
 
 * **Fixes permission issue causing Scheduled Scan to not work:** The process is now run as VCAP.
 * **Fixes cgroups issue:** A single core is now used when scanning.
 
-### Known issues
+### Known Issues
 
 There are no known issues for this release.
 
 
 ## <a id="1-2-16"></a> v1.2.16
 
-**Release date: October 28, 2019**
+**Release Date: October 28, 2019**
 
 ### Features
 
@@ -265,7 +267,7 @@ scan. For more information, see [Configure Scan Variables](./installing.html#sca
 
 * **Updates golang dependency:** The golang dependency is now v1.13.1.
 
-### Known issues
+### Known Issues
 
 This release has the following issues:
 
@@ -273,6 +275,6 @@ This release has the following issues:
 * **cgroups:** Scans use more resources due to multiple cores of a VM being used to run scans.
 This might cause performance issues on Diego Cell VMs with many apps.
 
-## <a id="view"></a> View release notes for another version
+## <a id="view"></a> View Release Notes for another Version
 
 To view the release notes for another product version, select the version from the drop-down menu at the top of this page.
